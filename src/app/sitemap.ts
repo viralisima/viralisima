@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { QUIZZES } from "@/data/quizzes";
 import { SIGNS } from "@/data/horoscopo";
+import { BLOG } from "@/data/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://viralisima.com";
@@ -36,6 +37,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/edad-perro`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/calculadora-imc`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/horoscopo`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
+    { url: `${base}/blog`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
+    ...BLOG.map((p) => ({
+      url: `${base}/blog/${p.slug}`,
+      lastModified: new Date(p.date),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
     ...SIGNS.map((s) => ({
       url: `${base}/horoscopo/${s.id}`,
       lastModified: now,

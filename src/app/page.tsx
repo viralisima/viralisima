@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { QUIZZES } from "@/data/quizzes";
+import { BLOG } from "@/data/blog";
 
 export const metadata = {
   title:
@@ -210,6 +211,34 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {BLOG.length > 0 && (
+        <section className="px-4 pb-24 max-w-6xl mx-auto">
+          <div className="flex items-baseline justify-between mb-4">
+            <h2 className="text-2xl font-black text-slate-800">📝 Del blog</h2>
+            <Link href="/blog" className="text-sm font-semibold text-fuchsia-600 hover:underline">
+              Ver todos →
+            </Link>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[...BLOG].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3).map((p) => (
+              <Link
+                key={p.slug}
+                href={`/blog/${p.slug}`}
+                className="group rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all hover:-translate-y-1"
+              >
+                <div className={`bg-gradient-to-br ${p.coverGradient} p-5 text-white aspect-[4/3] flex flex-col justify-between`}>
+                  <div className="text-5xl">{p.emoji}</div>
+                  <div>
+                    <div className="text-[10px] font-bold uppercase tracking-wider opacity-80 mb-1">{p.category}</div>
+                    <h3 className="text-lg font-black leading-tight">{p.title}</h3>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       <footer className="px-4 py-10 bg-slate-900 text-white text-center">
         <p className="text-sm opacity-70">
