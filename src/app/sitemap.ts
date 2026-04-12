@@ -28,6 +28,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/frases`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/generadores/nombre-artista`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/historias`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/edad-mental`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/aura`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/generadores/username`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/horoscopo`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
     ...SIGNS.map((s) => ({
       url: `${base}/horoscopo/${s.id}`,

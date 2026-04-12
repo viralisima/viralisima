@@ -1851,4 +1851,205 @@ QUIZZES.push(
   },
 );
 
+QUIZZES.push(
+  {
+    slug: "que-cancion-seria-tu-vida",
+    title: "¿Qué canción sería tu vida?",
+    subtitle: "Descubre cuál es la canción perfecta que describe cómo estás viviendo estos días",
+    emoji: "🎵",
+    coverGradient: "from-fuchsia-500 via-purple-500 to-indigo-600",
+    timeEstimate: "1 minuto",
+    type: "personality",
+    questions: [
+      {
+        id: "humor",
+        text: "Tu humor actual se parece más a…",
+        emoji: "🎭",
+        options: [
+          { text: "Positiva, vibes altas todo el día", points: { dura: 3, dancing: 3 } },
+          { text: "Reflexiva, pensando en muchas cosas", points: { agua: 3, triste: 2 } },
+          { text: "Empoderada, no necesito a nadie", points: { empoderada: 3, dura: 2 } },
+          { text: "Nostálgica, extrañando buenos tiempos", points: { triste: 3, agua: 2 } },
+        ],
+      },
+      {
+        id: "noche",
+        text: "Un viernes a las 11pm estás…",
+        emoji: "🌙",
+        options: [
+          { text: "Bailando en algún sitio", points: { dancing: 3, dura: 2 } },
+          { text: "En casa, tranquilo/a, viendo algo", points: { agua: 3 } },
+          { text: "Con los tuyos, riéndonos de todo", points: { dura: 2, empoderada: 2 } },
+          { text: "Pensando en alguien que no vuelve", points: { triste: 3 } },
+        ],
+      },
+      {
+        id: "relacion",
+        text: "Tu estado sentimental real es…",
+        emoji: "❤️",
+        options: [
+          { text: "Súper bien, enamorado/a y feliz", points: { dancing: 2, dura: 2 } },
+          { text: "Soltero/a y disfrutándolo", points: { empoderada: 3 } },
+          { text: "Complicado. Ni yo sé.", points: { agua: 2, triste: 2 } },
+          { text: "Sanando de algo reciente", points: { triste: 3, empoderada: 2 } },
+        ],
+      },
+      {
+        id: "musica",
+        text: "Tu playlist actual suena como…",
+        emoji: "🎧",
+        options: [
+          { text: "Reggaetón y perreo máximo", points: { dura: 3, dancing: 2 } },
+          { text: "Baladas, boleros, cosa intensa", points: { triste: 3, agua: 2 } },
+          { text: "Pop energético y feliz", points: { dancing: 3 } },
+          { text: "Lo que suene en TikTok", points: { dura: 2, dancing: 2 } },
+        ],
+      },
+    ],
+    results: [
+      {
+        id: "dura",
+        title: "'Otro atardecer' — Bad Bunny",
+        emoji: "🔥",
+        bgGradient: "from-fuchsia-500 to-orange-500",
+        description: "Tu vibra ahora mismo: intensa, dura, sin miedo a nada. Vives cada momento al máximo y no pides permiso. Perreo, caos y arte.",
+        shareText: "Mi vida es 'Otro atardecer' 🔥 — viralisima.com",
+      },
+      {
+        id: "dancing",
+        title: "'Dance Monkey' — Tones and I",
+        emoji: "💃",
+        bgGradient: "from-yellow-400 to-pink-500",
+        description: "Vibras altas todo el día. La gente te ve brillar aunque no sepan por qué. Contagias buena energía donde sea que vayas.",
+        shareText: "Mi vida es 'Dance Monkey' 💃 — viralisima.com",
+      },
+      {
+        id: "empoderada",
+        title: "'Malamente' — Rosalía",
+        emoji: "🌹",
+        bgGradient: "from-red-500 to-rose-700",
+        description: "Estás en modo 'a mí nadie me dice cómo'. Empoderado/a, con carácter, haciendo tu propio camino. Eres arte que camina.",
+        shareText: "Mi vida es 'Malamente' 🌹 — viralisima.com",
+      },
+      {
+        id: "agua",
+        title: "'Lagrimas en la lluvia' — Andrea Echeverri / indie",
+        emoji: "🌊",
+        bgGradient: "from-sky-500 to-indigo-600",
+        description: "Reflexiva, profunda, contigo contigo. No estás triste, estás pensando. Eres de los que valoran más el silencio que el ruido.",
+        shareText: "Mi vida es una canción reflexiva 🌊 — viralisima.com",
+      },
+      {
+        id: "triste",
+        title: "'La Incondicional' — Luis Miguel",
+        emoji: "💔",
+        bgGradient: "from-slate-600 to-slate-800",
+        description: "Alguien o algo te tiene el corazón un poco apretado. No pasa nada — todo se siente con calma y se suelta también. Vas a estar bien.",
+        shareText: "Mi vida es una balada triste 💔 — viralisima.com",
+      },
+    ],
+  },
+
+  {
+    slug: "adivinamos-tu-edad-por-tus-respuestas",
+    title: "Adivinamos tu edad por tus respuestas",
+    subtitle: "5 preguntas y te decimos qué edad tienes. Sin decírnosla.",
+    emoji: "🎂",
+    coverGradient: "from-pink-400 via-rose-500 to-red-500",
+    timeEstimate: "30 segundos",
+    type: "personality",
+    questions: [
+      {
+        id: "dibujo",
+        text: "¿Qué dibujo animado marcó tu infancia?",
+        emoji: "📺",
+        options: [
+          { text: "He-Man, Los Picapiedra, Tom y Jerry", points: { "40_mas": 3, "30_40": 1 } },
+          { text: "Dragon Ball Z, Los Simpson, Power Rangers", points: { "30_40": 3, "20_30": 2 } },
+          { text: "Ben 10, Phineas y Ferb, Hannah Montana", points: { "20_30": 3, "menor_20": 2 } },
+          { text: "Peppa Pig, Bluey, Unicornio Chiflado", points: { "menor_20": 3 } },
+        ],
+      },
+      {
+        id: "tecnologia",
+        text: "Tu primer teléfono fue…",
+        emoji: "📱",
+        options: [
+          { text: "Un Nokia indestructible con Snake", points: { "30_40": 3, "40_mas": 3 } },
+          { text: "Un BlackBerry o iPhone 3/4", points: { "30_40": 2, "20_30": 2 } },
+          { text: "Un iPhone moderno o Android gama media", points: { "20_30": 3, "menor_20": 2 } },
+          { text: "Literalmente el último iPhone", points: { "menor_20": 3 } },
+        ],
+      },
+      {
+        id: "musica",
+        text: "Cuando eras adolescente escuchabas…",
+        emoji: "🎵",
+        options: [
+          { text: "Rock en español, baladas, pop de los 90", points: { "40_mas": 3, "30_40": 2 } },
+          { text: "Reggaetón old-school, rock alternativo", points: { "30_40": 3, "20_30": 2 } },
+          { text: "Bad Bunny, Billie Eilish, Karol G", points: { "20_30": 3, "menor_20": 2 } },
+          { text: "Quien sea que esté viral hoy en TikTok", points: { "menor_20": 3 } },
+        ],
+      },
+      {
+        id: "red_favorita",
+        text: "Tu red social favorita es…",
+        emoji: "📱",
+        options: [
+          { text: "Facebook (sí, en serio)", points: { "40_mas": 3 } },
+          { text: "Instagram principalmente", points: { "30_40": 2, "20_30": 3 } },
+          { text: "TikTok sin duda", points: { "menor_20": 3, "20_30": 1 } },
+          { text: "WhatsApp y poquito más", points: { "40_mas": 2, "30_40": 2 } },
+        ],
+      },
+      {
+        id: "jerga",
+        text: "Al referirte a algo bueno/cool dices…",
+        emoji: "🔥",
+        options: [
+          { text: "'Chido', 'bacán', 'guay', 'la pera'", points: { "30_40": 3, "40_mas": 2 } },
+          { text: "'Brutal', 'top', 'épico'", points: { "20_30": 3 } },
+          { text: "'Basado', 'cringe', 'sus', 'goated'", points: { "menor_20": 3 } },
+          { text: "'Excelente', 'muy bien' y ya", points: { "40_mas": 3 } },
+        ],
+      },
+    ],
+    results: [
+      {
+        id: "menor_20",
+        title: "Tienes entre 15 y 22 años",
+        emoji: "🧒",
+        bgGradient: "from-pink-400 to-rose-500",
+        description: "Joven, conectado/a a lo último. Vives en TikTok, hablas en jerga nueva y tu cerebro procesa 3 pestañas a la vez.",
+        shareText: "Adivinaron mi edad (15-22) en @viralisima 🎂",
+      },
+      {
+        id: "20_30",
+        title: "Tienes entre 22 y 32 años",
+        emoji: "🧑",
+        bgGradient: "from-fuchsia-500 to-pink-600",
+        description: "Millennial tardío / Gen Z pronto. Balance entre modernidad y nostalgia. Aún entiendes memes nuevos pero recuerdas los 2000s.",
+        shareText: "Adivinaron mi edad (22-32) en @viralisima 🎂",
+      },
+      {
+        id: "30_40",
+        title: "Tienes entre 32 y 42 años",
+        emoji: "🧑‍🦱",
+        bgGradient: "from-purple-500 to-indigo-600",
+        description: "Millennial puro/a. Creciste con MSN, viviste la transición a redes sociales, y ahora equilibras trabajo, diversión y responsabilidades.",
+        shareText: "Adivinaron mi edad (32-42) en @viralisima 🎂",
+      },
+      {
+        id: "40_mas",
+        title: "Tienes 42 años o más",
+        emoji: "🧑‍🦳",
+        bgGradient: "from-indigo-600 to-slate-700",
+        description: "Generación X o boomer joven. Has vivido revoluciones tecnológicas brutales y lo has visto todo. Tu sabiduría no tiene precio.",
+        shareText: "Adivinaron mi edad (42+) en @viralisima 🎂",
+      },
+    ],
+  },
+);
+
 export const getQuiz = (slug: string) => QUIZZES.find(q => q.slug === slug);

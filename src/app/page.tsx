@@ -59,6 +59,36 @@ const TOOLS = [
     type: "Herramienta",
     timeEstimate: "10 segundos",
   },
+  {
+    slug: "edad-mental",
+    href: "/edad-mental",
+    title: "Calculadora de Edad Mental",
+    subtitle: "8 preguntas y te damos el número exacto. Divertido y compartible.",
+    emoji: "🧠",
+    coverGradient: "from-pink-400 via-rose-500 to-red-500",
+    type: "Calculadora",
+    timeEstimate: "1 minuto",
+  },
+  {
+    slug: "aura",
+    href: "/aura",
+    title: "¿De qué color es tu aura?",
+    subtitle: "Descubre el color de tu energía según tu vibra. Resultado visual épico.",
+    emoji: "🔮",
+    coverGradient: "from-violet-500 via-fuchsia-500 to-rose-500",
+    type: "Test",
+    timeEstimate: "45 segundos",
+  },
+  {
+    slug: "username",
+    href: "/generadores/username",
+    title: "Generador de Username",
+    subtitle: "Encuentra el @ perfecto para Instagram, TikTok o Twitter.",
+    emoji: "📱",
+    coverGradient: "from-cyan-400 via-sky-500 to-blue-600",
+    type: "Herramienta",
+    timeEstimate: "15 segundos",
+  },
 ];
 
 export default function Home() {
