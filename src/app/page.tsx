@@ -150,7 +150,7 @@ export default function Home() {
         </p>
       </section>
 
-      <section className="px-4 pb-10 max-w-6xl mx-auto">
+      <section id="herramientas" className="px-4 pb-10 max-w-6xl mx-auto scroll-mt-20">
         <h2 className="text-2xl font-black text-slate-800 mb-4">🛠️ Herramientas virales</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {TOOLS.map((t) => (
@@ -178,7 +178,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-4 pb-24 max-w-6xl mx-auto">
+      <section id="quizzes" className="px-4 pb-24 max-w-6xl mx-auto scroll-mt-20">
         <h2 className="text-2xl font-black text-slate-800 mb-4">🎭 Quizzes virales</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {QUIZZES.map((q) => (
