@@ -27,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/memes`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/frases`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/generadores/nombre-artista`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/historias`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/horoscopo`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
     ...SIGNS.map((s) => ({
       url: `${base}/horoscopo/${s.id}`,

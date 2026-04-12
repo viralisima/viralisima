@@ -49,6 +49,16 @@ const TOOLS = [
     type: "Herramienta",
     timeEstimate: "1 minuto",
   },
+  {
+    slug: "historias",
+    href: "/historias",
+    title: "Generador de Historias",
+    subtitle: "Inventa una historia divertida en segundos. Para niños y adultos.",
+    emoji: "📚",
+    coverGradient: "from-amber-400 via-orange-500 to-pink-500",
+    type: "Herramienta",
+    timeEstimate: "10 segundos",
+  },
 ];
 
 export default function Home() {
