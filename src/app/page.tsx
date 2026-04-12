@@ -150,6 +150,33 @@ export default function Home() {
         </p>
       </section>
 
+      <section id="juegos" className="px-4 pb-10 max-w-6xl mx-auto scroll-mt-20">
+        <div className="flex items-baseline justify-between mb-4">
+          <h2 className="text-2xl font-black text-slate-800">🎮 Mini-juegos</h2>
+          <Link href="/juegos" className="text-sm font-semibold text-fuchsia-600 hover:underline">
+            Ver todos →
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {[
+            { href: "/juegos/reflejos", title: "Test de Reflejos", emoji: "⚡", gradient: "from-yellow-400 via-orange-500 to-red-500", sub: "Mide tus reflejos en milisegundos" },
+            { href: "/juegos/memoria", title: "Memoria Simon", emoji: "🧠", gradient: "from-violet-500 via-fuchsia-500 to-pink-500", sub: "Repite la secuencia de colores" },
+            { href: "/juegos/tap-sprint", title: "Tap Sprint", emoji: "👆", gradient: "from-cyan-400 via-sky-500 to-blue-600", sub: "Clicks en 10 segundos" },
+          ].map((g) => (
+            <Link key={g.href} href={g.href} className="group rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-1">
+              <div className={`bg-gradient-to-br ${g.gradient} aspect-[16/9] p-6 text-white flex flex-col justify-between`}>
+                <div className="text-5xl">{g.emoji}</div>
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-wider opacity-80 mb-1">🎮 Juego</div>
+                  <h3 className="text-xl font-black leading-tight">{g.title}</h3>
+                  <p className="text-white/90 text-sm mt-1">{g.sub}</p>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <section id="herramientas" className="px-4 pb-10 max-w-6xl mx-auto scroll-mt-20">
         <h2 className="text-2xl font-black text-slate-800 mb-4">🛠️ Herramientas virales</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

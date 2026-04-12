@@ -61,8 +61,16 @@ export default function Header() {
     })),
   ];
 
+  const juegosItems = [
+    { href: "/juegos", label: "🎮 Ver todos" },
+    { href: "/juegos/reflejos", label: "⚡ Test de Reflejos" },
+    { href: "/juegos/memoria", label: "🧠 Memoria Simon" },
+    { href: "/juegos/tap-sprint", label: "👆 Tap Sprint" },
+  ];
+
   const sections: Section[] = [
     { label: "Inicio", href: "/" },
+    { label: "Juegos", items: juegosItems },
     { label: "Quizzes", items: quizItems },
     { label: "Herramientas", items: TOOLS },
     { label: "Horóscopo", items: horoscopoItems },
