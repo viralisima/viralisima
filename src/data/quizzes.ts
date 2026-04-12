@@ -2052,4 +2052,205 @@ QUIZZES.push(
   },
 );
 
+QUIZZES.push(
+  {
+    slug: "que-superheroe-eres",
+    title: "¿Qué superhéroe eres?",
+    subtitle: "Descubre si eres más Spider-Man, Capitana Marvel, Batman o Wonder Woman.",
+    emoji: "🦸",
+    coverGradient: "from-blue-600 via-indigo-600 to-purple-700",
+    timeEstimate: "1 minuto",
+    type: "personality",
+    questions: [
+      {
+        id: "mision",
+        text: "Si pudieras salvar al mundo de una sola cosa…",
+        emoji: "🌍",
+        options: [
+          { text: "La injusticia y la corrupción", points: { batman: 3, capitana: 2 } },
+          { text: "Los villanos con poderes", points: { capitana: 3, wonder: 2 } },
+          { text: "La soledad y la tristeza", points: { spiderman: 3 } },
+          { text: "Las mentiras y los engaños", points: { wonder: 3 } },
+        ],
+      },
+      {
+        id: "ciudad",
+        text: "Te asignan una ciudad que proteger. Prefieres…",
+        emoji: "🏙️",
+        options: [
+          { text: "Una gigantesca y peligrosa", points: { batman: 3, spiderman: 2 } },
+          { text: "Una metrópolis moderna y alta tecnología", points: { capitana: 3 } },
+          { text: "Un lugar histórico con mitología", points: { wonder: 3 } },
+          { text: "Tu propio barrio, conozco cada esquina", points: { spiderman: 3 } },
+        ],
+      },
+      {
+        id: "poder",
+        text: "Tu superpoder ideal sería…",
+        emoji: "⚡",
+        options: [
+          { text: "Inteligencia superior y recursos ilimitados", points: { batman: 3 } },
+          { text: "Volar y disparar rayos", points: { capitana: 3 } },
+          { text: "Fuerza, velocidad y una lanza ancestral", points: { wonder: 3 } },
+          { text: "Trepar paredes y 'sentido arácnido'", points: { spiderman: 3 } },
+        ],
+      },
+      {
+        id: "vida",
+        text: "Cuando no estás salvando al mundo…",
+        emoji: "🕶️",
+        options: [
+          { text: "Manejas una empresa multimillonaria", points: { batman: 3 } },
+          { text: "Piloteas aviones o entrenas", points: { capitana: 3 } },
+          { text: "Defiendes ideales en el mundo normal", points: { wonder: 3 } },
+          { text: "Estudias o trabajas como todos", points: { spiderman: 3 } },
+        ],
+      },
+      {
+        id: "equipo",
+        text: "En un equipo eres el/la que…",
+        emoji: "🤝",
+        options: [
+          { text: "Planifica la estrategia completa", points: { batman: 3 } },
+          { text: "Lidera desde el frente", points: { capitana: 3, wonder: 2 } },
+          { text: "Mantiene la moral alta", points: { spiderman: 3 } },
+          { text: "Defiende los principios morales", points: { wonder: 3 } },
+        ],
+      },
+    ],
+    results: [
+      {
+        id: "batman",
+        title: "Batman 🦇",
+        emoji: "🦇",
+        bgGradient: "from-slate-800 to-slate-900",
+        description: "Inteligente, estratega y con recursos. No necesitas superpoderes: tu mente, disciplina y preparación son suficientes. El héroe que Gotham necesita.",
+        shareText: "Soy Batman 🦇 — viralisima.com",
+      },
+      {
+        id: "capitana",
+        title: "Capitana Marvel ✨",
+        emoji: "✨",
+        bgGradient: "from-red-500 to-amber-500",
+        description: "Valiente, poderosa, líder. Cuando decides actuar, nada te detiene. Tu presencia intimida y tu fuerza inspira. No pides permiso para brillar.",
+        shareText: "Soy Capitana Marvel ✨ — viralisima.com",
+      },
+      {
+        id: "wonder",
+        title: "Wonder Woman 👑",
+        emoji: "👑",
+        bgGradient: "from-red-600 to-blue-700",
+        description: "Noble, fuerte, con principios inquebrantables. Defiendes la verdad y la justicia sin dudar. Eres el equilibrio entre poder y compasión.",
+        shareText: "Soy Wonder Woman 👑 — viralisima.com",
+      },
+      {
+        id: "spiderman",
+        title: "Spider-Man 🕷️",
+        emoji: "🕷️",
+        bgGradient: "from-red-600 to-blue-600",
+        description: "Carismático, ágil, con gran responsabilidad. Defiendes a los más cercanos primero. El héroe del pueblo, con buenos chistes y mejor corazón.",
+        shareText: "Soy Spider-Man 🕷️ — viralisima.com",
+      },
+    ],
+  },
+
+  {
+    slug: "que-sabor-de-helado-eres",
+    title: "¿Qué sabor de helado eres?",
+    subtitle: "Un test rapidísimo y delicioso. Para familia entera.",
+    emoji: "🍦",
+    coverGradient: "from-pink-300 via-rose-400 to-amber-400",
+    timeEstimate: "30 segundos",
+    type: "personality",
+    questions: [
+      {
+        id: "mood",
+        text: "¿Cómo te sientes generalmente?",
+        emoji: "😊",
+        options: [
+          { text: "Dulce y tranquilo/a", points: { vainilla: 3, fresa: 2 } },
+          { text: "Intenso/a y apasionado/a", points: { chocolate: 3, fresa: 2 } },
+          { text: "Divertido/a y colorido/a", points: { fresa: 3, limon: 2 } },
+          { text: "Original y único/a", points: { menta: 3, limon: 2 } },
+        ],
+      },
+      {
+        id: "fin_semana",
+        text: "Tu fin de semana ideal es…",
+        emoji: "🎉",
+        options: [
+          { text: "Casa, peli, pijama", points: { vainilla: 3 } },
+          { text: "Comida rica con amigos", points: { chocolate: 3 } },
+          { text: "Playa, sol y mucho color", points: { fresa: 3, limon: 2 } },
+          { text: "Algo diferente cada vez", points: { menta: 3 } },
+        ],
+      },
+      {
+        id: "gente",
+        text: "La gente te describe como…",
+        emoji: "💬",
+        options: [
+          { text: "Confiable y dulce", points: { vainilla: 3 } },
+          { text: "Intenso/a y carismático/a", points: { chocolate: 3 } },
+          { text: "Divertido/a y alegre", points: { fresa: 3 } },
+          { text: "Fresco/a y con personalidad", points: { menta: 3, limon: 2 } },
+        ],
+      },
+      {
+        id: "verano",
+        text: "Tu verano perfecto es…",
+        emoji: "☀️",
+        options: [
+          { text: "Tranquilo con tu gente", points: { vainilla: 3 } },
+          { text: "Fiestas y descubrimientos", points: { chocolate: 2, fresa: 3 } },
+          { text: "Playa, limonada y risas", points: { limon: 3, fresa: 2 } },
+          { text: "Viaje a un lugar nuevo", points: { menta: 3 } },
+        ],
+      },
+    ],
+    results: [
+      {
+        id: "vainilla",
+        title: "Vainilla 🍦",
+        emoji: "🍦",
+        bgGradient: "from-yellow-100 to-amber-300 text-amber-900",
+        description: "Dulce, clásico/a, reconfortante. Como la vainilla: sencillo/a pero perfecto/a. Todos te quieren cerca porque contigo se sienten en casa.",
+        shareText: "Soy VAINILLA 🍦 — viralisima.com",
+      },
+      {
+        id: "chocolate",
+        title: "Chocolate 🍫",
+        emoji: "🍫",
+        bgGradient: "from-amber-700 to-yellow-900",
+        description: "Intenso/a, con carácter, imposible de ignorar. Tu presencia endulza cualquier momento. Eres el favorito de muchos, aunque no lo digan.",
+        shareText: "Soy CHOCOLATE 🍫 — viralisima.com",
+      },
+      {
+        id: "fresa",
+        title: "Fresa 🍓",
+        emoji: "🍓",
+        bgGradient: "from-pink-400 to-rose-500",
+        description: "Divertido/a, alegre, lleno/a de color. Tu energía contagia y tu sonrisa es inolvidable. Donde estás tú, hay fiesta asegurada.",
+        shareText: "Soy FRESA 🍓 — viralisima.com",
+      },
+      {
+        id: "menta",
+        title: "Menta con chocolate 🌿",
+        emoji: "🌿",
+        bgGradient: "from-emerald-400 to-teal-500",
+        description: "Fresco/a, original, no eres para todos y eso es justo lo que te hace especial. O te aman o no te entienden, no hay términos medios.",
+        shareText: "Soy MENTA CON CHOCOLATE 🌿 — viralisima.com",
+      },
+      {
+        id: "limon",
+        title: "Limón 🍋",
+        emoji: "🍋",
+        bgGradient: "from-yellow-400 to-lime-500",
+        description: "Chispeante, refrescante, con personalidad. Cortas la monotonía y alegras el día. Tu humor es ácido pero nunca amargo.",
+        shareText: "Soy LIMÓN 🍋 — viralisima.com",
+      },
+    ],
+  },
+);
+
 export const getQuiz = (slug: string) => QUIZZES.find(q => q.slug === slug);
