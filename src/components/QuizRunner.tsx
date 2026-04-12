@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { Quiz, QuizResult } from "@/data/quizzes";
 import Link from "next/link";
+import ShareButtons from "./ShareButtons";
 
 function computeResult(quiz: Quiz, answers: number[]): QuizResult {
   if (quiz.type === "trivia") {
@@ -17,7 +18,6 @@ function computeResult(quiz: Quiz, answers: number[]): QuizResult {
     if (pct >= 0.4) return quiz.results.find((r) => r.id === "fan") ?? quiz.results[0];
     return quiz.results.find((r) => r.id === "novato") ?? quiz.results[quiz.results.length - 1];
   }
-  // personality: suma puntos por resultado
   const scores: Record<string, number> = {};
   answers.forEach((ai, qi) => {
     const opt = quiz.questions[qi]?.options[ai];
@@ -39,7 +39,23 @@ export default function QuizRunner({ quiz }: { quiz: Quiz }) {
   const progress = step / total;
 
   if (result) {
-    return <ResultCard quiz={quiz} result={result} onRestart={() => { setStep(0); setAnswers([]); setResult(null); }} />;
+    if (typeof window !== "undefined") {
+      const target = `/quiz/${quiz.slug}/resultado/${result.id}`;
+      if (window.location.pathname !== target) window.history.replaceState({}, "", target);
+    }
+    return (
+      <ResultCard
+        quiz={quiz}
+        result={result}
+        onRestart={() => {
+          setStep(0);
+          setAnswers([]);
+          setResult(null);
+          if (typeof window !== "undefined")
+            window.history.replaceState({}, "", `/quiz/${quiz.slug}`);
+        }}
+      />
+    );
   }
 
   const q = quiz.questions[step];
@@ -104,20 +120,7 @@ function ResultCard({
   result: QuizResult;
   onRestart: () => void;
 }) {
-  const shareUrl =
-    typeof window !== "undefined"
-      ? window.location.href
-      : `https://viralisima.com/quiz/${quiz.slug}`;
-
-  const share = (platform: "whatsapp" | "twitter" | "facebook") => {
-    const text = `${result.shareText} ${shareUrl}`;
-    const urls = {
-      whatsapp: `https://wa.me/?text=${encodeURIComponent(text)}`,
-      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`,
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(result.shareText)}`,
-    };
-    window.open(urls[platform], "_blank", "width=600,height=500");
-  };
+  const shareUrl = `https://viralisima.com/quiz/${quiz.slug}/resultado/${result.id}`;
 
   return (
     <div className={`min-h-screen bg-gradient-to-br ${result.bgGradient} text-white`}>
@@ -137,29 +140,7 @@ function ResultCard({
           </p>
         </div>
 
-        <div className="mt-10 space-y-3">
-          <p className="text-center font-semibold">Comparte tu resultado:</p>
-          <div className="flex gap-3 justify-center">
-            <button
-              onClick={() => share("whatsapp")}
-              className="flex-1 max-w-[150px] bg-white/20 hover:bg-white/30 backdrop-blur-sm px-5 py-3 rounded-full font-semibold transition-all"
-            >
-              💬 WhatsApp
-            </button>
-            <button
-              onClick={() => share("twitter")}
-              className="flex-1 max-w-[150px] bg-white/20 hover:bg-white/30 backdrop-blur-sm px-5 py-3 rounded-full font-semibold transition-all"
-            >
-              𝕏 Twitter
-            </button>
-            <button
-              onClick={() => share("facebook")}
-              className="flex-1 max-w-[150px] bg-white/20 hover:bg-white/30 backdrop-blur-sm px-5 py-3 rounded-full font-semibold transition-all"
-            >
-              📘 Facebook
-            </button>
-          </div>
-        </div>
+        <ShareButtons text={result.shareText} url={shareUrl} />
 
         <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
           <button
