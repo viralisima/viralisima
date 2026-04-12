@@ -240,10 +240,43 @@ export default function Home() {
         </section>
       )}
 
-      <footer className="px-4 py-10 bg-slate-900 text-white text-center">
-        <p className="text-sm opacity-70">
-          © 2026 Viralísima · Hecho con 💛 para todo el mundo hispano
-        </p>
+      <footer className="px-4 py-10 bg-slate-900 text-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 text-sm">
+            <div>
+              <h4 className="font-bold mb-3">Viralísima</h4>
+              <ul className="space-y-2 text-white/70">
+                <li><Link href="/sobre-nosotros" className="hover:text-white">Sobre nosotros</Link></li>
+                <li><Link href="/contacto" className="hover:text-white">Contacto</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-3">Explora</h4>
+              <ul className="space-y-2 text-white/70">
+                <li><Link href="/#quizzes" className="hover:text-white">Quizzes</Link></li>
+                <li><Link href="/#herramientas" className="hover:text-white">Herramientas</Link></li>
+                <li><Link href="/horoscopo" className="hover:text-white">Horóscopo</Link></li>
+                <li><Link href="/blog" className="hover:text-white">Blog</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-3">Legal</h4>
+              <ul className="space-y-2 text-white/70">
+                <li><Link href="/privacidad" className="hover:text-white">Privacidad</Link></li>
+                <li><Link href="/terminos" className="hover:text-white">Términos</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-3">Contacto</h4>
+              <ul className="space-y-2 text-white/70">
+                <li><a href="mailto:info@viralisima.com" className="hover:text-white">info@viralisima.com</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-white/10 pt-6 text-center text-sm opacity-60">
+            © 2026 Viralísima · Hecho con 💛 para todo el mundo hispano
+          </div>
+        </div>
       </footer>
     </main>
   );

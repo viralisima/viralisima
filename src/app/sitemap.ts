@@ -38,6 +38,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/calculadora-imc`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/horoscopo`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
     { url: `${base}/blog`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
+    { url: `${base}/sobre-nosotros`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${base}/contacto`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${base}/privacidad`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
+    { url: `${base}/terminos`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
     ...BLOG.map((p) => ({
       url: `${base}/blog/${p.slug}`,
       lastModified: new Date(p.date),
