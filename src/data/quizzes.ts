@@ -822,4 +822,124 @@ QUIZZES.push(
   },
 );
 
+QUIZZES.push({
+  slug: "cual-es-tu-edad-emocional",
+  title: "¿Cuál es tu edad emocional real?",
+  subtitle: "Porque los años no siempre coinciden con cómo te sientes por dentro",
+  emoji: "🎈",
+  coverGradient: "from-pink-400 via-rose-500 to-red-500",
+  timeEstimate: "1 minuto",
+  type: "personality",
+  questions: [
+    {
+      id: "domingo",
+      text: "Un domingo a las 4 de la tarde…",
+      emoji: "🛋️",
+      options: [
+        { text: "Netflix + comer algo de picar", points: { adolescente: 3, adulto: 1 } },
+        { text: "Pasear, ver gente, salir por ahí", points: { joven: 3 } },
+        { text: "Siesta y listo para preparar la semana", points: { adulto: 3, mayor: 2 } },
+        { text: "Videojuegos o algo 'sin sentido' hasta noche", points: { nino: 3, adolescente: 2 } },
+      ],
+    },
+    {
+      id: "problema",
+      text: "Cuando algo sale mal…",
+      emoji: "😤",
+      options: [
+        { text: "Lloro/explotó y luego ya veo", points: { nino: 3, adolescente: 2 } },
+        { text: "Me enojo y duro rato sin hablar", points: { adolescente: 3 } },
+        { text: "Analizo qué pasó y lo asumo", points: { adulto: 3, mayor: 2 } },
+        { text: "Ya ni me afecta, he visto cosas peores", points: { mayor: 3, adulto: 1 } },
+      ],
+    },
+    {
+      id: "dinero",
+      text: "Te llega dinero extra inesperado. Lo primero es…",
+      emoji: "💸",
+      options: [
+        { text: "Comprar algo que quería desde hace mucho", points: { nino: 3, adolescente: 2 } },
+        { text: "Un capricho + una salida con amigos", points: { adolescente: 2, joven: 3 } },
+        { text: "Pagar algo pendiente y ahorrar el resto", points: { adulto: 3 } },
+        { text: "Ahorrar todo 'por si acaso'", points: { mayor: 3 } },
+      ],
+    },
+    {
+      id: "musica",
+      text: "Tu música actual dice mucho de ti. Tú escuchas más…",
+      emoji: "🎧",
+      options: [
+        { text: "Lo último que suene en TikTok", points: { nino: 2, adolescente: 3 } },
+        { text: "Mis artistas favoritos de siempre", points: { joven: 3, adulto: 2 } },
+        { text: "Clásicos, boleros, rock de los 80-2000", points: { adulto: 2, mayor: 3 } },
+        { text: "Playlist chill, lo-fi, algo relajante", points: { joven: 2, adulto: 3 } },
+      ],
+    },
+    {
+      id: "fiesta",
+      text: "Viernes noche. Tu plan ideal es…",
+      emoji: "🌙",
+      options: [
+        { text: "Fiesta hasta el amanecer", points: { adolescente: 3, joven: 3 } },
+        { text: "Cena con la gente que quieres", points: { joven: 2, adulto: 3 } },
+        { text: "Casa, película, pijama", points: { adulto: 2, mayor: 3 } },
+        { text: "Lo que me propongan, no me complico", points: { nino: 2, joven: 2 } },
+      ],
+    },
+    {
+      id: "pareja",
+      text: "En una relación lo que más valoras es…",
+      emoji: "❤️",
+      options: [
+        { text: "Emoción, mariposas, intensidad", points: { adolescente: 3, nino: 2 } },
+        { text: "Diversión, química, planes juntos", points: { joven: 3 } },
+        { text: "Confianza, estabilidad, crecimiento mutuo", points: { adulto: 3 } },
+        { text: "Paz, respeto, sin drama", points: { mayor: 3, adulto: 2 } },
+      ],
+    },
+  ],
+  results: [
+    {
+      id: "nino",
+      title: "6-12 años emocionales",
+      emoji: "🍭",
+      bgGradient: "from-yellow-400 to-pink-500",
+      description: "Tu inocencia es tu superpoder. Ves el mundo con curiosidad, te emocionas con cosas chiquitas y tus emociones están siempre a flor de piel. No lo pierdas nunca, pero también aprende a protegerte.",
+      shareText: "Mi edad emocional es 6-12 AÑOS 🍭 — ¿y la tuya? @viralisima",
+    },
+    {
+      id: "adolescente",
+      title: "13-19 años emocionales",
+      emoji: "🎢",
+      bgGradient: "from-pink-500 to-fuchsia-600",
+      description: "Montaña rusa constante. Un día el mundo es increíble, al siguiente quieres desaparecer. Vives las emociones con máxima intensidad y eso te hace divertido pero también agotador — para ti y los demás.",
+      shareText: "Mi edad emocional es 13-19 AÑOS 🎢 — test @viralisima",
+    },
+    {
+      id: "joven",
+      title: "20-29 años emocionales",
+      emoji: "🔥",
+      bgGradient: "from-orange-500 to-red-500",
+      description: "Estás en tu mejor momento: con energía para todo, ganas de comerte el mundo y un equilibrio entre disfrutar y empezar a pensar en serio. Aprovecha, esta etapa no regresa.",
+      shareText: "Mi edad emocional es 20-29 AÑOS 🔥 — test @viralisima",
+    },
+    {
+      id: "adulto",
+      title: "30-45 años emocionales",
+      emoji: "🌳",
+      bgGradient: "from-emerald-500 to-teal-600",
+      description: "Maduro pero sin perder la chispa. Ya no te alteran las cosas pequeñas, sabes lo que quieres y has aprendido a elegir tus batallas. Eres la persona que todos buscan cuando necesitan consejo.",
+      shareText: "Mi edad emocional es 30-45 AÑOS 🌳 — test @viralisima",
+    },
+    {
+      id: "mayor",
+      title: "46+ años emocionales",
+      emoji: "🧘",
+      bgGradient: "from-slate-500 to-slate-700",
+      description: "Un alma vieja en un cuerpo joven. Has vivido mucho por dentro, te importa más la paz que el drama, y tu sabiduría asusta a gente mayor que tú. No tienes tiempo para tonterías.",
+      shareText: "Mi edad emocional es 46+ AÑOS 🧘 — test @viralisima",
+    },
+  ],
+});
+
 export const getQuiz = (slug: string) => QUIZZES.find(q => q.slug === slug);

@@ -29,6 +29,26 @@ const TOOLS = [
     type: "Herramienta",
     timeEstimate: "10 segundos",
   },
+  {
+    slug: "nombre-artista",
+    href: "/generadores/nombre-artista",
+    title: "Tu Nombre Artístico",
+    subtitle: "Reggaetón, rap, pop, rock, banda... elige género y descubre tu nombre.",
+    emoji: "🎤",
+    coverGradient: "from-orange-500 via-red-500 to-pink-600",
+    type: "Herramienta",
+    timeEstimate: "5 segundos",
+  },
+  {
+    slug: "horoscopo",
+    href: "/horoscopo",
+    title: "Horóscopo de la semana",
+    subtitle: "Amor, trabajo, salud y suerte. Predicciones por signo.",
+    emoji: "✨",
+    coverGradient: "from-indigo-500 via-purple-500 to-pink-500",
+    type: "Herramienta",
+    timeEstimate: "1 minuto",
+  },
 ];
 
 export default function Home() {
