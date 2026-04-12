@@ -6,6 +6,7 @@ import Script from "next/script";
 import Header from "@/components/Header";
 
 const ADSENSE_ID = "ca-pub-2858145565650267";
+const GA_ID = "G-L7MY2DFZLE";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -57,6 +58,18 @@ export default function RootLayout({
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}', { anonymize_ip: true });
+          `}
+        </Script>
       </body>
     </html>
   );
