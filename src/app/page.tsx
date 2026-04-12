@@ -2,17 +2,41 @@ import Link from "next/link";
 import { QUIZZES } from "@/data/quizzes";
 
 export const metadata = {
-  title: "Viralísima — Tests, quizzes y generadores que no podrás dejar de compartir",
+  title:
+    "Viralísima — Quizzes, tests y generadores virales en español",
   description:
-    "Los quizzes y generadores más virales en español. Descubre qué famoso eres, qué tanto sabes de música, cómo será tu vida en 2030 y más. Gratis, sin registro.",
+    "Los quizzes, tests y generadores de memes/frases más virales en español. Gratis, sin registro, para toda LatAm y España.",
 };
+
+const TOOLS = [
+  {
+    slug: "memes",
+    href: "/memes",
+    title: "Generador de Memes",
+    subtitle: "Sube tu foto, pon texto y descarga. Listo para compartir.",
+    emoji: "🎨",
+    coverGradient: "from-rose-500 via-fuchsia-500 to-indigo-500",
+    type: "Herramienta",
+    timeEstimate: "30 segundos",
+  },
+  {
+    slug: "frases",
+    href: "/frases",
+    title: "Generador de Frases Virales",
+    subtitle: "Para tu bio, tu próximo post o tu estado. 7 categorías.",
+    emoji: "💬",
+    coverGradient: "from-violet-500 via-purple-500 to-fuchsia-500",
+    type: "Herramienta",
+    timeEstimate: "10 segundos",
+  },
+];
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <section className="px-4 pt-16 pb-12 text-center max-w-3xl mx-auto">
         <div className="inline-block px-4 py-1 mb-6 rounded-full bg-gradient-to-r from-fuchsia-500 to-orange-400 text-white text-sm font-semibold">
-          ✨ Nuevo cada semana
+          ✨ Nuevos cada semana
         </div>
         <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-4 bg-gradient-to-r from-fuchsia-600 via-pink-500 to-orange-500 bg-clip-text text-transparent">
           Viralísima
@@ -25,7 +49,36 @@ export default function Home() {
         </p>
       </section>
 
+      <section className="px-4 pb-10 max-w-6xl mx-auto">
+        <h2 className="text-2xl font-black text-slate-800 mb-4">🛠️ Herramientas virales</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {TOOLS.map((t) => (
+            <Link
+              key={t.slug}
+              href={t.href}
+              className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+            >
+              <div
+                className={`bg-gradient-to-br ${t.coverGradient} aspect-[16/9] p-6 flex flex-col justify-between text-white`}
+              >
+                <div className="flex justify-between items-start">
+                  <div className="text-6xl">{t.emoji}</div>
+                  <div className="text-xs font-semibold uppercase tracking-wider opacity-80 bg-white/20 px-3 py-1 rounded-full">
+                    {t.type} · {t.timeEstimate}
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-black leading-tight mb-1">{t.title}</h3>
+                  <p className="text-white/90 text-sm">{t.subtitle}</p>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <section className="px-4 pb-24 max-w-6xl mx-auto">
+        <h2 className="text-2xl font-black text-slate-800 mb-4">🎭 Quizzes virales</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {QUIZZES.map((q) => (
             <Link

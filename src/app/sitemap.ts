@@ -12,13 +12,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [
-    {
-      url: base,
+  const resultEntries = QUIZZES.flatMap((q) =>
+    q.results.map((r) => ({
+      url: `${base}/quiz/${q.slug}/resultado/${r.id}`,
       lastModified: now,
-      changeFrequency: "daily",
-      priority: 1,
-    },
+      changeFrequency: "monthly" as const,
+      priority: 0.5,
+    }))
+  );
+
+  return [
+    { url: base, lastModified: now, changeFrequency: "daily", priority: 1 },
+    { url: `${base}/memes`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/frases`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     ...quizEntries,
+    ...resultEntries,
   ];
 }
