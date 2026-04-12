@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
 import Header from "@/components/Header";
+
+const ADSENSE_ID = "ca-pub-2858145565650267";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -48,6 +51,12 @@ export default function RootLayout({
         <div className="flex-1">{children}</div>
         <Analytics />
         <SpeedInsights />
+        <Script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
