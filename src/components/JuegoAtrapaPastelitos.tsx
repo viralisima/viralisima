@@ -41,6 +41,7 @@ export default function JuegoAtrapaPastelitos() {
   const [showLeaderboard, setShowLeaderboard] = useState(false);
   const [flash, setFlash] = useState<"good" | "bad" | null>(null);
   const [catX, setCatX] = useState(50); // % horizontal del centro del gato
+  const catXRef = useRef(50);
 
   const stageRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
@@ -139,6 +140,7 @@ export default function JuegoAtrapaPastelitos() {
     setTreats([]);
     setCatMood("sad");
     setCatX(50);
+    catXRef.current = 50;
     startTsRef.current = performance.now();
     lastSpawnRef.current = 0;
     idRef.current = 0;
@@ -193,6 +195,7 @@ export default function JuegoAtrapaPastelitos() {
         const t = sec - CAT_MOVE_UNLOCK_SEC;
         const phase = (t / CAT_PERIOD_SEC) * Math.PI * 2;
         const nx = 50 + Math.sin(phase) * CAT_RANGE;
+        catXRef.current = nx;
         setCatX(nx);
       }
 
@@ -206,8 +209,9 @@ export default function JuegoAtrapaPastelitos() {
             const fy = t.y + t.fallSpeed;
             const fs = t.fallSpeed + 0.55; // gravedad
             if (fy >= FLOOR_Y) {
-              const catXMin = catX - CAT_WIDTH_PCT / 2;
-              const catXMax = catX + CAT_WIDTH_PCT / 2;
+              const currentCatX = catXRef.current;
+              const catXMin = currentCatX - CAT_WIDTH_PCT / 2;
+              const catXMax = currentCatX + CAT_WIDTH_PCT / 2;
               const inBag = t.x >= catXMin && t.x <= catXMax;
               if (t.isBomb) {
                 // Piedra/bomba caída: si entra en la bolsa penaliza, fuera no pasa nada
