@@ -42,6 +42,8 @@ export default function JuegoAtrapaPastelitos() {
   const [flash, setFlash] = useState<"good" | "bad" | null>(null);
   const [catX, setCatX] = useState(50); // % horizontal del centro del gato
   const catXRef = useRef(50);
+  const lastTapRef = useRef<number>(0);
+  const [idleLeft, setIdleLeft] = useState(6);
 
   const stageRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
@@ -142,6 +144,8 @@ export default function JuegoAtrapaPastelitos() {
     setCatX(50);
     catXRef.current = 50;
     startTsRef.current = performance.now();
+    lastTapRef.current = performance.now();
+    setIdleLeft(6);
     lastSpawnRef.current = 0;
     idRef.current = 0;
     setState("playing");
@@ -191,6 +195,17 @@ export default function JuegoAtrapaPastelitos() {
       }
 
       // Patrulla automática del gato a partir del segundo CAT_MOVE_UNLOCK_SEC
+      // Inactividad: si pasan 6s sin tocar nada → -1 vida y reinicia contador
+      const idleSec = (now - lastTapRef.current) / 1000;
+      const left = Math.max(0, Math.ceil(6 - idleSec));
+      setIdleLeft(left);
+      if (idleSec >= 6) {
+        lastTapRef.current = now;
+        setFails((f) => f + 1);
+        sadBoom();
+        flashFeedback("bad");
+      }
+
       if (sec >= CAT_MOVE_UNLOCK_SEC) {
         const t = sec - CAT_MOVE_UNLOCK_SEC;
         const phase = (t / CAT_PERIOD_SEC) * Math.PI * 2;
@@ -265,6 +280,7 @@ export default function JuegoAtrapaPastelitos() {
 
   const tapTreat = (id: number) => {
     if (state !== "playing") return;
+    lastTapRef.current = performance.now();
     setTreats((prev) => {
       const t = prev.find((x) => x.id === id);
       if (!t || t.falling) return prev;
@@ -314,6 +330,7 @@ export default function JuegoAtrapaPastelitos() {
         {/* Escenario */}
         <div
           ref={stageRef}
+          onPointerDown={() => { if (state === "playing") lastTapRef.current = performance.now(); }}
           style={stageStyle}
           className={`relative w-full rounded-3xl overflow-hidden border-4 transition-colors ${
             flash === "good"
@@ -324,8 +341,19 @@ export default function JuegoAtrapaPastelitos() {
           } shadow-xl select-none`}
         >
           {/* Sol decorativo */}
-          <div className="absolute top-4 right-6 text-4xl opacity-60">☀️</div>
           <div className="absolute top-10 left-6 text-3xl opacity-40">☁️</div>
+
+          {/* Cuenta atrás de inactividad — arriba derecha */}
+          {state === "playing" && (
+            <div
+              className={`absolute top-3 right-3 rounded-full font-black text-2xl md:text-3xl w-14 h-14 flex items-center justify-center shadow-lg border-4 border-white ${
+                idleLeft <= 2 ? "bg-rose-600 text-white animate-pulse" : "bg-amber-400 text-slate-900"
+              }`}
+              aria-label="segundos sin pulsar"
+            >
+              {idleLeft}
+            </div>
+          )}
 
           {/* Aviso visible cuando el gato se desbloquea */}
           {state === "playing" && elapsed >= CAT_MOVE_UNLOCK_SEC && elapsed < CAT_MOVE_UNLOCK_SEC + 4 && (
