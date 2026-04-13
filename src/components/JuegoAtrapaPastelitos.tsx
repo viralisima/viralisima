@@ -9,10 +9,12 @@ import LeaderboardModal from "./LeaderboardModal";
 const TREATS = ["🥮", "🧁", "🍰", "🍩", "🥞", "🍪"];
 const BOMBS = ["🪨", "💣"];
 
+type Kind = "treat" | "bomb" | "life";
+
 type Treat = {
   id: number;
   emoji: string;
-  isBomb: boolean;
+  kind: Kind;
   x: number;
   dir: 1 | -1;
   y: number;
@@ -26,15 +28,19 @@ const STAGE_HEIGHT = 400;
 const CAT_WIDTH_PCT = 22;
 const TREAT_SIZE = 44;
 const FLOOR_Y = STAGE_HEIGHT - 100;
-const CAT_MOVE_UNLOCK_SEC = 60;       // a partir de aquí el gato patrulla solo
-const CAT_RANGE = 28;                 // amplitud (% del ancho) de la patrulla
-const CAT_PERIOD_SEC = 6;             // segundos de un ciclo completo izq-der-izq
+const CAT_MOVE_UNLOCK_SEC = 60;
+const CAT_RANGE = 28;
+const CAT_PERIOD_SEC = 6;
+const IDLE_LIMIT = 8;                 // segundos sin tocar → pierdes vida
+const DIFF_START_SEC = 40;            // antes de esto dificultad plana
+const LIFE_EVERY = 20;                // cada N pastelitos colados, sale una vida
 
 export default function JuegoAtrapaPastelitos() {
   const [state, setState] = useState<"idle" | "playing" | "over">("idle");
   const [score, setScore] = useState(0);
   const [best, setBest] = useState(0);
-  const [fails, setFails] = useState(0);
+  const [lives, setLives] = useState(3);
+  const lifeSpawnedRef = useRef(0);   // último múltiplo de 20 ya lanzado
   const [elapsed, setElapsed] = useState(0); // segundos
   const [treats, setTreats] = useState<Treat[]>([]);
   const [catMood, setCatMood] = useState<"sad" | "happy">("sad");
@@ -42,8 +48,9 @@ export default function JuegoAtrapaPastelitos() {
   const [flash, setFlash] = useState<"good" | "bad" | null>(null);
   const [catX, setCatX] = useState(50); // % horizontal del centro del gato
   const catXRef = useRef(50);
+  const scoreRef = useRef(0);
   const lastTapRef = useRef<number>(0);
-  const [idleLeft, setIdleLeft] = useState(6);
+  const [idleLeft, setIdleLeft] = useState(IDLE_LIMIT);
 
   const stageRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
@@ -137,7 +144,9 @@ export default function JuegoAtrapaPastelitos() {
     } catch {}
 
     setScore(0);
-    setFails(0);
+    scoreRef.current = 0;
+    setLives(3);
+    lifeSpawnedRef.current = 0;
     setElapsed(0);
     setTreats([]);
     setCatMood("sad");
@@ -145,7 +154,7 @@ export default function JuegoAtrapaPastelitos() {
     catXRef.current = 50;
     startTsRef.current = performance.now();
     lastTapRef.current = performance.now();
-    setIdleLeft(6);
+    setIdleLeft(IDLE_LIMIT);
     lastSpawnRef.current = 0;
     idRef.current = 0;
     setState("playing");
@@ -160,10 +169,10 @@ export default function JuegoAtrapaPastelitos() {
       const sec = (now - startTsRef.current) / 1000;
       setElapsed(Math.floor(sec));
 
-      // Dificultad: velocidad base sube cada 10s
-      const stage = Math.floor(sec / 10);                   // 0,1,2,...
+      // Dificultad: plana hasta DIFF_START_SEC, luego sube cada 10s
+      const stage = sec < DIFF_START_SEC ? 0 : Math.floor((sec - DIFF_START_SEC) / 10) + 1;
       const speedMult = 1 + stage * 0.28;
-      const spawnInterval = Math.max(380, 1100 - stage * 70); // ms entre spawns
+      const spawnInterval = Math.max(380, 1100 - stage * 70);
 
       if (now - lastSpawnRef.current > spawnInterval) {
         lastSpawnRef.current = now;
@@ -171,23 +180,51 @@ export default function JuegoAtrapaPastelitos() {
           const dir: 1 | -1 = Math.random() < 0.5 ? 1 : -1;
           const lane = 20 + Math.random() * 90;
           idRef.current += 1;
-          // Probabilidad de bomba: empieza 12%, sube hasta ~30% con la dificultad
           const bombProb = Math.min(0.22, 0.08 + stage * 0.02);
           const isBomb = Math.random() < bombProb;
           const emoji = isBomb
             ? BOMBS[Math.floor(Math.random() * BOMBS.length)]
             : TREATS[Math.floor(Math.random() * TREATS.length)];
+          // 12% de las veces el pastelito es un "regalo": lento y fácil de acertar
+          const easy = !isBomb && Math.random() < 0.12;
+          const baseSpeed = easy
+            ? 0.18 + Math.random() * 0.08
+            : (0.35 + Math.random() * 0.25) * speedMult;
           return [
             ...prev,
             {
               id: idRef.current,
               emoji,
-              isBomb,
+              kind: isBomb ? "bomb" : "treat",
               x: dir === 1 ? -8 : 108,
               dir,
               y: lane,
               falling: false,
-              speed: (0.35 + Math.random() * 0.25) * speedMult,
+              speed: baseSpeed,
+              fallSpeed: 0,
+            },
+          ];
+        });
+      }
+
+      // Spawn de vida cada LIFE_EVERY pastelitos colados
+      const threshold = Math.floor(scoreRef.current / LIFE_EVERY) * LIFE_EVERY;
+      if (threshold > 0 && threshold > lifeSpawnedRef.current) {
+        lifeSpawnedRef.current = threshold;
+        setTreats((prev) => {
+          const dir: 1 | -1 = Math.random() < 0.5 ? 1 : -1;
+          idRef.current += 1;
+          return [
+            ...prev,
+            {
+              id: idRef.current,
+              emoji: "💖",
+              kind: "life",
+              x: dir === 1 ? -8 : 108,
+              dir,
+              y: 30 + Math.random() * 80,
+              falling: false,
+              speed: 0.22,
               fallSpeed: 0,
             },
           ];
@@ -195,13 +232,13 @@ export default function JuegoAtrapaPastelitos() {
       }
 
       // Patrulla automática del gato a partir del segundo CAT_MOVE_UNLOCK_SEC
-      // Inactividad: si pasan 6s sin tocar nada → -1 vida y reinicia contador
+      // Inactividad: si pasan IDLE_LIMIT s sin tocar nada → -1 vida y reinicia contador
       const idleSec = (now - lastTapRef.current) / 1000;
-      const left = Math.max(0, Math.ceil(6 - idleSec));
+      const left = Math.max(0, Math.ceil(IDLE_LIMIT - idleSec));
       setIdleLeft(left);
-      if (idleSec >= 6) {
+      if (idleSec >= IDLE_LIMIT) {
         lastTapRef.current = now;
-        setFails((f) => f + 1);
+        setLives((l) => l - 1);
         sadBoom();
         flashFeedback("bad");
       }
@@ -219,18 +256,20 @@ export default function JuegoAtrapaPastelitos() {
         const next: Treat[] = [];
         let caughtCount = 0;
         let missedCount = 0;
+        let lifeCaught = 0;
         for (const t of prev) {
           if (t.falling) {
             const fy = t.y + t.fallSpeed;
-            const fs = t.fallSpeed + 0.55; // gravedad
+            const fs = t.fallSpeed + 0.55;
             if (fy >= FLOOR_Y) {
               const currentCatX = catXRef.current;
               const catXMin = currentCatX - CAT_WIDTH_PCT / 2;
               const catXMax = currentCatX + CAT_WIDTH_PCT / 2;
               const inBag = t.x >= catXMin && t.x <= catXMax;
-              if (t.isBomb) {
-                // Piedra/bomba caída: si entra en la bolsa penaliza, fuera no pasa nada
+              if (t.kind === "bomb") {
                 if (inBag) missedCount += 1;
+              } else if (t.kind === "life") {
+                if (inBag) lifeCaught += 1;
               } else {
                 if (inBag) caughtCount += 1;
                 else missedCount += 1;
@@ -240,18 +279,28 @@ export default function JuegoAtrapaPastelitos() {
             next.push({ ...t, y: fy, fallSpeed: fs });
           } else {
             const nx = t.x + t.speed * t.dir;
-            if (nx < -12 || nx > 112) continue; // se va de pantalla sin tocarlo
+            if (nx < -12 || nx > 112) continue;
             next.push({ ...t, x: nx });
           }
         }
         if (caughtCount > 0) {
-          setScore((s) => s + caughtCount);
+          setScore((s) => {
+            const ns = s + caughtCount;
+            scoreRef.current = ns;
+            return ns;
+          });
           for (let i = 0; i < caughtCount; i++) miau();
           showMood("happy", 700);
           flashFeedback("good");
         }
+        if (lifeCaught > 0) {
+          setLives((l) => l + lifeCaught);
+          for (let i = 0; i < lifeCaught; i++) miau();
+          showMood("happy", 1000);
+          flashFeedback("good");
+        }
         if (missedCount > 0) {
-          setFails((f) => f + missedCount);
+          setLives((l) => l - missedCount);
           sadBoom();
           flashFeedback("bad");
         }
@@ -266,9 +315,9 @@ export default function JuegoAtrapaPastelitos() {
     };
   }, [state, miau, sadBoom]);
 
-  // Game over con 3 fallos
+  // Game over cuando se agotan las vidas
   useEffect(() => {
-    if (state === "playing" && fails >= 3) {
+    if (state === "playing" && lives <= 0) {
       setState("over");
       setTreats([]);
       if (score > best) {
@@ -276,7 +325,7 @@ export default function JuegoAtrapaPastelitos() {
         localStorage.setItem(STORAGE_KEY, String(score));
       }
     }
-  }, [fails, state, score, best]);
+  }, [lives, state, score, best]);
 
   const tapTreat = (id: number) => {
     if (state !== "playing") return;
@@ -284,9 +333,8 @@ export default function JuegoAtrapaPastelitos() {
     setTreats((prev) => {
       const t = prev.find((x) => x.id === id);
       if (!t || t.falling) return prev;
-      if (t.isBomb) {
-        // Pulsaste una piedra/bomba → pierdes vida y desaparece
-        setFails((f) => f + 1);
+      if (t.kind === "bomb") {
+        setLives((l) => l - 1);
         sadBoom();
         flashFeedback("bad");
         return prev.filter((x) => x.id !== id);
@@ -321,8 +369,8 @@ export default function JuegoAtrapaPastelitos() {
         <div className="flex items-center justify-between bg-white/70 backdrop-blur rounded-full px-5 py-2 mb-3 shadow text-slate-800 font-bold">
           <span>🎂 {score}</span>
           <span className="text-rose-500">
-            {"💔".repeat(fails)}
-            {"🤍".repeat(Math.max(0, 3 - fails))}
+            {lives > 0 ? "❤️".repeat(Math.min(lives, 6)) : "💔"}
+            {lives > 6 && <span className="text-slate-700 text-sm align-middle ml-1">+{lives - 6}</span>}
           </span>
           <span>⏱ {elapsed}s</span>
         </div>
