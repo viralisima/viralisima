@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { GameSlug } from "@/lib/leaderboard";
 
 type Props = {
-  game: "reflejos" | "memoria" | "tap-sprint";
+  game: GameSlug;
   score: number;
   unit: string;
   scoreOrder: "high" | "low";
