@@ -166,7 +166,7 @@ export default function JuegoAtrapaPastelitos() {
           const lane = 20 + Math.random() * 90;
           idRef.current += 1;
           // Probabilidad de bomba: empieza 12%, sube hasta ~30% con la dificultad
-          const bombProb = Math.min(0.3, 0.12 + stage * 0.025);
+          const bombProb = Math.min(0.22, 0.08 + stage * 0.02);
           const isBomb = Math.random() < bombProb;
           const emoji = isBomb
             ? BOMBS[Math.floor(Math.random() * BOMBS.length)]
@@ -323,6 +323,13 @@ export default function JuegoAtrapaPastelitos() {
           <div className="absolute top-4 right-6 text-4xl opacity-60">☀️</div>
           <div className="absolute top-10 left-6 text-3xl opacity-40">☁️</div>
 
+          {/* Aviso visible cuando el gato se desbloquea */}
+          {state === "playing" && elapsed >= CAT_MOVE_UNLOCK_SEC && elapsed < CAT_MOVE_UNLOCK_SEC + 4 && (
+            <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-fuchsia-600 text-white text-sm font-bold px-3 py-1 rounded-full shadow-lg animate-pulse">
+              🐾 ¡el gato se mueve!
+            </div>
+          )}
+
           {/* Pastelitos */}
           {treats.map((t) => (
             <button
@@ -350,7 +357,7 @@ export default function JuegoAtrapaPastelitos() {
 
           {/* Gatito abajo */}
           <div
-            className="absolute -translate-x-1/2 pointer-events-none transition-[left] duration-75"
+            className="absolute -translate-x-1/2 pointer-events-none"
             style={{ bottom: 0, left: `${catX}%`, width: `${CAT_WIDTH_PCT + 10}%`, maxWidth: 220 }}
           >
             <CatSVG mood={catMood} />
@@ -358,7 +365,7 @@ export default function JuegoAtrapaPastelitos() {
 
           {/* Guía visual de la bolsa */}
           <div
-            className="absolute pointer-events-none border-2 border-dashed border-amber-500/50 rounded-xl transition-[left] duration-75"
+            className="absolute pointer-events-none border-2 border-dashed border-amber-500/50 rounded-xl"
             style={{
               left: `${catX - CAT_WIDTH_PCT / 2}%`,
               width: `${CAT_WIDTH_PCT}%`,
