@@ -26,8 +26,9 @@ const STAGE_HEIGHT = 400;
 const CAT_WIDTH_PCT = 22;
 const TREAT_SIZE = 44;
 const FLOOR_Y = STAGE_HEIGHT - 100;
-const CAT_MOVE_UNLOCK_SEC = 30;
-const CAT_SPEED = 0.45;              // % por frame
+const CAT_MOVE_UNLOCK_SEC = 60;       // a partir de aquí el gato patrulla solo
+const CAT_RANGE = 28;                 // amplitud (% del ancho) de la patrulla
+const CAT_PERIOD_SEC = 6;             // segundos de un ciclo completo izq-der-izq
 
 export default function JuegoAtrapaPastelitos() {
   const [state, setState] = useState<"idle" | "playing" | "over">("idle");
@@ -41,7 +42,6 @@ export default function JuegoAtrapaPastelitos() {
   const [flash, setFlash] = useState<"good" | "bad" | null>(null);
   const [catX, setCatX] = useState(50); // % horizontal del centro del gato
 
-  const catDirRef = useRef<-1 | 0 | 1>(0); // input actual de movimiento
   const stageRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
   const lastSpawnRef = useRef<number>(0);
@@ -139,31 +139,12 @@ export default function JuegoAtrapaPastelitos() {
     setTreats([]);
     setCatMood("sad");
     setCatX(50);
-    catDirRef.current = 0;
     startTsRef.current = performance.now();
     lastSpawnRef.current = 0;
     idRef.current = 0;
     setState("playing");
   };
 
-  // Teclado para mover el gato (cuando esté desbloqueado)
-  useEffect(() => {
-    if (state !== "playing") return;
-    const down = (e: KeyboardEvent) => {
-      if (elapsed < CAT_MOVE_UNLOCK_SEC) return;
-      if (e.key === "ArrowLeft" || e.key === "a") catDirRef.current = -1;
-      else if (e.key === "ArrowRight" || e.key === "d") catDirRef.current = 1;
-    };
-    const up = (e: KeyboardEvent) => {
-      if (["ArrowLeft", "ArrowRight", "a", "d"].includes(e.key)) catDirRef.current = 0;
-    };
-    window.addEventListener("keydown", down);
-    window.addEventListener("keyup", up);
-    return () => {
-      window.removeEventListener("keydown", down);
-      window.removeEventListener("keyup", up);
-    };
-  }, [state, elapsed]);
 
   // --- Bucle principal ---
   useEffect(() => {
@@ -207,14 +188,12 @@ export default function JuegoAtrapaPastelitos() {
         });
       }
 
-      // Mover gato si está desbloqueado
-      if (sec >= CAT_MOVE_UNLOCK_SEC && catDirRef.current !== 0) {
-        setCatX((x) => {
-          const nx = x + catDirRef.current * CAT_SPEED;
-          const min = CAT_WIDTH_PCT / 2 + 2;
-          const max = 100 - CAT_WIDTH_PCT / 2 - 2;
-          return Math.max(min, Math.min(max, nx));
-        });
+      // Patrulla automática del gato a partir del segundo CAT_MOVE_UNLOCK_SEC
+      if (sec >= CAT_MOVE_UNLOCK_SEC) {
+        const t = sec - CAT_MOVE_UNLOCK_SEC;
+        const phase = (t / CAT_PERIOD_SEC) * Math.PI * 2;
+        const nx = 50 + Math.sin(phase) * CAT_RANGE;
+        setCatX(nx);
       }
 
       // Avance físico
@@ -398,34 +377,6 @@ export default function JuegoAtrapaPastelitos() {
             >
               ▶ Empezar
             </button>
-          )}
-          {state === "playing" && (
-            <>
-              {elapsed >= CAT_MOVE_UNLOCK_SEC && (
-                <div className="flex justify-center gap-8 mt-4 select-none">
-                  <button
-                    onPointerDown={(e) => { e.preventDefault(); catDirRef.current = -1; }}
-                    onPointerUp={() => { catDirRef.current = 0; }}
-                    onPointerLeave={() => { catDirRef.current = 0; }}
-                    onPointerCancel={() => { catDirRef.current = 0; }}
-                    className="bg-slate-900 text-white text-3xl font-bold w-20 h-20 rounded-full shadow-lg active:scale-90 touch-none"
-                    aria-label="mover gato a la izquierda"
-                  >
-                    ⬅️
-                  </button>
-                  <button
-                    onPointerDown={(e) => { e.preventDefault(); catDirRef.current = 1; }}
-                    onPointerUp={() => { catDirRef.current = 0; }}
-                    onPointerLeave={() => { catDirRef.current = 0; }}
-                    onPointerCancel={() => { catDirRef.current = 0; }}
-                    className="bg-slate-900 text-white text-3xl font-bold w-20 h-20 rounded-full shadow-lg active:scale-90 touch-none"
-                    aria-label="mover gato a la derecha"
-                  >
-                    ➡️
-                  </button>
-                </div>
-              )}
-            </>
           )}
           {state === "over" && (
             <div className="bg-white rounded-2xl p-6 shadow-lg">
