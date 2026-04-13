@@ -63,6 +63,7 @@ export default function Header() {
 
   const juegosItems = [
     { href: "/juegos", label: "🎮 Ver todos" },
+    { href: "/juegos/atrapa-la-palabra", label: "🔤 Atrapa la Palabra" },
     { href: "/juegos/reflejos", label: "⚡ Test de Reflejos" },
     { href: "/juegos/memoria", label: "🧠 Memoria Simon" },
     { href: "/juegos/tap-sprint", label: "👆 Tap Sprint" },

@@ -13,6 +13,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "atrapa-la-palabra",
+    title: "Atrapa la Palabra",
+    subtitle: "Forma palabras antes de que caigan al suelo",
+    emoji: "🔤",
+    gradient: "from-indigo-500 via-purple-500 to-pink-500",
+    duration: "60 segundos",
+  },
+  {
     slug: "reflejos",
     title: "Test de Reflejos",
     subtitle: "Click cuando el círculo cambie de color. Mide tu tiempo en milisegundos.",
