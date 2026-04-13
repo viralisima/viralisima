@@ -13,6 +13,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "atrapa-pastelitos",
+    title: "Atrapa Pastelitos",
+    subtitle: "Haz caer pastelitos en la bolsa del gatito. Cada 10s va más rápido.",
+    emoji: "🐱",
+    gradient: "from-amber-400 via-pink-400 to-fuchsia-500",
+    duration: "infinito",
+  },
+  {
     slug: "atrapa-la-palabra",
     title: "Atrapa la Palabra",
     subtitle: "Forma palabras antes de que caigan al suelo",

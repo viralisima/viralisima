@@ -6,10 +6,10 @@ import ShareButtons from "./ShareButtons";
 import LeaderboardModal from "./LeaderboardModal";
 
 const COLORS = [
-  { id: 0, bg: "bg-red-500", active: "bg-red-300", name: "rojo", tone: 329.6 },
-  { id: 1, bg: "bg-emerald-500", active: "bg-emerald-300", name: "verde", tone: 415.3 },
-  { id: 2, bg: "bg-sky-500", active: "bg-sky-300", name: "azul", tone: 261.6 },
-  { id: 3, bg: "bg-yellow-400", active: "bg-yellow-200", name: "amarillo", tone: 207.7 },
+  { id: 0, bg: "bg-red-900",     active: "bg-red-400 ring-8 ring-red-200 shadow-[0_0_60px_rgba(248,113,113,0.95)]",         name: "rojo",     tone: 329.6 },
+  { id: 1, bg: "bg-emerald-900", active: "bg-emerald-400 ring-8 ring-emerald-200 shadow-[0_0_60px_rgba(52,211,153,0.95)]", name: "verde",    tone: 415.3 },
+  { id: 2, bg: "bg-sky-900",     active: "bg-sky-400 ring-8 ring-sky-200 shadow-[0_0_60px_rgba(56,189,248,0.95)]",         name: "azul",     tone: 261.6 },
+  { id: 3, bg: "bg-yellow-800",  active: "bg-yellow-300 ring-8 ring-yellow-100 shadow-[0_0_60px_rgba(253,224,71,0.95)]",   name: "amarillo", tone: 207.7 },
 ];
 
 const STORAGE_KEY = "vl_memoria_best";
@@ -147,9 +147,9 @@ export default function JuegoMemoria() {
               key={c.id}
               onClick={() => handleClick(c.id)}
               disabled={state !== "waiting"}
-              className={`aspect-square rounded-3xl transition-all ${
-                activeColor === c.id ? c.active : c.bg
-              } ${state === "waiting" ? "hover:opacity-90 active:scale-95" : "opacity-90"}`}
+              className={`aspect-square rounded-3xl transition-all duration-100 ${
+                activeColor === c.id ? `${c.active} scale-105` : c.bg
+              } ${state === "waiting" ? "hover:brightness-125 active:scale-95" : ""}`}
               aria-label={c.name}
             />
           ))}
