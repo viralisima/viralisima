@@ -7,29 +7,27 @@ import LeaderboardModal from "./LeaderboardModal";
 
 // Pastelitos: emojis de dulces variados
 const TREATS = ["🥮", "🧁", "🍰", "🍩", "🥞", "🍪"];
+const BOMBS = ["🪨", "💣"];
 
 type Treat = {
   id: number;
   emoji: string;
-  // Posición en % del ancho del escenario (0..100) mientras viaja arriba
+  isBomb: boolean;
   x: number;
-  // Dirección de movimiento horizontal: 1 → derecha, -1 → izquierda
   dir: 1 | -1;
-  // Carril vertical (px desde arriba dentro del escenario)
   y: number;
-  // true si el usuario lo ha tocado y ahora cae
   falling: boolean;
-  // Velocidad horizontal (% del ancho por frame)
   speed: number;
-  // Velocidad de caída (px por frame), solo si falling
   fallSpeed: number;
 };
 
 const STORAGE_KEY = "vl_atrapa-pastelitos_best";
-const STAGE_HEIGHT = 520;            // px
-const CAT_WIDTH_PCT = 22;            // % del ancho total — anchura de la bolsa del gato
-const TREAT_SIZE = 44;               // px
-const FLOOR_Y = STAGE_HEIGHT - 110;  // donde está la boca de la bolsa
+const STAGE_HEIGHT = 400;
+const CAT_WIDTH_PCT = 22;
+const TREAT_SIZE = 44;
+const FLOOR_Y = STAGE_HEIGHT - 100;
+const CAT_MOVE_UNLOCK_SEC = 30;
+const CAT_SPEED = 0.45;              // % por frame
 
 export default function JuegoAtrapaPastelitos() {
   const [state, setState] = useState<"idle" | "playing" | "over">("idle");
@@ -41,7 +39,9 @@ export default function JuegoAtrapaPastelitos() {
   const [catMood, setCatMood] = useState<"sad" | "happy">("sad");
   const [showLeaderboard, setShowLeaderboard] = useState(false);
   const [flash, setFlash] = useState<"good" | "bad" | null>(null);
+  const [catX, setCatX] = useState(50); // % horizontal del centro del gato
 
+  const catDirRef = useRef<-1 | 0 | 1>(0); // input actual de movimiento
   const stageRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
   const lastSpawnRef = useRef<number>(0);
@@ -138,11 +138,32 @@ export default function JuegoAtrapaPastelitos() {
     setElapsed(0);
     setTreats([]);
     setCatMood("sad");
+    setCatX(50);
+    catDirRef.current = 0;
     startTsRef.current = performance.now();
     lastSpawnRef.current = 0;
     idRef.current = 0;
     setState("playing");
   };
+
+  // Teclado para mover el gato (cuando esté desbloqueado)
+  useEffect(() => {
+    if (state !== "playing") return;
+    const down = (e: KeyboardEvent) => {
+      if (elapsed < CAT_MOVE_UNLOCK_SEC) return;
+      if (e.key === "ArrowLeft" || e.key === "a") catDirRef.current = -1;
+      else if (e.key === "ArrowRight" || e.key === "d") catDirRef.current = 1;
+    };
+    const up = (e: KeyboardEvent) => {
+      if (["ArrowLeft", "ArrowRight", "a", "d"].includes(e.key)) catDirRef.current = 0;
+    };
+    window.addEventListener("keydown", down);
+    window.addEventListener("keyup", up);
+    return () => {
+      window.removeEventListener("keydown", down);
+      window.removeEventListener("keyup", up);
+    };
+  }, [state, elapsed]);
 
   // --- Bucle principal ---
   useEffect(() => {
@@ -161,13 +182,20 @@ export default function JuegoAtrapaPastelitos() {
         lastSpawnRef.current = now;
         setTreats((prev) => {
           const dir: 1 | -1 = Math.random() < 0.5 ? 1 : -1;
-          const lane = 30 + Math.random() * 120; // y px desde arriba
+          const lane = 20 + Math.random() * 90;
           idRef.current += 1;
+          // Probabilidad de bomba: empieza 12%, sube hasta ~30% con la dificultad
+          const bombProb = Math.min(0.3, 0.12 + stage * 0.025);
+          const isBomb = Math.random() < bombProb;
+          const emoji = isBomb
+            ? BOMBS[Math.floor(Math.random() * BOMBS.length)]
+            : TREATS[Math.floor(Math.random() * TREATS.length)];
           return [
             ...prev,
             {
               id: idRef.current,
-              emoji: TREATS[Math.floor(Math.random() * TREATS.length)],
+              emoji,
+              isBomb,
               x: dir === 1 ? -8 : 108,
               dir,
               y: lane,
@@ -176,6 +204,16 @@ export default function JuegoAtrapaPastelitos() {
               fallSpeed: 0,
             },
           ];
+        });
+      }
+
+      // Mover gato si está desbloqueado
+      if (sec >= CAT_MOVE_UNLOCK_SEC && catDirRef.current !== 0) {
+        setCatX((x) => {
+          const nx = x + catDirRef.current * CAT_SPEED;
+          const min = CAT_WIDTH_PCT / 2 + 2;
+          const max = 100 - CAT_WIDTH_PCT / 2 - 2;
+          return Math.max(min, Math.min(max, nx));
         });
       }
 
@@ -189,15 +227,17 @@ export default function JuegoAtrapaPastelitos() {
             const fy = t.y + t.fallSpeed;
             const fs = t.fallSpeed + 0.55; // gravedad
             if (fy >= FLOOR_Y) {
-              // Chequeo colisión con el gato (centrado horizontalmente)
-              const catXMin = 50 - CAT_WIDTH_PCT / 2;
-              const catXMax = 50 + CAT_WIDTH_PCT / 2;
-              if (t.x >= catXMin && t.x <= catXMax) {
-                caughtCount += 1;
+              const catXMin = catX - CAT_WIDTH_PCT / 2;
+              const catXMax = catX + CAT_WIDTH_PCT / 2;
+              const inBag = t.x >= catXMin && t.x <= catXMax;
+              if (t.isBomb) {
+                // Piedra/bomba caída: si entra en la bolsa penaliza, fuera no pasa nada
+                if (inBag) missedCount += 1;
               } else {
-                missedCount += 1;
+                if (inBag) caughtCount += 1;
+                else missedCount += 1;
               }
-              continue; // desaparece
+              continue;
             }
             next.push({ ...t, y: fy, fallSpeed: fs });
           } else {
@@ -242,9 +282,18 @@ export default function JuegoAtrapaPastelitos() {
 
   const tapTreat = (id: number) => {
     if (state !== "playing") return;
-    setTreats((prev) =>
-      prev.map((t) => (t.id === id && !t.falling ? { ...t, falling: true, fallSpeed: 2 } : t))
-    );
+    setTreats((prev) => {
+      const t = prev.find((x) => x.id === id);
+      if (!t || t.falling) return prev;
+      if (t.isBomb) {
+        // Pulsaste una piedra/bomba → pierdes vida y desaparece
+        setFails((f) => f + 1);
+        sadBoom();
+        flashFeedback("bad");
+        return prev.filter((x) => x.id !== id);
+      }
+      return prev.map((x) => (x.id === id ? { ...x, falling: true, fallSpeed: 2 } : x));
+    });
   };
 
   const stageStyle = { height: STAGE_HEIGHT };
@@ -319,20 +368,20 @@ export default function JuegoAtrapaPastelitos() {
 
           {/* Gatito abajo */}
           <div
-            className="absolute left-1/2 -translate-x-1/2 pointer-events-none"
-            style={{ bottom: 0, width: `${CAT_WIDTH_PCT + 10}%`, maxWidth: 230 }}
+            className="absolute -translate-x-1/2 pointer-events-none transition-[left] duration-75"
+            style={{ bottom: 0, left: `${catX}%`, width: `${CAT_WIDTH_PCT + 10}%`, maxWidth: 220 }}
           >
             <CatSVG mood={catMood} />
           </div>
 
           {/* Guía visual de la bolsa */}
           <div
-            className="absolute pointer-events-none border-2 border-dashed border-amber-500/50 rounded-xl"
+            className="absolute pointer-events-none border-2 border-dashed border-amber-500/50 rounded-xl transition-[left] duration-75"
             style={{
-              left: `${50 - CAT_WIDTH_PCT / 2}%`,
+              left: `${catX - CAT_WIDTH_PCT / 2}%`,
               width: `${CAT_WIDTH_PCT}%`,
-              bottom: 70,
-              height: 14,
+              bottom: 62,
+              height: 12,
             }}
           />
         </div>
@@ -348,9 +397,37 @@ export default function JuegoAtrapaPastelitos() {
             </button>
           )}
           {state === "playing" && (
-            <p className="text-slate-500 text-sm">
-              Pulsa un pastelito mientras pasa — caerá en vertical.
-            </p>
+            <>
+              <p className="text-slate-500 text-sm">
+                {elapsed < CAT_MOVE_UNLOCK_SEC
+                  ? `Pulsa los pastelitos (no las piedras). El gato se podrá mover en ${CAT_MOVE_UNLOCK_SEC - elapsed}s.`
+                  : "¡El gato ya se mueve! Usa las flechas o ← →"}
+              </p>
+              {elapsed >= CAT_MOVE_UNLOCK_SEC && (
+                <div className="flex justify-center gap-8 mt-4 select-none">
+                  <button
+                    onPointerDown={(e) => { e.preventDefault(); catDirRef.current = -1; }}
+                    onPointerUp={() => { catDirRef.current = 0; }}
+                    onPointerLeave={() => { catDirRef.current = 0; }}
+                    onPointerCancel={() => { catDirRef.current = 0; }}
+                    className="bg-slate-900 text-white text-3xl font-bold w-20 h-20 rounded-full shadow-lg active:scale-90 touch-none"
+                    aria-label="mover gato a la izquierda"
+                  >
+                    ⬅️
+                  </button>
+                  <button
+                    onPointerDown={(e) => { e.preventDefault(); catDirRef.current = 1; }}
+                    onPointerUp={() => { catDirRef.current = 0; }}
+                    onPointerLeave={() => { catDirRef.current = 0; }}
+                    onPointerCancel={() => { catDirRef.current = 0; }}
+                    className="bg-slate-900 text-white text-3xl font-bold w-20 h-20 rounded-full shadow-lg active:scale-90 touch-none"
+                    aria-label="mover gato a la derecha"
+                  >
+                    ➡️
+                  </button>
+                </div>
+              )}
+            </>
           )}
           {state === "over" && (
             <div className="bg-white rounded-2xl p-6 shadow-lg">
