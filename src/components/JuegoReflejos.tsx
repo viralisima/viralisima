@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import ShareButtons from "./ShareButtons";
+import LeaderboardModal from "./LeaderboardModal";
 
 type State = "idle" | "waiting" | "ready" | "result" | "tooSoon";
 
@@ -13,6 +14,7 @@ export default function JuegoReflejos() {
   const [time, setTime] = useState<number | null>(null);
   const [best, setBest] = useState<number | null>(null);
   const [attempts, setAttempts] = useState<number[]>([]);
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const startRef = useRef<number>(0);
 
@@ -179,16 +181,34 @@ export default function JuegoReflejos() {
                 </div>
               )}
 
-              <button
-                onClick={start}
-                className="bg-white text-slate-900 font-bold px-10 py-4 rounded-full hover:scale-105 transition-transform mb-6"
-              >
-                🔄 Otra ronda
-              </button>
+              <div className="flex flex-col sm:flex-row gap-3 mb-6">
+                <button
+                  onClick={start}
+                  className="bg-white text-slate-900 font-bold px-8 py-3 rounded-full hover:scale-105 transition-transform"
+                >
+                  🔄 Otra ronda
+                </button>
+                <button
+                  onClick={() => setShowLeaderboard(true)}
+                  className="bg-yellow-400 text-slate-900 font-bold px-8 py-3 rounded-full hover:scale-105 transition-transform"
+                >
+                  🏆 Ranking global
+                </button>
+              </div>
 
               <div className="w-full max-w-sm">
                 <ShareButtons text={shareText} url="https://viralisima.com/juegos/reflejos" />
               </div>
+
+              {showLeaderboard && time !== null && (
+                <LeaderboardModal
+                  game="reflejos"
+                  score={time}
+                  unit="ms"
+                  scoreOrder="low"
+                  onClose={() => setShowLeaderboard(false)}
+                />
+              )}
             </>
           )}
         </div>

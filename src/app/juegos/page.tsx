@@ -80,9 +80,22 @@ export default function Juegos() {
           ))}
         </div>
 
-        <p className="text-center text-xs text-slate-500 mt-8">
-          💡 Tu récord se guarda en tu navegador. Próximamente: ranking global.
-        </p>
+        <div className="text-center mt-10">
+          <h3 className="text-sm font-bold uppercase tracking-widest text-slate-500 mb-3">
+            🏆 Rankings globales
+          </h3>
+          <div className="flex flex-wrap justify-center gap-2">
+            {GAMES.map((g) => (
+              <Link
+                key={g.slug}
+                href={`/juegos/ranking/${g.slug}`}
+                className="px-4 py-2 bg-white border-2 border-slate-200 rounded-full text-sm font-semibold hover:border-fuchsia-500 transition-colors"
+              >
+                {g.emoji} {g.title}
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
     </main>
   );

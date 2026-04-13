@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import ShareButtons from "./ShareButtons";
+import LeaderboardModal from "./LeaderboardModal";
 
 const COLORS = [
   { id: 0, bg: "bg-red-500", active: "bg-red-300", name: "rojo", tone: 329.6 },
@@ -21,6 +22,7 @@ export default function JuegoMemoria() {
   const [state, setState] = useState<State>("idle");
   const [best, setBest] = useState(0);
   const [justHitBest, setJustHitBest] = useState(false);
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
   const timeouts = useRef<ReturnType<typeof setTimeout>[]>([]);
   const audioCtxRef = useRef<AudioContext | null>(null);
 
@@ -185,15 +187,33 @@ export default function JuegoMemoria() {
                   🏆 ¡Nuevo récord!
                 </div>
               )}
-              <div className="mb-6">
+              <div className="flex flex-col sm:flex-row gap-3 mb-6 justify-center">
                 <button
                   onClick={start}
-                  className="bg-white text-slate-900 font-bold px-10 py-3 rounded-full hover:scale-105 transition-transform"
+                  className="bg-white text-slate-900 font-bold px-8 py-3 rounded-full hover:scale-105 transition-transform"
                 >
                   🔄 Otra vez
                 </button>
+                {level > 1 && (
+                  <button
+                    onClick={() => setShowLeaderboard(true)}
+                    className="bg-yellow-400 text-slate-900 font-bold px-8 py-3 rounded-full hover:scale-105 transition-transform"
+                  >
+                    🏆 Ranking global
+                  </button>
+                )}
               </div>
               <ShareButtons text={shareText} url="https://viralisima.com/juegos/memoria" />
+
+              {showLeaderboard && (
+                <LeaderboardModal
+                  game="memoria"
+                  score={level - 1}
+                  unit="nivel"
+                  scoreOrder="high"
+                  onClose={() => setShowLeaderboard(false)}
+                />
+              )}
             </div>
           )}
         </div>

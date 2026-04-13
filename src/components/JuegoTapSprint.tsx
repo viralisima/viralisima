@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import ShareButtons from "./ShareButtons";
+import LeaderboardModal from "./LeaderboardModal";
 
 const STORAGE_KEY = "vl_tapsprint_best";
 const DURATION = 10000;
@@ -14,6 +15,7 @@ export default function JuegoTapSprint() {
   const [timeLeft, setTimeLeft] = useState(10);
   const [best, setBest] = useState(0);
   const [justHitBest, setJustHitBest] = useState(false);
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
   const startRef = useRef<number>(0);
   const rafRef = useRef<number | null>(null);
 
@@ -152,15 +154,33 @@ export default function JuegoTapSprint() {
                 🏆 ¡Nuevo récord personal!
               </div>
             )}
-            <div className="mb-6">
+            <div className="flex flex-col sm:flex-row gap-3 mb-6 justify-center">
               <button
                 onClick={start}
-                className="bg-white text-slate-900 font-bold px-10 py-4 rounded-full hover:scale-105 transition-transform"
+                className="bg-white text-slate-900 font-bold px-8 py-3 rounded-full hover:scale-105 transition-transform"
               >
                 🔄 Otra ronda
               </button>
+              {count > 0 && (
+                <button
+                  onClick={() => setShowLeaderboard(true)}
+                  className="bg-yellow-400 text-slate-900 font-bold px-8 py-3 rounded-full hover:scale-105 transition-transform"
+                >
+                  🏆 Ranking global
+                </button>
+              )}
             </div>
             <ShareButtons text={shareText} url="https://viralisima.com/juegos/tap-sprint" />
+
+            {showLeaderboard && (
+              <LeaderboardModal
+                game="tap-sprint"
+                score={count}
+                unit="clicks"
+                scoreOrder="high"
+                onClose={() => setShowLeaderboard(false)}
+              />
+            )}
           </div>
         )}
       </div>
