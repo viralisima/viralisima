@@ -300,20 +300,23 @@ export default function JuegoAtrapaPastelitos() {
 
   return (
     <main className="min-h-[calc(100vh-3.5rem)] bg-gradient-to-b from-sky-100 via-pink-50 to-amber-100">
-      <div className="max-w-2xl mx-auto px-4 pt-6 pb-16">
-        <Link href="/juegos" className="text-sm text-slate-500 hover:text-slate-900">
-          ← Juegos
-        </Link>
-
-        <header className="text-center my-6">
-          <h1 className="text-3xl md:text-5xl font-black bg-gradient-to-r from-fuchsia-600 via-pink-500 to-orange-500 bg-clip-text text-transparent">
-            🐱 Atrapa Pastelitos
-          </h1>
-          <p className="text-slate-600 mt-2 text-sm md:text-base">
-            Toca los pastelitos que pasan arriba para que caigan en la bolsa del gatito.
-            Cada 10 segundos van más rápido. 3 fallos y se acaba.
-          </p>
-        </header>
+      <div className="max-w-2xl mx-auto px-4 pt-3 pb-6">
+        {state !== "playing" && (
+          <>
+            <Link href="/juegos" className="text-sm text-slate-500 hover:text-slate-900">
+              ← Juegos
+            </Link>
+            <header className="text-center my-4">
+              <h1 className="text-3xl md:text-5xl font-black bg-gradient-to-r from-fuchsia-600 via-pink-500 to-orange-500 bg-clip-text text-transparent">
+                🐱 Atrapa Pastelitos
+              </h1>
+              <p className="text-slate-600 mt-2 text-sm md:text-base">
+                Toca los pastelitos (no las piedras 🪨) para que caigan en la bolsa del gatito.
+                Cada 10s va más rápido. A los 30s el gato se puede mover. 3 fallos y se acaba.
+              </p>
+            </header>
+          </>
+        )}
 
         {/* HUD */}
         <div className="flex items-center justify-between bg-white/70 backdrop-blur rounded-full px-5 py-2 mb-3 shadow text-slate-800 font-bold">
@@ -398,11 +401,6 @@ export default function JuegoAtrapaPastelitos() {
           )}
           {state === "playing" && (
             <>
-              <p className="text-slate-500 text-sm">
-                {elapsed < CAT_MOVE_UNLOCK_SEC
-                  ? `Pulsa los pastelitos (no las piedras). El gato se podrá mover en ${CAT_MOVE_UNLOCK_SEC - elapsed}s.`
-                  : "¡El gato ya se mueve! Usa las flechas o ← →"}
-              </p>
               {elapsed >= CAT_MOVE_UNLOCK_SEC && (
                 <div className="flex justify-center gap-8 mt-4 select-none">
                   <button
