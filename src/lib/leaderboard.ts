@@ -11,6 +11,7 @@ export const GAMES = {
   "palabras-encadenadas": { label: "Palabras Encadenadas", unit: "palabras", scoreOrder: "high" as const },
   asteroides: { label: "Asteroides", unit: "puntos", scoreOrder: "high" as const },
   "space-invaders": { label: "Space Invaders", unit: "puntos", scoreOrder: "high" as const },
+  bloques: { label: "Bloques", unit: "puntos", scoreOrder: "high" as const },
   "atrapa-la-palabra": { label: "Atrapa la Palabra", unit: "puntos", scoreOrder: "high" as const },
   reflejos: { label: "Test de Reflejos", unit: "ms", scoreOrder: "low" as const },
   memoria: { label: "Memoria Simon", unit: "nivel", scoreOrder: "high" as const },

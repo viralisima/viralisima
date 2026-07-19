@@ -13,6 +13,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "bloques",
+    title: "Bloques",
+    subtitle: "Encaja las piezas que caen y completa líneas. El puzzle adictivo de siempre.",
+    emoji: "🧱",
+    gradient: "from-cyan-600 via-indigo-700 to-purple-800",
+    duration: "puzzle",
+  },
+  {
     slug: "space-invaders",
     title: "Space Invaders",
     subtitle: "Defiende la Tierra de la invasión alienígena. Búnkeres, oleadas y OVNI bonus.",
