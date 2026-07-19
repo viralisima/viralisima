@@ -13,6 +13,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "asteroides",
+    title: "Asteroides",
+    subtitle: "El arcade clásico: destruye los asteroides con tu nave sin chocar. Niveles infinitos.",
+    emoji: "🚀",
+    gradient: "from-slate-900 via-slate-700 to-indigo-900",
+    duration: "arcade · 3 vidas",
+  },
+  {
     slug: "palabras-encadenadas",
     title: "Palabras Encadenadas",
     subtitle: "Cada palabra empieza por la última letra de la anterior. Encadena todas las que puedas contrarreloj.",
