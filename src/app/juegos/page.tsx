@@ -13,6 +13,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "space-invaders",
+    title: "Space Invaders",
+    subtitle: "Defiende la Tierra de la invasión alienígena. Búnkeres, oleadas y OVNI bonus.",
+    emoji: "👾",
+    gradient: "from-slate-900 via-emerald-900 to-slate-800",
+    duration: "arcade · 3 vidas",
+  },
+  {
     slug: "asteroides",
     title: "Asteroides",
     subtitle: "El arcade clásico: destruye los asteroides con tu nave sin chocar. Niveles infinitos.",
