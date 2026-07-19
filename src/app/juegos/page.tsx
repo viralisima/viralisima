@@ -13,6 +13,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "palabras-encadenadas",
+    title: "Palabras Encadenadas",
+    subtitle: "Cada palabra empieza por la última letra de la anterior. Encadena todas las que puedas contrarreloj.",
+    emoji: "🔗",
+    gradient: "from-emerald-500 via-teal-500 to-cyan-600",
+    duration: "contrarreloj",
+  },
+  {
     slug: "color-trampa",
     title: "Color Trampa",
     subtitle: "Pulsa el COLOR de la tinta, no la palabra. El test de Stroop que traiciona a tu cerebro.",

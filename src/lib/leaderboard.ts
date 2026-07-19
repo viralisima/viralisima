@@ -8,6 +8,7 @@ export const redis = Redis.fromEnv();
 export const GAMES = {
   "atrapa-pastelitos": { label: "Atrapa Pastelitos", unit: "pastelitos", scoreOrder: "high" as const },
   "color-trampa": { label: "Color Trampa", unit: "aciertos", scoreOrder: "high" as const },
+  "palabras-encadenadas": { label: "Palabras Encadenadas", unit: "palabras", scoreOrder: "high" as const },
   "atrapa-la-palabra": { label: "Atrapa la Palabra", unit: "puntos", scoreOrder: "high" as const },
   reflejos: { label: "Test de Reflejos", unit: "ms", scoreOrder: "low" as const },
   memoria: { label: "Memoria Simon", unit: "nivel", scoreOrder: "high" as const },
