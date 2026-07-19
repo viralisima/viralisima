@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
 import ShareButtons from "./ShareButtons";
 import LeaderboardModal from "./LeaderboardModal";
+import { tapBtn, BTN } from "@/lib/controls";
 
 const STORAGE_KEY = "vl_snake_best";
 const GRID = 24;
@@ -150,10 +151,25 @@ export default function JuegoSnake() {
 
   useEffect(() => () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); }, []);
 
-  const dpad = (x: number, y: number) => ({
-    onPointerDown: (e: React.PointerEvent) => { e.preventDefault(); setDir(x, y); },
-  });
-  const btn = "select-none touch-none flex items-center justify-center rounded-2xl bg-white/10 border border-white/20 active:bg-white/30 text-2xl font-black h-14 w-14";
+  const dpad = (x: number, y: number) => tapBtn(() => setDir(x, y));
+
+  // deslizar el dedo por el tablero cambia la dirección (control principal en móvil)
+  const swipe = useRef({ x: 0, y: 0, active: false });
+  const onTouchStart = (e: React.TouchEvent) => {
+    const t = e.touches[0];
+    swipe.current = { x: t.clientX, y: t.clientY, active: true };
+  };
+  const onTouchMove = (e: React.TouchEvent) => {
+    const s = swipe.current;
+    if (!s.active) return;
+    const t = e.touches[0];
+    const dx = t.clientX - s.x, dy = t.clientY - s.y;
+    if (Math.abs(dx) > 22 || Math.abs(dy) > 22) {
+      if (Math.abs(dx) > Math.abs(dy)) setDir(Math.sign(dx), 0);
+      else setDir(0, Math.sign(dy));
+      s.active = false;
+    }
+  };
 
   const level = (n: number) => {
     if (n >= 500) return { label: "SERPIENTE LEGENDARIA", emoji: "🐍" };
@@ -174,12 +190,20 @@ export default function JuegoSnake() {
         </div>
 
         <div className="relative mt-4 rounded-xl overflow-hidden border border-white/15 bg-[#0a1410]">
-          <canvas ref={canvasRef} width={W} height={H} className="w-full h-auto block" style={{ aspectRatio: `${W}/${H}` }} />
+          <canvas
+            ref={canvasRef}
+            width={W}
+            height={H}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            className="w-full h-auto block touch-none"
+            style={{ aspectRatio: `${W}/${H}` }}
+          />
           {phase === "idle" && (
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/70 text-center px-6">
               <div className="text-6xl mb-3">🐍</div>
               <p className="max-w-xs opacity-90 mb-2">Come manzanas para crecer. No choques con las paredes ni contigo mismo.</p>
-              <p className="text-xs opacity-60 mb-6 font-mono">PC: flechas / WASD · Móvil: cruceta abajo</p>
+              <p className="text-xs opacity-60 mb-6 font-mono">PC: flechas / WASD · Móvil: desliza el dedo (o cruceta)</p>
               <button onClick={start} className="bg-white text-black font-bold px-10 py-4 rounded-full text-lg hover:scale-105 transition-transform">▶ JUGAR</button>
             </div>
           )}
@@ -202,10 +226,10 @@ export default function JuegoSnake() {
         {phase === "playing" && (
           <div className="flex justify-center mt-4 md:hidden">
             <div className="grid grid-cols-3 gap-2 w-fit">
-              <span /><button aria-label="Arriba" className={btn} {...dpad(0, -1)}>▲</button><span />
-              <button aria-label="Izquierda" className={btn} {...dpad(-1, 0)}>◀</button>
-              <button aria-label="Abajo" className={btn} {...dpad(0, 1)}>▼</button>
-              <button aria-label="Derecha" className={btn} {...dpad(1, 0)}>▶</button>
+              <span /><button aria-label="Arriba" className={BTN} {...dpad(0, -1)}>▲</button><span />
+              <button aria-label="Izquierda" className={BTN} {...dpad(-1, 0)}>◀</button>
+              <button aria-label="Abajo" className={BTN} {...dpad(0, 1)}>▼</button>
+              <button aria-label="Derecha" className={BTN} {...dpad(1, 0)}>▶</button>
             </div>
           </div>
         )}

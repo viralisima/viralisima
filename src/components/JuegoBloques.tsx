@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
 import ShareButtons from "./ShareButtons";
 import LeaderboardModal from "./LeaderboardModal";
+import { holdBtn, tapBtn } from "@/lib/controls";
 
 const STORAGE_KEY = "vl_bloques_best";
 const COLS = 10;
@@ -305,17 +306,10 @@ export default function JuegoBloques() {
 
   useEffect(() => () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); }, []);
 
-  const hold = (k: string) => ({
-    onPointerDown: (e: React.PointerEvent) => { e.preventDefault(); keys.current[k] = true; },
-    onPointerUp: (e: React.PointerEvent) => { e.preventDefault(); keys.current[k] = false; },
-    onPointerLeave: () => { keys.current[k] = false; },
-    onPointerCancel: () => { keys.current[k] = false; },
-  });
-  const tap = (fn: () => void) => ({
-    onPointerDown: (e: React.PointerEvent) => { e.preventDefault(); fn(); },
-  });
+  const hold = (k: string) => holdBtn(() => { keys.current[k] = true; }, () => { keys.current[k] = false; });
+  const tap = tapBtn;
   const btn =
-    "select-none touch-none flex items-center justify-center rounded-2xl bg-white/10 border border-white/20 active:bg-white/30 text-2xl font-black h-14 w-14";
+    "select-none touch-none flex items-center justify-center rounded-2xl bg-white/15 border border-white/25 active:bg-white/35 text-2xl font-black h-16 w-16";
 
   const level = (n: number) => {
     if (n >= 20000) return { label: "MAESTRO DEL BLOQUE", emoji: "🏆" };
@@ -349,7 +343,7 @@ export default function JuegoBloques() {
             ref={canvasRef}
             width={W}
             height={H}
-            className="w-full h-auto block"
+            className="w-full h-auto block touch-none"
             style={{ aspectRatio: `${W}/${H}` }}
           />
 

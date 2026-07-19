@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
 import ShareButtons from "./ShareButtons";
 import LeaderboardModal from "./LeaderboardModal";
+import { holdBtn, BTN } from "@/lib/controls";
 
 const STORAGE_KEY = "vl_invaders_best";
 const W = 800;
@@ -141,11 +142,8 @@ export default function JuegoSpaceInvaders() {
     if (keys.current.right) st.px += 6;
     st.px = Math.max(24, Math.min(W - 24, st.px));
     if (st.pInv > 0) st.pInv--;
-    if (keys.current.fire && !st.fireLock && !st.pBullet) {
-      st.pBullet = { x: st.px, y: PLAYER_Y - 16 };
-      st.fireLock = true;
-    }
-    if (!keys.current.fire) st.fireLock = false;
+    // auto-disparo: dispara en cuanto no haya bala en pantalla (mantener pulsado)
+    if (keys.current.fire && !st.pBullet) st.pBullet = { x: st.px, y: PLAYER_Y - 16 };
 
     // ---- bala jugador ----
     if (st.pBullet) {
@@ -323,14 +321,8 @@ export default function JuegoSpaceInvaders() {
 
   useEffect(() => () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); }, []);
 
-  const hold = (k: string) => ({
-    onPointerDown: (e: React.PointerEvent) => { e.preventDefault(); keys.current[k] = true; },
-    onPointerUp: (e: React.PointerEvent) => { e.preventDefault(); keys.current[k] = false; },
-    onPointerLeave: () => { keys.current[k] = false; },
-    onPointerCancel: () => { keys.current[k] = false; },
-  });
-  const btn =
-    "select-none touch-none flex items-center justify-center rounded-2xl bg-white/10 border border-white/20 active:bg-white/30 text-2xl font-black w-16 h-16";
+  const hold = (k: string) => holdBtn(() => { keys.current[k] = true; }, () => { keys.current[k] = false; });
+  const btn = BTN;
 
   const level = (n: number) => {
     if (n >= 5000) return { label: "HÉROE DE LA GALAXIA", emoji: "🏆" };
@@ -364,7 +356,7 @@ export default function JuegoSpaceInvaders() {
             ref={canvasRef}
             width={W}
             height={H}
-            className="w-full h-auto block"
+            className="w-full h-auto block touch-none"
             style={{ aspectRatio: `${W}/${H}` }}
           />
 

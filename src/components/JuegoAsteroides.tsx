@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
 import ShareButtons from "./ShareButtons";
 import LeaderboardModal from "./LeaderboardModal";
+import { holdBtn, BTN } from "@/lib/controls";
 
 const STORAGE_KEY = "vl_asteroides_best";
 const W = 800;
@@ -51,7 +52,7 @@ export default function JuegoAsteroides() {
     score: 0,
     lives: 3,
     level: 1,
-    fireLock: false,
+    fireCd: 0,
   });
   const keys = useRef<Record<string, boolean>>({});
   const rafRef = useRef<number | null>(null);
@@ -155,8 +156,9 @@ export default function JuegoAsteroides() {
       s.x += s.vx; s.y += s.vy; wrap(s);
       if (s.inv > 0) s.inv--;
 
-      if (keys.current.fire && !st.fireLock) { disparar(); st.fireLock = true; }
-      if (!keys.current.fire) st.fireLock = false;
+      // auto-disparo manteniendo pulsado (con cadencia)
+      if (st.fireCd > 0) st.fireCd--;
+      if (keys.current.fire && st.fireCd <= 0) { disparar(); st.fireCd = 9; }
     }
 
     // --- update balas ---
@@ -287,7 +289,7 @@ export default function JuegoAsteroides() {
     st.score = 0;
     st.lives = 3;
     st.level = 1;
-    st.fireLock = false;
+    st.fireCd = 0;
     spawnLevel(3);
     setJustHitBest(false);
     phaseRef.current = "playing";
@@ -322,16 +324,9 @@ export default function JuegoAsteroides() {
 
   useEffect(() => () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); }, []);
 
-  // botón táctil: mantener pulsado activa la tecla
-  const hold = (k: string) => ({
-    onPointerDown: (e: React.PointerEvent) => { e.preventDefault(); keys.current[k] = true; },
-    onPointerUp: (e: React.PointerEvent) => { e.preventDefault(); keys.current[k] = false; },
-    onPointerLeave: () => { keys.current[k] = false; },
-    onPointerCancel: () => { keys.current[k] = false; },
-  });
-
-  const btn =
-    "select-none touch-none flex items-center justify-center rounded-2xl bg-white/10 border border-white/20 active:bg-white/30 text-2xl font-black w-16 h-16";
+  // botón táctil: mantener pulsado activa la tecla (con captura de puntero fiable)
+  const hold = (k: string) => holdBtn(() => { keys.current[k] = true; }, () => { keys.current[k] = false; });
+  const btn = BTN;
 
   const level = (n: number) => {
     if (n >= 5000) return { label: "LEYENDA DEL ARCADE", emoji: "👾" };
@@ -365,7 +360,7 @@ export default function JuegoAsteroides() {
             ref={canvasRef}
             width={W}
             height={H}
-            className="w-full h-auto block"
+            className="w-full h-auto block touch-none"
             style={{ aspectRatio: `${W}/${H}`, imageRendering: "pixelated" }}
           />
 
