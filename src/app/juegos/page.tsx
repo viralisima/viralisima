@@ -13,6 +13,30 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "snake",
+    title: "Snake",
+    subtitle: "La serpiente clásica: come, crece y no choques contigo mismo. Cada manzana, más rápido.",
+    emoji: "🐍",
+    gradient: "from-lime-500 via-green-600 to-emerald-700",
+    duration: "arcade",
+  },
+  {
+    slug: "breakout",
+    title: "Breakout",
+    subtitle: "Rebota la bola con la paleta y rompe todos los ladrillos. 3 vidas, niveles infinitos.",
+    emoji: "🧱",
+    gradient: "from-sky-500 via-blue-600 to-indigo-700",
+    duration: "arcade · 3 vidas",
+  },
+  {
+    slug: "pong",
+    title: "Pong",
+    subtitle: "El clásico contra la máquina. La bola acelera con cada golpe. ¿Cuántos peloteos aguantas?",
+    emoji: "🏓",
+    gradient: "from-slate-700 via-slate-800 to-rose-900",
+    duration: "arcade · vs CPU",
+  },
+  {
     slug: "bloques",
     title: "Bloques",
     subtitle: "Encaja las piezas que caen y completa líneas. El puzzle adictivo de siempre.",
