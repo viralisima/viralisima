@@ -122,9 +122,14 @@ export default function Juegos() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-5xl mx-auto px-4 pt-10 pb-16">
-        <Link href="/" className="text-sm text-slate-500 hover:text-slate-900">
-          ← Viralísima
-        </Link>
+        <div className="flex items-center justify-between">
+          <Link href="/" className="text-sm text-slate-500 hover:text-slate-900">
+            ← Viralísima
+          </Link>
+          <Link href="/perfil" className="text-sm font-semibold text-fuchsia-600 hover:text-fuchsia-800">
+            🏆 Mi perfil
+          </Link>
+        </div>
 
         <div className="text-center my-10">
           <div className="text-5xl mb-2">🎮</div>

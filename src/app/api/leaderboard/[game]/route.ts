@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getTop, submitScore, isValidGame } from "@/lib/leaderboard";
+import { ownsName } from "@/lib/users";
 
 export const runtime = "edge";
 
@@ -29,7 +30,7 @@ export async function POST(
   if (!isValidGame(game)) {
     return NextResponse.json({ error: "invalid_game" }, { status: 400 });
   }
-  let body: { name?: string; score?: number };
+  let body: { name?: string; score?: number; token?: string };
   try {
     body = await req.json();
   } catch {
@@ -37,8 +38,13 @@ export async function POST(
   }
   const name = String(body.name ?? "");
   const score = Number(body.score);
+  const token = typeof body.token === "string" ? body.token : undefined;
   if (!name.trim() || !Number.isFinite(score)) {
     return NextResponse.json({ error: "bad_input" }, { status: 400 });
+  }
+  // Si el apodo está registrado, exige el token de su dueño (anti-suplantación).
+  if (!(await ownsName(name, token))) {
+    return NextResponse.json({ error: "name_locked" }, { status: 403 });
   }
   try {
     const finalScore = await submitScore(game, name, score);
