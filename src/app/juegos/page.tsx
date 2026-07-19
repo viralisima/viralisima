@@ -13,6 +13,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "color-trampa",
+    title: "Color Trampa",
+    subtitle: "Pulsa el COLOR de la tinta, no la palabra. El test de Stroop que traiciona a tu cerebro.",
+    emoji: "🌈",
+    gradient: "from-slate-700 via-violet-700 to-fuchsia-600",
+    duration: "30 segundos",
+  },
+  {
     slug: "atrapa-pastelitos",
     title: "Atrapa Pastelitos",
     subtitle: "Haz caer pastelitos en la bolsa del gatito. Cada 10s va más rápido.",
