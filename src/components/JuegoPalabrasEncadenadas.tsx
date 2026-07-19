@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
 import ShareButtons from "./ShareButtons";
 import LeaderboardModal from "./LeaderboardModal";
+import { cargarDiccionario } from "@/lib/diccionario";
 
 const STORAGE_KEY = "vl_encadenadas_best";
 const BASE_LIMIT = 8000; // 8 s la primera palabra
@@ -31,6 +32,8 @@ export default function JuegoPalabrasEncadenadas() {
   const [best, setBest] = useState(0);
   const [justHitBest, setJustHitBest] = useState(false);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [dict, setDict] = useState<Set<string> | null>(null);
+  const [dictState, setDictState] = useState<"loading" | "ready" | "error">("loading");
 
   const endRef = useRef(0);
   const limitRef = useRef(BASE_LIMIT);
@@ -43,6 +46,20 @@ export default function JuegoPalabrasEncadenadas() {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) setBest(parseInt(saved));
   }, []);
+
+  const cargarDict = useCallback(() => {
+    setDictState("loading");
+    cargarDiccionario()
+      .then((s) => {
+        setDict(s);
+        setDictState("ready");
+      })
+      .catch(() => setDictState("error"));
+  }, []);
+
+  useEffect(() => {
+    cargarDict();
+  }, [cargarDict]);
 
   useEffect(
     () => () => {
@@ -79,6 +96,7 @@ export default function JuegoPalabrasEncadenadas() {
   }, [end]);
 
   const start = () => {
+    if (dictState !== "ready") return;
     const letter = START_LETTERS[Math.floor(Math.random() * START_LETTERS.length)];
     setJustHitBest(false);
     setScore(0);
@@ -106,6 +124,7 @@ export default function JuegoPalabrasEncadenadas() {
     if (!/^[a-zñ]+$/.test(norm)) return flash("err", "Solo letras");
     if (norm[0] !== required) return flash("err", `Debe empezar por «${required.toUpperCase()}»`);
     if (usedRef.current.has(norm)) return flash("err", "Ya la usaste");
+    if (!dict || !dict.has(norm)) return flash("err", "No está en el diccionario");
 
     // aceptada
     usedRef.current.add(norm);
@@ -175,12 +194,33 @@ export default function JuegoPalabrasEncadenadas() {
               <strong><span className="underline">o</span>s<span className="underline">o</span></strong> →{" "}
               <strong><span className="underline">o</span>l<span className="underline">a</span></strong> → …
             </p>
-            <button
-              onClick={start}
-              className="bg-white text-slate-900 font-bold px-12 py-5 rounded-full text-xl hover:scale-105 transition-transform shadow-xl"
-            >
-              ▶ Empezar
-            </button>
+            {dictState === "ready" && (
+              <button
+                onClick={start}
+                className="bg-white text-slate-900 font-bold px-12 py-5 rounded-full text-xl hover:scale-105 transition-transform shadow-xl"
+              >
+                ▶ Empezar
+              </button>
+            )}
+            {dictState === "loading" && (
+              <button
+                disabled
+                className="bg-white/60 text-slate-900 font-bold px-12 py-5 rounded-full text-xl shadow-xl cursor-wait"
+              >
+                ⏳ Cargando diccionario…
+              </button>
+            )}
+            {dictState === "error" && (
+              <button
+                onClick={cargarDict}
+                className="bg-white text-slate-900 font-bold px-10 py-5 rounded-full text-lg hover:scale-105 transition-transform shadow-xl"
+              >
+                ↻ Reintentar carga del diccionario
+              </button>
+            )}
+            <p className="text-xs opacity-70 mt-4">
+              Solo valen palabras reales · valida contra ~913.000 palabras (ES · EN · FR · IT · PT)
+            </p>
           </div>
         )}
 

@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { QUIZZES } from "@/data/quizzes";
 import { SIGNS } from "@/data/horoscopo";
 import { BLOG } from "@/data/blog";
+import { GAMES as JUEGOS } from "@/lib/leaderboard";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://viralisima.com";
@@ -37,9 +38,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/edad-perro`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/calculadora-imc`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/juegos`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${base}/juegos/reflejos`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${base}/juegos/memoria`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${base}/juegos/tap-sprint`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${base}/horoscopo`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
     { url: `${base}/blog`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
     { url: `${base}/sobre-nosotros`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
@@ -60,5 +58,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...quizEntries,
     ...resultEntries,
+    // Juegos + sus rankings, derivados del leaderboard (entran todos, presentes y futuros)
+    ...Object.keys(JUEGOS).flatMap((slug) => [
+      {
+        url: `${base}/juegos/${slug}`,
+        lastModified: now,
+        changeFrequency: "weekly" as const,
+        priority: 0.8,
+      },
+      {
+        url: `${base}/juegos/ranking/${slug}`,
+        lastModified: now,
+        changeFrequency: "weekly" as const,
+        priority: 0.5,
+      },
+    ]),
   ];
 }
