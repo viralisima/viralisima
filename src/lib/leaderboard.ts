@@ -6,6 +6,7 @@ export const redis = Redis.fromEnv();
 //   "high" → el mayor score es mejor (Simon, Tap Sprint)
 //   "low"  → el menor score es mejor (Reflejos ms)
 export const GAMES = {
+  "ritmo-emoji": { label: "Ritmo Emoji", unit: "nivel", scoreOrder: "high" as const },
   "atrapa-pastelitos": { label: "Atrapa Pastelitos", unit: "pastelitos", scoreOrder: "high" as const },
   "color-trampa": { label: "Color Trampa", unit: "aciertos", scoreOrder: "high" as const },
   "palabras-encadenadas": { label: "Palabras Encadenadas", unit: "palabras", scoreOrder: "high" as const },

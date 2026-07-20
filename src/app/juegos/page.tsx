@@ -13,6 +13,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "ritmo-emoji",
+    title: "Ritmo Emoji",
+    subtitle: "Sigue el patrón de emojis al ritmo",
+    emoji: "🎵",
+    gradient: "from-fuchsia-500 via-rose-500 to-orange-500",
+    duration: "hasta fallar",
+  },
+  {
     slug: "snake",
     title: "Snake",
     subtitle: "La serpiente clásica: come, crece y no choques contigo mismo. Cada manzana, más rápido.",
