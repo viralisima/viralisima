@@ -13,6 +13,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "esquiva-meteoritos",
+    title: "Esquiva Meteoritos",
+    subtitle: "Mueve tu nave y sobrevive el máximo tiempo",
+    emoji: "☄️",
+    gradient: "from-slate-700 via-blue-600 to-cyan-500",
+    duration: "hasta chocar",
+  },
+  {
     slug: "ritmo-emoji",
     title: "Ritmo Emoji",
     subtitle: "Sigue el patrón de emojis al ritmo",
