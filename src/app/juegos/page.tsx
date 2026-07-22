@@ -13,6 +13,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "bolsillo-exacto",
+    title: "Bolsillo Exacto",
+    subtitle: "Para la moneda justo en el objetivo",
+    emoji: "💰",
+    gradient: "from-yellow-400 via-amber-500 to-red-500",
+    duration: "10 rondas",
+  },
+  {
     slug: "esquiva-meteoritos",
     title: "Esquiva Meteoritos",
     subtitle: "Mueve tu nave y sobrevive el máximo tiempo",

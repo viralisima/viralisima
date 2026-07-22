@@ -63,6 +63,7 @@ export default function Header() {
 
   const juegosItems = [
     { href: "/juegos", label: "🎮 Ver todos" },
+    { href: "/juegos/bolsillo-exacto", label: "💰 Bolsillo Exacto" },
     { href: "/juegos/esquiva-meteoritos", label: "☄️ Esquiva Meteoritos" },
     { href: "/juegos/ritmo-emoji", label: "🎵 Ritmo Emoji" },
     { href: "/juegos/atrapa-pastelitos", label: "🐱 Atrapa Pastelitos" },
