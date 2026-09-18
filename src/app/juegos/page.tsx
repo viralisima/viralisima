@@ -13,6 +13,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "rey-por-un-minuto",
+    title: "Rey por un minuto",
+    subtitle: "Gobierna 60 segundos sin arruinar el reino",
+    emoji: "👑",
+    gradient: "from-amber-500 via-orange-500 to-rose-500",
+    duration: "60 segundos",
+  },
+  {
     slug: "bolsillo-exacto",
     title: "Bolsillo Exacto",
     subtitle: "Para la moneda justo en el objetivo",
