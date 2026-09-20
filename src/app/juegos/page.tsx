@@ -13,6 +13,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "refranes-en-emoji",
+    title: "Refranes en Emoji",
+    subtitle: "Adivina el dicho escondido detrás de tres emojis antes de que se acabe el tiempo",
+    emoji: "🧉",
+    gradient: "from-amber-500 via-orange-500 to-rose-500",
+    duration: "60 segundos",
+  },
+  {
     slug: "rey-por-un-minuto",
     title: "Rey por un minuto",
     subtitle: "Gobierna 60 segundos sin arruinar el reino",
