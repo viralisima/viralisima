@@ -13,6 +13,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "portero-de-fiesta",
+    title: "Portero de Fiesta",
+    subtitle: "Deja pasar solo a quien cumpla la norma… que cambia cada 10 segundos",
+    emoji: "🕺",
+    gradient: "from-fuchsia-500 via-purple-500 to-indigo-500",
+    duration: "60 segundos",
+  },
+  {
     slug: "refranes-en-emoji",
     title: "Refranes en Emoji",
     subtitle: "Adivina el dicho escondido detrás de tres emojis antes de que se acabe el tiempo",
