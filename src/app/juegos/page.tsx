@@ -13,6 +13,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "globo-valiente",
+    title: "Globo Valiente",
+    subtitle: "Infla, aguanta… ¿te plantas o revientas?",
+    emoji: "🎈",
+    gradient: "from-rose-500 via-pink-500 to-fuchsia-500",
+    duration: "45 segundos",
+  },
+  {
     slug: "portero-de-fiesta",
     title: "Portero de Fiesta",
     subtitle: "Deja pasar solo a quien cumpla la norma… que cambia cada 10 segundos",
