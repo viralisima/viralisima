@@ -6,7 +6,7 @@ export const metadata = {
   openGraph: {
     title: "Esquiva Meteoritos — Viralísima",
     description: "Mueve tu nave y sobrevive el máximo tiempo",
-    url: "https://viralisima.com/juegos/esquiva-meteoritos",
+    url: "https://www.viralisima.com/juegos/esquiva-meteoritos",
     images: [{ url: "/api/og?quiz=esquiva-meteoritos", width: 1200, height: 630 }],
   },
 };

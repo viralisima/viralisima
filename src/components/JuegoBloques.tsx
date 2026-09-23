@@ -393,7 +393,7 @@ export default function JuegoBloques() {
                   </button>
                 )}
               </div>
-              <ShareButtons text={shareText} url="https://viralisima.com/juegos/bloques" />
+              <ShareButtons text={shareText} url="https://www.viralisima.com/juegos/bloques" />
             </div>
           )}
         </div>

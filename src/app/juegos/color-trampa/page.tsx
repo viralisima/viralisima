@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "Color Trampa — Viralísima",
     description: "¿Tu cerebro aguanta la trampa? Pulsa el color, no la palabra.",
-    url: "https://viralisima.com/juegos/color-trampa",
+    url: "https://www.viralisima.com/juegos/color-trampa",
     images: [{ url: "/api/og?quiz=color-trampa", width: 1200, height: 630 }],
   },
 };

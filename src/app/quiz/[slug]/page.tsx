@@ -15,7 +15,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const quiz = getQuiz(slug);
   if (!quiz) return {};
-  const url = `https://viralisima.com/quiz/${slug}`;
+  const url = `https://www.viralisima.com/quiz/${slug}`;
   return {
     title: `${quiz.title} | Viralísima`,
     description: quiz.subtitle,

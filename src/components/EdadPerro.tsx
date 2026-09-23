@@ -57,7 +57,7 @@ export default function EdadPerro() {
             <div className="text-3xl font-bold mt-2">años</div>
           </div>
 
-          <ShareButtons text={shareText} url="https://viralisima.com/edad-perro" />
+          <ShareButtons text={shareText} url="https://www.viralisima.com/edad-perro" />
 
           <div className="mt-10 text-center">
             <button

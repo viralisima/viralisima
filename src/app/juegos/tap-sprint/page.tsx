@@ -6,7 +6,7 @@ export const metadata = {
   openGraph: {
     title: "Tap Sprint — Viralísima",
     description: "10 segundos, miles de clicks. ¿Cuántos haces?",
-    url: "https://viralisima.com/juegos/tap-sprint",
+    url: "https://www.viralisima.com/juegos/tap-sprint",
     images: [{ url: "/api/og?quiz=tap-sprint", width: 1200, height: 630 }],
   },
 };

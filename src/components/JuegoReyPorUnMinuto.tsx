@@ -30,7 +30,7 @@ const UMBRAL_SWIPE = 60;
 const BARRA_MAX = 10;
 const BARRA_INICIAL = 6;
 const STORAGE_KEY = "vl_rey-por-un-minuto_best";
-const URL_JUEGO = "https://viralisima.com/juegos/rey-por-un-minuto";
+const URL_JUEGO = "https://www.viralisima.com/juegos/rey-por-un-minuto";
 
 const NOMBRES_BARRAS = ["Oro", "Ánimo", "Cosecha"] as const;
 const EMOJIS_BARRAS = ["💰", "😊", "🌾"] as const;

@@ -6,7 +6,7 @@ export const metadata = {
   openGraph: {
     title: "Portero de Fiesta — Viralísima",
     description: "Deja pasar solo a quien cumpla la norma… que cambia cada 10 segundos",
-    url: "https://viralisima.com/juegos/portero-de-fiesta",
+    url: "https://www.viralisima.com/juegos/portero-de-fiesta",
     images: [{ url: "/api/og?quiz=portero-de-fiesta", width: 1200, height: 630 }],
   },
 };

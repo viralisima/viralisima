@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "¿Cuánto encajáis? — Viralísima",
     description: "2 nombres, 1 porcentaje de compatibilidad.",
-    url: "https://viralisima.com/compatibilidad",
+    url: "https://www.viralisima.com/compatibilidad",
     images: [{ url: "/api/og?quiz=compatibilidad", width: 1200, height: 630 }],
   },
 };

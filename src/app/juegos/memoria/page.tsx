@@ -6,7 +6,7 @@ export const metadata = {
   openGraph: {
     title: "Memoria Simon — Viralísima",
     description: "¿Cuántos colores seguidos puedes recordar?",
-    url: "https://viralisima.com/juegos/memoria",
+    url: "https://www.viralisima.com/juegos/memoria",
     images: [{ url: "/api/og?quiz=memoria", width: 1200, height: 630 }],
   },
 };

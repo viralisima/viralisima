@@ -7,7 +7,7 @@ import LeaderboardModal from "./LeaderboardModal";
 
 const DURACION = 45; // segundos de partida
 const BEST_KEY = "vl_globo-valiente_best";
-const URL_JUEGO = "https://viralisima.com/juegos/globo-valiente";
+const URL_JUEGO = "https://www.viralisima.com/juegos/globo-valiente";
 const VELOCIDAD_BASE = 22; // unidades de aire por segundo en el primer globo
 const VELOCIDAD_EXTRA = 4; // incremento por cada globo usado (mete presión)
 const CONFETI = ["💥", "🎊", "✨", "🧨", "💫", "🎉"];

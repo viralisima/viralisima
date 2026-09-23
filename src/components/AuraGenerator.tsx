@@ -154,7 +154,7 @@ export default function AuraGenerator() {
               ))}
             </div>
           </div>
-          <ShareButtons text={info.share} url="https://viralisima.com/aura" />
+          <ShareButtons text={info.share} url="https://www.viralisima.com/aura" />
           <div className="mt-10 text-center">
             <button
               onClick={() => { setStep(0); setAnswers([]); }}

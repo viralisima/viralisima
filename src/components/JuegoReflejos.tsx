@@ -197,7 +197,7 @@ export default function JuegoReflejos() {
               </div>
 
               <div className="w-full max-w-sm">
-                <ShareButtons text={shareText} url="https://viralisima.com/juegos/reflejos" />
+                <ShareButtons text={shareText} url="https://www.viralisima.com/juegos/reflejos" />
               </div>
 
               {showLeaderboard && time !== null && (

@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://viralisima.com"),
+  metadataBase: new URL("https://www.viralisima.com"),
   title: {
     default: "Viralísima — Quizzes virales en español",
     template: "%s | Viralísima",

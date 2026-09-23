@@ -16,7 +16,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return {};
-  const url = `https://viralisima.com/blog/${slug}`;
+  const url = `https://www.viralisima.com/blog/${slug}`;
   return {
     title: `${post.title} | Viralísima`,
     description: post.description,
@@ -46,7 +46,7 @@ export default async function BlogPostPage({
   const post = getPost(slug);
   if (!post) notFound();
 
-  const url = `https://viralisima.com/blog/${slug}`;
+  const url = `https://www.viralisima.com/blog/${slug}`;
   const shareText = `Me encantó este post: ${post.title}`;
 
   return (

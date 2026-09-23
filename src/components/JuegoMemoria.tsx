@@ -203,7 +203,7 @@ export default function JuegoMemoria() {
                   </button>
                 )}
               </div>
-              <ShareButtons text={shareText} url="https://viralisima.com/juegos/memoria" />
+              <ShareButtons text={shareText} url="https://www.viralisima.com/juegos/memoria" />
 
               {showLeaderboard && (
                 <LeaderboardModal

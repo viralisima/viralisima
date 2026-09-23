@@ -6,7 +6,7 @@ export const metadata = {
   openGraph: {
     title: "Mini-juegos — Viralísima",
     description: "Juegos rápidos para retar a tus amigos.",
-    url: "https://viralisima.com/juegos",
+    url: "https://www.viralisima.com/juegos",
     images: [{ url: "/api/og?quiz=juegos", width: 1200, height: 630 }],
   },
 };

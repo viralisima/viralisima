@@ -257,7 +257,7 @@ export default function JuegoBreakout() {
                 <button onClick={start} className="bg-white text-black font-bold px-8 py-3 rounded-full hover:scale-105 transition-transform">🔄 Otra partida</button>
                 {finalScore > 0 && <button onClick={() => setShowLeaderboard(true)} className="bg-yellow-400 text-black font-bold px-8 py-3 rounded-full hover:scale-105 transition-transform">🏆 Ranking global</button>}
               </div>
-              <ShareButtons text={shareText} url="https://viralisima.com/juegos/breakout" />
+              <ShareButtons text={shareText} url="https://www.viralisima.com/juegos/breakout" />
             </div>
           )}
         </div>

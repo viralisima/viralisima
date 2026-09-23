@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "Bloques — Viralísima",
     description: "Encaja las piezas y completa líneas. El puzzle adictivo, ahora en tu móvil.",
-    url: "https://viralisima.com/juegos/bloques",
+    url: "https://www.viralisima.com/juegos/bloques",
     images: [{ url: "/api/og?quiz=bloques", width: 1200, height: 630 }],
   },
 };

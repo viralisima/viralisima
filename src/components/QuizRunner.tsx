@@ -120,7 +120,7 @@ function ResultCard({
   result: QuizResult;
   onRestart: () => void;
 }) {
-  const shareUrl = `https://viralisima.com/quiz/${quiz.slug}/resultado/${result.id}`;
+  const shareUrl = `https://www.viralisima.com/quiz/${quiz.slug}/resultado/${result.id}`;
 
   return (
     <div className={`min-h-screen bg-gradient-to-br ${result.bgGradient} text-white`}>

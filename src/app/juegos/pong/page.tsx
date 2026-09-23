@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "Pong — Viralísima",
     description: "Devuelve la bola a la máquina y aguanta el máximo de peloteos. El arcade original.",
-    url: "https://viralisima.com/juegos/pong",
+    url: "https://www.viralisima.com/juegos/pong",
     images: [{ url: "/api/og?quiz=pong", width: 1200, height: 630 }],
   },
 };

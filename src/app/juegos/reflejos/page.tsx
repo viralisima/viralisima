@@ -6,7 +6,7 @@ export const metadata = {
   openGraph: {
     title: "Test de Reflejos — Viralísima",
     description: "¿Cuántos milisegundos tardas en reaccionar?",
-    url: "https://viralisima.com/juegos/reflejos",
+    url: "https://www.viralisima.com/juegos/reflejos",
     images: [{ url: "/api/og?quiz=reflejos", width: 1200, height: 630 }],
   },
 };

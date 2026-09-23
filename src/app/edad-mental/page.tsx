@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "Calculadora de Edad Mental — Viralísima",
     description: "¿Qué edad tiene tu cerebro realmente?",
-    url: "https://viralisima.com/edad-mental",
+    url: "https://www.viralisima.com/edad-mental",
     images: [{ url: "/api/og?quiz=edad-mental", width: 1200, height: 630 }],
   },
 };

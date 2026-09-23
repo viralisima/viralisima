@@ -6,7 +6,7 @@ export const metadata = {
   openGraph: {
     title: "Atrapa la Palabra — Viralísima",
     description: "Forma palabras antes de que caigan al suelo",
-    url: "https://viralisima.com/juegos/atrapa-la-palabra",
+    url: "https://www.viralisima.com/juegos/atrapa-la-palabra",
     images: [{ url: "/api/og?quiz=atrapa-la-palabra", width: 1200, height: 630 }],
   },
 };

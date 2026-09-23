@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "La edad real de tu perro — Viralísima",
     description: "Cuántos años humanos tiene tu perro.",
-    url: "https://viralisima.com/edad-perro",
+    url: "https://www.viralisima.com/edad-perro",
     images: [{ url: "/api/og?quiz=edad-perro", width: 1200, height: 630 }],
   },
 };

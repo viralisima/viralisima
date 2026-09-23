@@ -125,7 +125,7 @@ const AVISO_MS = 1_000;
 const UMBRAL_PX = 60;
 const MAX_ERRORES = 3;
 const CLAVE_RECORD = "vl_portero-de-fiesta_best";
-const URL_JUEGO = "https://viralisima.com/juegos/portero-de-fiesta";
+const URL_JUEGO = "https://www.viralisima.com/juegos/portero-de-fiesta";
 
 // ---------- Utilidades ----------
 function azar<T>(lista: T[]): T {

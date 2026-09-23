@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "Calculadora de IMC — Viralísima",
     description: "Peso + altura → IMC al instante.",
-    url: "https://viralisima.com/calculadora-imc",
+    url: "https://www.viralisima.com/calculadora-imc",
     images: [{ url: "/api/og?quiz=imc", width: 1200, height: 630 }],
   },
 };

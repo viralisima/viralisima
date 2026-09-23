@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/"],
       },
     ],
-    sitemap: "https://viralisima.com/sitemap.xml",
-    host: "https://viralisima.com",
+    sitemap: "https://www.viralisima.com/sitemap.xml",
+    host: "https://www.viralisima.com",
   };
 }

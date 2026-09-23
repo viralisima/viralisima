@@ -406,7 +406,7 @@ export default function JuegoSpaceInvaders() {
                   </button>
                 )}
               </div>
-              <ShareButtons text={shareText} url="https://viralisima.com/juegos/space-invaders" />
+              <ShareButtons text={shareText} url="https://www.viralisima.com/juegos/space-invaders" />
             </div>
           )}
         </div>

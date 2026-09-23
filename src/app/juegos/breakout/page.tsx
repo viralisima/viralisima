@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "Breakout — Viralísima",
     description: "Rebota la bola y rompe todos los ladrillos. El arcade de siempre en tu móvil.",
-    url: "https://viralisima.com/juegos/breakout",
+    url: "https://www.viralisima.com/juegos/breakout",
     images: [{ url: "/api/og?quiz=breakout", width: 1200, height: 630 }],
   },
 };

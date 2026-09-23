@@ -427,7 +427,7 @@ export default function JuegoEsquivaMeteoritos() {
         {gameState === "over" && (
           <div className="w-full mt-4 flex flex-col items-center gap-4">
             <ShareButtons
-              url="https://viralisima.com/juegos/esquiva-meteoritos"
+              url="https://www.viralisima.com/juegos/esquiva-meteoritos"
               text={shareText}
             />
             <button

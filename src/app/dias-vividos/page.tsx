@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "¿Cuántos días llevas vivo/a? — Viralísima",
     description: "Una cifra que te hará reflexionar.",
-    url: "https://viralisima.com/dias-vividos",
+    url: "https://www.viralisima.com/dias-vividos",
     images: [{ url: "/api/og?quiz=dias-vividos", width: 1200, height: 630 }],
   },
 };

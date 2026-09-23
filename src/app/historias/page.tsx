@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "Generador de Historias — Viralísima",
     description: "Una historia distinta cada vez. Para niños y adultos.",
-    url: "https://viralisima.com/historias",
+    url: "https://www.viralisima.com/historias",
     images: [{ url: "/api/og?quiz=historias", width: 1200, height: 630 }],
   },
 };

@@ -58,7 +58,7 @@ export default function DiasVividos() {
             </div>
           </div>
 
-          <ShareButtons text={shareText} url="https://viralisima.com/dias-vividos" />
+          <ShareButtons text={shareText} url="https://www.viralisima.com/dias-vividos" />
 
           <div className="mt-10 text-center">
             <button

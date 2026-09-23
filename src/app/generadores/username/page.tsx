@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "Generador de Username — Viralísima",
     description: "Encuentra el @ perfecto para tus redes.",
-    url: "https://viralisima.com/generadores/username",
+    url: "https://www.viralisima.com/generadores/username",
     images: [{ url: "/api/og?quiz=username", width: 1200, height: 630 }],
   },
 };

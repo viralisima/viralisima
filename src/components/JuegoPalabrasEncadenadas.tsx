@@ -328,7 +328,7 @@ export default function JuegoPalabrasEncadenadas() {
                 </button>
               )}
             </div>
-            <ShareButtons text={shareText} url="https://viralisima.com/juegos/palabras-encadenadas" />
+            <ShareButtons text={shareText} url="https://www.viralisima.com/juegos/palabras-encadenadas" />
 
             {showLeaderboard && (
               <LeaderboardModal

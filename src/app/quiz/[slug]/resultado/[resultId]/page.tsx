@@ -21,7 +21,7 @@ export async function generateMetadata({
   const quiz = getQuiz(slug);
   const result = quiz?.results.find((r) => r.id === resultId);
   if (!quiz || !result) return {};
-  const url = `https://viralisima.com/quiz/${slug}/resultado/${resultId}`;
+  const url = `https://www.viralisima.com/quiz/${slug}/resultado/${resultId}`;
   const ogUrl = `/api/og?quiz=${slug}&result=${resultId}`;
   return {
     title: `Me salió: ${result.title} — ${quiz.title}`,
@@ -54,7 +54,7 @@ export default async function ResultPage({
   const result = quiz?.results.find((r) => r.id === resultId);
   if (!quiz || !result) notFound();
 
-  const url = `https://viralisima.com/quiz/${slug}/resultado/${resultId}`;
+  const url = `https://www.viralisima.com/quiz/${slug}/resultado/${resultId}`;
 
   return (
     <div className={`min-h-screen bg-gradient-to-br ${result.bgGradient} text-white`}>

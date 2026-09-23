@@ -31,7 +31,7 @@ export async function generateMetadata({
   const { sign } = await params;
   const s = getSign(sign);
   if (!s) return {};
-  const url = `https://viralisima.com/horoscopo/${sign}`;
+  const url = `https://www.viralisima.com/horoscopo/${sign}`;
   return {
     title: `Horóscopo de ${s.name} para esta semana | Viralísima`,
     description: `${s.personality}`,
@@ -60,7 +60,7 @@ export default async function SignPage({
   const s = getSign(sign);
   if (!s) notFound();
 
-  const url = `https://viralisima.com/horoscopo/${sign}`;
+  const url = `https://www.viralisima.com/horoscopo/${sign}`;
   const bg = BG[s.id] ?? "from-slate-500 to-slate-700";
 
   return (

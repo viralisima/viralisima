@@ -5,7 +5,7 @@ import { BLOG } from "@/data/blog";
 import { GAMES as JUEGOS } from "@/lib/leaderboard";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://viralisima.com";
+  const base = "https://www.viralisima.com";
   const now = new Date();
 
   const quizEntries = QUIZZES.map((q) => ({

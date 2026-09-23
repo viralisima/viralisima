@@ -26,7 +26,7 @@ type Feedback = { tipo: "ok" | "fail"; elegida: string } | null;
 // ---------- Constantes ----------
 const SLUG = "refranes-en-emoji";
 const BEST_KEY = "vl_refranes-en-emoji_best";
-const URL_JUEGO = "https://viralisima.com/juegos/refranes-en-emoji";
+const URL_JUEGO = "https://www.viralisima.com/juegos/refranes-en-emoji";
 const DURACION_MS = 60_000;
 const PENALIZACION_MS = 2_000;
 const RACHA_X2 = 5;

@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "Space Invaders — Viralísima",
     description: "Destruye la invasión alienígena antes de que llegue abajo. El arcade de siempre en tu móvil.",
-    url: "https://viralisima.com/juegos/space-invaders",
+    url: "https://www.viralisima.com/juegos/space-invaders",
     images: [{ url: "/api/og?quiz=space-invaders", width: 1200, height: 630 }],
   },
 };

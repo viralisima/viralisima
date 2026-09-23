@@ -353,7 +353,7 @@ export default function JuegoAtrapaLaPalabra() {
               </button>
               <div className="mt-2">
                 <ShareButtons
-                  url="https://viralisima.com/juegos/atrapa-la-palabra"
+                  url="https://www.viralisima.com/juegos/atrapa-la-palabra"
                   text={`He conseguido ${score} puntos en Atrapa la Palabra 🔤 ¿Superas mi vocabulario?`}
                 />
               </div>

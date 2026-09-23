@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "Palabras Encadenadas — Viralísima",
     description: "Gato → oso → ola → … ¿cuántas palabras encadenas sin fallar?",
-    url: "https://viralisima.com/juegos/palabras-encadenadas",
+    url: "https://www.viralisima.com/juegos/palabras-encadenadas",
     images: [{ url: "/api/og?quiz=palabras-encadenadas", width: 1200, height: 630 }],
   },
 };

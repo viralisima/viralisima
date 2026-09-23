@@ -170,7 +170,7 @@ export default function JuegoTapSprint() {
                 </button>
               )}
             </div>
-            <ShareButtons text={shareText} url="https://viralisima.com/juegos/tap-sprint" />
+            <ShareButtons text={shareText} url="https://www.viralisima.com/juegos/tap-sprint" />
 
             {showLeaderboard && (
               <LeaderboardModal

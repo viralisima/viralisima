@@ -156,7 +156,7 @@ export default function EdadMental() {
               Promedio: <strong>{avg.toFixed(1)} años</strong>
             </div>
           </div>
-          <ShareButtons text={r.share} url={`https://viralisima.com/edad-mental`} />
+          <ShareButtons text={r.share} url={`https://www.viralisima.com/edad-mental`} />
           <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
             <button
               onClick={() => { setStep(0); setAges([]); }}

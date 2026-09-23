@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "Asteroides — Viralísima",
     description: "Destruye asteroides con tu nave. El arcade de siempre, ahora en tu móvil.",
-    url: "https://viralisima.com/juegos/asteroides",
+    url: "https://www.viralisima.com/juegos/asteroides",
     images: [{ url: "/api/og?quiz=asteroides", width: 1200, height: 630 }],
   },
 };

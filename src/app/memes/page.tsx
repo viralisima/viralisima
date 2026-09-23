@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "Generador de Memes — Viralísima",
     description: "Crea memes personalizados en 10 segundos.",
-    url: "https://viralisima.com/memes",
+    url: "https://www.viralisima.com/memes",
     images: [{ url: "/api/og?quiz=memes", width: 1200, height: 630 }],
   },
 };

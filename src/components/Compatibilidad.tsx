@@ -79,7 +79,7 @@ export default function Compatibilidad() {
             </p>
           </div>
 
-          <ShareButtons text={shareText} url="https://viralisima.com/compatibilidad" />
+          <ShareButtons text={shareText} url="https://www.viralisima.com/compatibilidad" />
 
           <div className="mt-10 text-center">
             <button

@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "Snake — Viralísima",
     description: "Come, crece y no choques. La serpiente de siempre en tu móvil.",
-    url: "https://viralisima.com/juegos/snake",
+    url: "https://www.viralisima.com/juegos/snake",
     images: [{ url: "/api/og?quiz=snake", width: 1200, height: 630 }],
   },
 };

@@ -369,7 +369,7 @@ export default function JuegoBolsilloExacto() {
 
             <div className="pt-1">
               <ShareButtons
-                url="https://viralisima.com/juegos/bolsillo-exacto"
+                url="https://www.viralisima.com/juegos/bolsillo-exacto"
                 text={shareText}
               />
             </div>

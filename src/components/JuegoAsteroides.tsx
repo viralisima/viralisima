@@ -410,7 +410,7 @@ export default function JuegoAsteroides() {
                   </button>
                 )}
               </div>
-              <ShareButtons text={shareText} url="https://viralisima.com/juegos/asteroides" />
+              <ShareButtons text={shareText} url="https://www.viralisima.com/juegos/asteroides" />
             </div>
           )}
         </div>

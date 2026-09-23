@@ -7,6 +7,7 @@ export const metadata = {
     "Viralísima — Quizzes, tests y generadores virales en español",
   description:
     "Los quizzes, tests y generadores de memes/frases más virales en español. Gratis, sin registro, para toda LatAm y España.",
+  alternates: { canonical: "https://www.viralisima.com/" },
 };
 
 const TOOLS = [

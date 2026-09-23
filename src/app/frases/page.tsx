@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "Generador de frases virales — Viralísima",
     description: "La frase perfecta para tu próximo post.",
-    url: "https://viralisima.com/frases",
+    url: "https://www.viralisima.com/frases",
     images: [{ url: "/api/og?quiz=frases", width: 1200, height: 630 }],
   },
 };

@@ -6,7 +6,7 @@ export const metadata = {
   openGraph: {
     title: "Rey por un minuto — Viralísima",
     description: "Gobierna 60 segundos sin arruinar el reino",
-    url: "https://viralisima.com/juegos/rey-por-un-minuto",
+    url: "https://www.viralisima.com/juegos/rey-por-un-minuto",
     images: [{ url: "/api/og?quiz=rey-por-un-minuto", width: 1200, height: 630 }],
   },
 };

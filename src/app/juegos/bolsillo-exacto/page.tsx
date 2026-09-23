@@ -6,7 +6,7 @@ export const metadata = {
   openGraph: {
     title: "Bolsillo Exacto — Viralísima",
     description: "Para la moneda justo en el objetivo",
-    url: "https://viralisima.com/juegos/bolsillo-exacto",
+    url: "https://www.viralisima.com/juegos/bolsillo-exacto",
     images: [{ url: "/api/og?quiz=bolsillo-exacto", width: 1200, height: 630 }],
   },
 };

@@ -6,7 +6,7 @@ export const metadata = {
   openGraph: {
     title: "Atrapa Pastelitos — Viralísima",
     description: "Haz caer pastelitos en la bolsa del gatito. Suena miau cuando coles.",
-    url: "https://viralisima.com/juegos/atrapa-pastelitos",
+    url: "https://www.viralisima.com/juegos/atrapa-pastelitos",
     images: [{ url: "/api/og?quiz=atrapa-pastelitos", width: 1200, height: 630 }],
   },
 };

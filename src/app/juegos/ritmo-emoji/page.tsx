@@ -6,7 +6,7 @@ export const metadata = {
   openGraph: {
     title: "Ritmo Emoji — Viralísima",
     description: "Sigue el patrón de emojis al ritmo",
-    url: "https://viralisima.com/juegos/ritmo-emoji",
+    url: "https://www.viralisima.com/juegos/ritmo-emoji",
     images: [{ url: "/api/og?quiz=ritmo-emoji", width: 1200, height: 630 }],
   },
 };

@@ -490,7 +490,7 @@ export default function JuegoAtrapaPastelitos() {
               </div>
               <div className="mt-5">
                 <ShareButtons
-                  url="https://viralisima.com/juegos/atrapa-pastelitos"
+                  url="https://www.viralisima.com/juegos/atrapa-pastelitos"
                   text={`Colé ${score} pastelitos en Atrapa Pastelitos 🐱 ¿puedes superarme?`}
                 />
               </div>

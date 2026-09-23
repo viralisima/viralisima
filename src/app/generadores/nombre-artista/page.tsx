@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "Generador de Nombre Artístico — Viralísima",
     description: "Tu nombre de escenario en 5 segundos.",
-    url: "https://viralisima.com/generadores/nombre-artista",
+    url: "https://www.viralisima.com/generadores/nombre-artista",
     images: [{ url: "/api/og?quiz=nombre-artista", width: 1200, height: 630 }],
   },
 };

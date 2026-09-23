@@ -360,7 +360,7 @@ export default function JuegoRitmoEmoji() {
           </button>
 
           <div className="mb-3">
-            <ShareButtons url="https://viralisima.com/juegos/ritmo-emoji" text={shareText} />
+            <ShareButtons url="https://www.viralisima.com/juegos/ritmo-emoji" text={shareText} />
           </div>
 
           <button

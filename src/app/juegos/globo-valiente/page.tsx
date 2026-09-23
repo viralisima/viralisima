@@ -6,7 +6,7 @@ export const metadata = {
   openGraph: {
     title: "Globo Valiente — Viralísima",
     description: "Infla, aguanta… ¿te plantas o revientas?",
-    url: "https://viralisima.com/juegos/globo-valiente",
+    url: "https://www.viralisima.com/juegos/globo-valiente",
     images: [{ url: "/api/og?quiz=globo-valiente", width: 1200, height: 630 }],
   },
 };

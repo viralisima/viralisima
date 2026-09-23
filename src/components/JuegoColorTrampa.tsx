@@ -247,7 +247,7 @@ export default function JuegoColorTrampa() {
                 </button>
               )}
             </div>
-            <ShareButtons text={shareText} url="https://viralisima.com/juegos/color-trampa" />
+            <ShareButtons text={shareText} url="https://www.viralisima.com/juegos/color-trampa" />
 
             {showLeaderboard && (
               <LeaderboardModal

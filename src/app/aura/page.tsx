@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "¿De qué color es tu aura? — Viralísima",
     description: "Un test rápido que te da tu color de aura y personalidad.",
-    url: "https://viralisima.com/aura",
+    url: "https://www.viralisima.com/aura",
     images: [{ url: "/api/og?quiz=aura", width: 1200, height: 630 }],
   },
 };
