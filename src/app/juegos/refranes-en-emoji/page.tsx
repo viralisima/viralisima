@@ -1,8 +1,9 @@
 import JuegoRefranesEnEmoji from "@/components/JuegoRefranesEnEmoji";
 
 export const metadata = {
-  title: "Refranes en Emoji | Viralísima",
+  title: "Refranes en Emoji",
   description: "Adivina el dicho escondido detrás de tres emojis antes de que se acabe el tiempo",
+  alternates: { canonical: "https://www.viralisima.com/juegos/refranes-en-emoji" },
   openGraph: {
     title: "Refranes en Emoji — Viralísima",
     description: "Adivina el dicho escondido detrás de tres emojis antes de que se acabe el tiempo",

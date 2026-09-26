@@ -17,8 +17,9 @@ export async function generateMetadata({
   if (!quiz) return {};
   const url = `https://www.viralisima.com/quiz/${slug}`;
   return {
-    title: `${quiz.title} | Viralísima`,
+    title: `${quiz.title}`,
     description: quiz.subtitle,
+    alternates: { canonical: url },
     openGraph: {
       title: quiz.title,
       description: quiz.subtitle,

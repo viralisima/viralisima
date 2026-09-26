@@ -2,7 +2,8 @@ import Link from "next/link";
 import { BLOG } from "@/data/blog";
 
 export const metadata = {
-  title: "Blog de Viralísima | Tendencias, tops y contenido viral en español",
+  title: "Blog: tendencias, tops y contenido viral en español",
+  alternates: { canonical: "https://www.viralisima.com/blog" },
   description:
     "Lee tops, rankings y contenido divertido para toda Latinoamérica y España. Nuevos artículos virales cada día.",
 };

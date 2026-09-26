@@ -1,9 +1,10 @@
 import JuegoBreakout from "@/components/JuegoBreakout";
 
 export const metadata = {
-  title: "Breakout · Rompe ladrillos | Viralísima",
+  title: "Breakout · Rompe ladrillos",
   description:
     "El clásico Breakout: rebota la bola con la paleta y destruye todos los ladrillos. 3 vidas, niveles infinitos y ranking global. Gratis y sin registro.",
+  alternates: { canonical: "https://www.viralisima.com/juegos/breakout" },
   openGraph: {
     title: "Breakout — Viralísima",
     description: "Rebota la bola y rompe todos los ladrillos. El arcade de siempre en tu móvil.",

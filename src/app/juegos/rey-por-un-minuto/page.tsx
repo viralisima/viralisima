@@ -1,8 +1,9 @@
 import JuegoReyPorUnMinuto from "@/components/JuegoReyPorUnMinuto";
 
 export const metadata = {
-  title: "Rey por un minuto | Viralísima",
+  title: "Rey por un minuto",
   description: "Gobierna 60 segundos sin arruinar el reino",
+  alternates: { canonical: "https://www.viralisima.com/juegos/rey-por-un-minuto" },
   openGraph: {
     title: "Rey por un minuto — Viralísima",
     description: "Gobierna 60 segundos sin arruinar el reino",

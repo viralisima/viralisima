@@ -1,9 +1,10 @@
 import JuegoColorTrampa from "@/components/JuegoColorTrampa";
 
 export const metadata = {
-  title: "Color Trampa · Test de Stroop | Viralísima",
+  title: "Color Trampa · Test de Stroop",
   description:
     "Pulsa el color de la tinta, no lo que dice la palabra. El test de Stroop que confunde a tu cerebro. 30 segundos, gratis y sin registro.",
+  alternates: { canonical: "https://www.viralisima.com/juegos/color-trampa" },
   openGraph: {
     title: "Color Trampa — Viralísima",
     description: "¿Tu cerebro aguanta la trampa? Pulsa el color, no la palabra.",

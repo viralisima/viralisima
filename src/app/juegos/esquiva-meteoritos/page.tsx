@@ -1,8 +1,9 @@
 import JuegoEsquivaMeteoritos from "@/components/JuegoEsquivaMeteoritos";
 
 export const metadata = {
-  title: "Esquiva Meteoritos | Viralísima",
+  title: "Esquiva Meteoritos",
   description: "Mueve tu nave y sobrevive el máximo tiempo",
+  alternates: { canonical: "https://www.viralisima.com/juegos/esquiva-meteoritos" },
   openGraph: {
     title: "Esquiva Meteoritos — Viralísima",
     description: "Mueve tu nave y sobrevive el máximo tiempo",

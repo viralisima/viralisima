@@ -1,9 +1,10 @@
 import MemeGenerator from "@/components/MemeGenerator";
 
 export const metadata = {
-  title: "Generador de Memes | Viralísima",
+  title: "Generador de Memes",
   description:
     "Crea memes en segundos. Sube tu foto, añade texto arriba y abajo, y descarga tu meme listo para compartir.",
+  alternates: { canonical: "https://www.viralisima.com/memes" },
   openGraph: {
     title: "Generador de Memes — Viralísima",
     description: "Crea memes personalizados en 10 segundos.",

@@ -1,8 +1,9 @@
 import JuegoReflejos from "@/components/JuegoReflejos";
 
 export const metadata = {
-  title: "Test de Reflejos | Viralísima",
+  title: "Test de Reflejos",
   description: "Mide tus reflejos en milisegundos. Click cuando el círculo cambie de color. Gratis, sin registro.",
+  alternates: { canonical: "https://www.viralisima.com/juegos/reflejos" },
   openGraph: {
     title: "Test de Reflejos — Viralísima",
     description: "¿Cuántos milisegundos tardas en reaccionar?",

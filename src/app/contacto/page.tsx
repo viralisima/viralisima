@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Contacto | Viralísima",
+  title: "Contacto",
   description: "Ponte en contacto con el equipo de Viralísima.",
   robots: { index: true, follow: true },
 };

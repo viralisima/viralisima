@@ -1,9 +1,10 @@
 import JuegoSpaceInvaders from "@/components/JuegoSpaceInvaders";
 
 export const metadata = {
-  title: "Space Invaders · Arcade clásico | Viralísima",
+  title: "Space Invaders · Arcade clásico",
   description:
     "El clásico arcade de defender la Tierra de la invasión alienígena. Búnkeres, oleadas y OVNI bonus. Ranking global, gratis y sin registro.",
+  alternates: { canonical: "https://www.viralisima.com/juegos/space-invaders" },
   openGraph: {
     title: "Space Invaders — Viralísima",
     description: "Destruye la invasión alienígena antes de que llegue abajo. El arcade de siempre en tu móvil.",

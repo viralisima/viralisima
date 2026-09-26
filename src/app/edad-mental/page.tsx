@@ -1,9 +1,10 @@
 import EdadMental from "@/components/EdadMental";
 
 export const metadata = {
-  title: "Calculadora de Edad Mental | Viralísima",
+  title: "Calculadora de Edad Mental",
   description:
     "Descubre tu edad mental en 1 minuto. 8 preguntas rápidas y te calculamos un número exacto. Divertido y compartible.",
+  alternates: { canonical: "https://www.viralisima.com/edad-mental" },
   openGraph: {
     title: "Calculadora de Edad Mental — Viralísima",
     description: "¿Qué edad tiene tu cerebro realmente?",

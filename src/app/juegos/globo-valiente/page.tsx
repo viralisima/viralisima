@@ -1,8 +1,9 @@
 import JuegoGloboValiente from "@/components/JuegoGloboValiente";
 
 export const metadata = {
-  title: "Globo Valiente | Viralísima",
+  title: "Globo Valiente",
   description: "Infla, aguanta… ¿te plantas o revientas?",
+  alternates: { canonical: "https://www.viralisima.com/juegos/globo-valiente" },
   openGraph: {
     title: "Globo Valiente — Viralísima",
     description: "Infla, aguanta… ¿te plantas o revientas?",

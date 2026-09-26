@@ -1,8 +1,9 @@
 import JuegoPorteroDeFiesta from "@/components/JuegoPorteroDeFiesta";
 
 export const metadata = {
-  title: "Portero de Fiesta | Viralísima",
+  title: "Portero de Fiesta",
   description: "Deja pasar solo a quien cumpla la norma… que cambia cada 10 segundos",
+  alternates: { canonical: "https://www.viralisima.com/juegos/portero-de-fiesta" },
   openGraph: {
     title: "Portero de Fiesta — Viralísima",
     description: "Deja pasar solo a quien cumpla la norma… que cambia cada 10 segundos",

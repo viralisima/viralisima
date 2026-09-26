@@ -1,8 +1,9 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Mini-juegos virales | Viralísima",
+  title: "Mini-juegos virales",
   description: "Juegos rápidos y adictivos: reflejos, memoria, velocidad de click. Bate tu récord y reta a tus amigos.",
+  alternates: { canonical: "https://www.viralisima.com/juegos" },
   openGraph: {
     title: "Mini-juegos — Viralísima",
     description: "Juegos rápidos para retar a tus amigos.",

@@ -1,9 +1,10 @@
 import NombreArtistaGenerator from "@/components/NombreArtistaGenerator";
 
 export const metadata = {
-  title: "Generador de Nombre de Artista/Banda/Rapero | Viralísima",
+  title: "Generador de Nombre de Artista/Banda/Rapero",
   description:
     "¿Cuál sería tu nombre artístico? Descubre tu nombre de rapero, banda de rock, reggaetonero o cantante pop en 5 segundos.",
+  alternates: { canonical: "https://www.viralisima.com/generadores/nombre-artista" },
   openGraph: {
     title: "Generador de Nombre Artístico — Viralísima",
     description: "Tu nombre de escenario en 5 segundos.",

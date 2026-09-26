@@ -1,8 +1,9 @@
 import JuegoMemoria from "@/components/JuegoMemoria";
 
 export const metadata = {
-  title: "Juego de Memoria Simon | Viralísima",
+  title: "Juego de Memoria Simon",
   description: "Pon a prueba tu memoria. Repite la secuencia de colores. Cada nivel es más difícil. ¿Hasta dónde llegas?",
+  alternates: { canonical: "https://www.viralisima.com/juegos/memoria" },
   openGraph: {
     title: "Memoria Simon — Viralísima",
     description: "¿Cuántos colores seguidos puedes recordar?",

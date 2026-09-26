@@ -1,9 +1,10 @@
 import JuegoBloques from "@/components/JuegoBloques";
 
 export const metadata = {
-  title: "Bloques · Puzzle de piezas que caen | Viralísima",
+  title: "Bloques · Puzzle de piezas que caen",
   description:
     "Encaja las piezas que caen y completa líneas para eliminarlas. El puzzle adictivo de siempre, con niveles, pieza siguiente y ranking global. Gratis y sin registro.",
+  alternates: { canonical: "https://www.viralisima.com/juegos/bloques" },
   openGraph: {
     title: "Bloques — Viralísima",
     description: "Encaja las piezas y completa líneas. El puzzle adictivo, ahora en tu móvil.",

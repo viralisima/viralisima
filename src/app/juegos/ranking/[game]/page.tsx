@@ -14,8 +14,9 @@ export async function generateMetadata({
   if (!isValidGame(game)) return {};
   const g = GAMES[game];
   return {
-    title: `Ranking de ${g.label} | Viralísima`,
+    title: `Ranking de ${g.label}`,
     description: `Top 100 jugadores de ${g.label}. ¿Entras en el ranking?`,
+    alternates: { canonical: `https://www.viralisima.com/juegos/ranking/${game}` },
   };
 }
 

@@ -1,9 +1,10 @@
 import IMCCalc from "@/components/IMCCalc";
 
 export const metadata = {
-  title: "Calculadora de IMC (Índice de Masa Corporal) | Viralísima",
+  title: "Calculadora de IMC (Índice de Masa Corporal)",
   description:
     "Calcula tu IMC en segundos con tu peso y altura. Sabrás si estás en peso saludable, bajo peso, sobrepeso u obesidad.",
+  alternates: { canonical: "https://www.viralisima.com/calculadora-imc" },
   openGraph: {
     title: "Calculadora de IMC — Viralísima",
     description: "Peso + altura → IMC al instante.",

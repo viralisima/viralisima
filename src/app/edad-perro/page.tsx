@@ -1,9 +1,10 @@
 import EdadPerro from "@/components/EdadPerro";
 
 export const metadata = {
-  title: "Calculadora de la Edad Real de tu Perro (años humanos) | Viralísima",
+  title: "Calculadora de la Edad Real de tu Perro (años humanos)",
   description:
     "Descubre cuántos años humanos tiene tu perro según su tamaño. Fórmula veterinaria actualizada, más precisa que multiplicar por 7.",
+  alternates: { canonical: "https://www.viralisima.com/edad-perro" },
   openGraph: {
     title: "La edad real de tu perro — Viralísima",
     description: "Cuántos años humanos tiene tu perro.",

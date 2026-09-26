@@ -1,8 +1,9 @@
 import JuegoAtrapaLaPalabra from "@/components/JuegoAtrapaLaPalabra";
 
 export const metadata = {
-  title: "Atrapa la Palabra | Viralísima",
+  title: "Atrapa la Palabra",
   description: "Forma palabras antes de que caigan al suelo",
+  alternates: { canonical: "https://www.viralisima.com/juegos/atrapa-la-palabra" },
   openGraph: {
     title: "Atrapa la Palabra — Viralísima",
     description: "Forma palabras antes de que caigan al suelo",

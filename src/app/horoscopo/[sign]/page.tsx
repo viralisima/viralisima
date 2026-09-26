@@ -33,7 +33,7 @@ export async function generateMetadata({
   if (!s) return {};
   const url = `https://www.viralisima.com/horoscopo/${sign}`;
   return {
-    title: `Horóscopo de ${s.name} para esta semana | Viralísima`,
+    title: `Horóscopo de ${s.name} para esta semana`,
     description: `${s.personality}`,
     alternates: { canonical: url },
     openGraph: {

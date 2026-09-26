@@ -1,8 +1,9 @@
 import JuegoRitmoEmoji from "@/components/JuegoRitmoEmoji";
 
 export const metadata = {
-  title: "Ritmo Emoji | Viralísima",
+  title: "Ritmo Emoji",
   description: "Sigue el patrón de emojis al ritmo",
+  alternates: { canonical: "https://www.viralisima.com/juegos/ritmo-emoji" },
   openGraph: {
     title: "Ritmo Emoji — Viralísima",
     description: "Sigue el patrón de emojis al ritmo",

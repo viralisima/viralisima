@@ -2,7 +2,8 @@ import Link from "next/link";
 import { SIGNS } from "@/data/horoscopo";
 
 export const metadata = {
-  title: "Horóscopo de hoy en español | Viralísima",
+  title: "Horóscopo de hoy en español",
+  alternates: { canonical: "https://www.viralisima.com/horoscopo" },
   description:
     "Tu horóscopo diario, personalidad por signo del zodíaco y compatibilidades. En español, para toda LatAm y España.",
 };

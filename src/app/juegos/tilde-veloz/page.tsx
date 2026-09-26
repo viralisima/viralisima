@@ -1,8 +1,9 @@
 import JuegoTildeVeloz from "@/components/JuegoTildeVeloz";
 
 export const metadata = {
-  title: "Tilde Veloz | Viralísima",
+  title: "Tilde Veloz",
   description: "¿Sabes de verdad dónde va la tilde? Demuéstralo en 45 segundos",
+  alternates: { canonical: "https://www.viralisima.com/juegos/tilde-veloz" },
   openGraph: {
     title: "Tilde Veloz — Viralísima",
     description: "¿Sabes de verdad dónde va la tilde? Demuéstralo en 45 segundos",

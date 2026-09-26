@@ -18,7 +18,7 @@ export async function generateMetadata({
   if (!post) return {};
   const url = `https://www.viralisima.com/blog/${slug}`;
   return {
-    title: `${post.title} | Viralísima`,
+    title: `${post.title}`,
     description: post.description,
     alternates: { canonical: url },
     openGraph: {

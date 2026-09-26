@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Términos de Uso | Viralísima",
+  title: "Términos de Uso",
   description: "Condiciones de uso de Viralísima.com",
   robots: { index: true, follow: true },
 };

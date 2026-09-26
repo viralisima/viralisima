@@ -1,9 +1,10 @@
 import JuegoPong from "@/components/JuegoPong";
 
 export const metadata = {
-  title: "Pong · El clásico contra la máquina | Viralísima",
+  title: "Pong · El clásico contra la máquina",
   description:
     "El mítico Pong contra la máquina: devuelve la bola, que acelera con cada golpe. Aguanta todos los peloteos que puedas. Ranking global, gratis y sin registro.",
+  alternates: { canonical: "https://www.viralisima.com/juegos/pong" },
   openGraph: {
     title: "Pong — Viralísima",
     description: "Devuelve la bola a la máquina y aguanta el máximo de peloteos. El arcade original.",

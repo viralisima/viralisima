@@ -1,9 +1,10 @@
 import FrasesGenerator from "@/components/FrasesGenerator";
 
 export const metadata = {
-  title: "Generador de frases virales para redes | Viralísima",
+  title: "Generador de frases virales para redes",
   description:
     "Genera captions, biografías y frases virales para Instagram, TikTok y WhatsApp en segundos. Divertidas, motivacionales, románticas, sarcásticas y más.",
+  alternates: { canonical: "https://www.viralisima.com/frases" },
   openGraph: {
     title: "Generador de frases virales — Viralísima",
     description: "La frase perfecta para tu próximo post.",

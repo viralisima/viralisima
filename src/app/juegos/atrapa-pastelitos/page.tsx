@@ -1,8 +1,9 @@
 import JuegoAtrapaPastelitos from "@/components/JuegoAtrapaPastelitos";
 
 export const metadata = {
-  title: "Atrapa Pastelitos | Viralísima",
+  title: "Atrapa Pastelitos",
   description: "Toca los pastelitos que pasan arriba y haz que caigan en la bolsa del gatito. Cada 10s va más rápido. ¿Cuántos puedes colar?",
+  alternates: { canonical: "https://www.viralisima.com/juegos/atrapa-pastelitos" },
   openGraph: {
     title: "Atrapa Pastelitos — Viralísima",
     description: "Haz caer pastelitos en la bolsa del gatito. Suena miau cuando coles.",

@@ -1,9 +1,10 @@
 import Compatibilidad from "@/components/Compatibilidad";
 
 export const metadata = {
-  title: "Calculadora de Compatibilidad de Pareja | Viralísima",
+  title: "Calculadora de Compatibilidad de Pareja",
   description:
     "Mete tu nombre y el de tu crush/pareja y descubre vuestro porcentaje de compatibilidad en segundos. Gratis y compartible.",
+  alternates: { canonical: "https://www.viralisima.com/compatibilidad" },
   openGraph: {
     title: "¿Cuánto encajáis? — Viralísima",
     description: "2 nombres, 1 porcentaje de compatibilidad.",

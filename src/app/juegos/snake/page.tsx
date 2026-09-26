@@ -1,9 +1,10 @@
 import JuegoSnake from "@/components/JuegoSnake";
 
 export const metadata = {
-  title: "Snake · La serpiente clásica | Viralísima",
+  title: "Snake · La serpiente clásica",
   description:
     "El clásico Snake: come, crece y no choques. Cada manzana te hace más largo y más rápido. Ranking global, gratis y sin registro.",
+  alternates: { canonical: "https://www.viralisima.com/juegos/snake" },
   openGraph: {
     title: "Snake — Viralísima",
     description: "Come, crece y no choques. La serpiente de siempre en tu móvil.",

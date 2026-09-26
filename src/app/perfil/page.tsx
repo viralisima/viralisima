@@ -2,7 +2,7 @@ import Link from "next/link";
 import PerfilCliente from "@/components/PerfilCliente";
 
 export const metadata = {
-  title: "Mi perfil · Guarda tus récords | Viralísima",
+  title: "Mi perfil · Guarda tus récords",
   description:
     "Registro voluntario con apodo y PIN para guardar tus puntuaciones de los juegos en cualquier dispositivo. Sin email ni datos personales.",
   robots: { index: false },

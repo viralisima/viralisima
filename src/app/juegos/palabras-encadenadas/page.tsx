@@ -1,9 +1,10 @@
 import JuegoPalabrasEncadenadas from "@/components/JuegoPalabrasEncadenadas";
 
 export const metadata = {
-  title: "Palabras Encadenadas | Viralísima",
+  title: "Palabras Encadenadas",
   description:
     "Encadena palabras contrarreloj: cada una empieza por la última letra de la anterior. ¿Cuántas seguidas aguantas? Gratis y sin registro.",
+  alternates: { canonical: "https://www.viralisima.com/juegos/palabras-encadenadas" },
   openGraph: {
     title: "Palabras Encadenadas — Viralísima",
     description: "Gato → oso → ola → … ¿cuántas palabras encadenas sin fallar?",

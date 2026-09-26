@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Política de Privacidad | Viralísima",
+  title: "Política de Privacidad",
   description: "Cómo tratamos tus datos en Viralísima. Transparencia total.",
   robots: { index: true, follow: true },
 };

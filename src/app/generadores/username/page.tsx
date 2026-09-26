@@ -1,9 +1,10 @@
 import UsernameGenerator from "@/components/UsernameGenerator";
 
 export const metadata = {
-  title: "Generador de Username para Instagram y TikTok | Viralísima",
+  title: "Generador de Username para Instagram y TikTok",
   description:
     "Ideas para tu username de Instagram, TikTok, Twitter y más. Mete tu nombre y elige un estilo. Gratis y sin registro.",
+  alternates: { canonical: "https://www.viralisima.com/generadores/username" },
   openGraph: {
     title: "Generador de Username — Viralísima",
     description: "Encuentra el @ perfecto para tus redes.",
