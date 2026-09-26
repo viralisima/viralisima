@@ -63,6 +63,7 @@ export default function Header() {
 
   const juegosItems = [
     { href: "/juegos", label: "🎮 Ver todos" },
+    { href: "/juegos/tilde-veloz", label: "✍️ Tilde Veloz" },
     { href: "/juegos/globo-valiente", label: "🎈 Globo Valiente" },
     { href: "/juegos/portero-de-fiesta", label: "🕺 Portero de Fiesta" },
     { href: "/juegos/refranes-en-emoji", label: "🧉 Refranes en Emoji" },

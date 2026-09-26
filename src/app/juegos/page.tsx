@@ -13,6 +13,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "tilde-veloz",
+    title: "Tilde Veloz",
+    subtitle: "¿Sabes de verdad dónde va la tilde? Demuéstralo en 45 segundos",
+    emoji: "✍️",
+    gradient: "from-sky-500 via-indigo-500 to-violet-500",
+    duration: "45 segundos",
+  },
+  {
     slug: "globo-valiente",
     title: "Globo Valiente",
     subtitle: "Infla, aguanta… ¿te plantas o revientas?",
