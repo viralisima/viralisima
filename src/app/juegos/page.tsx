@@ -14,6 +14,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "cuanto-dura-un-segundo",
+    title: "¿Cuánto dura un segundo?",
+    subtitle: "Para el reloj a ciegas justo en el tiempo que te pedimos",
+    emoji: "⏱️",
+    gradient: "from-sky-500 via-indigo-500 to-violet-500",
+    duration: "45 segundos",
+  },
+  {
     slug: "tilde-veloz",
     title: "Tilde Veloz",
     subtitle: "¿Sabes de verdad dónde va la tilde? Demuéstralo en 45 segundos",
