@@ -14,6 +14,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "parte-la-pizza",
+    title: "Parte la Pizza",
+    subtitle: "¿Eres capaz de partirla justo por la mitad?",
+    emoji: "🍕",
+    gradient: "from-yellow-400 via-orange-500 to-red-500",
+    duration: "45 segundos",
+  },
+  {
     slug: "cuanto-dura-un-segundo",
     title: "¿Cuánto dura un segundo?",
     subtitle: "Para el reloj a ciegas justo en el tiempo que te pedimos",
