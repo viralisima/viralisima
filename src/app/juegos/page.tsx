@@ -14,6 +14,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "mama-dice",
+    title: "Mamá Dice",
+    subtitle: "Obedece solo cuando lo dice mamá… ¡y rápido!",
+    emoji: "🧑‍🍳",
+    gradient: "from-pink-500 via-rose-500 to-orange-500",
+    duration: "60 segundos",
+  },
+  {
     slug: "parte-la-pizza",
     title: "Parte la Pizza",
     subtitle: "¿Eres capaz de partirla justo por la mitad?",
