@@ -14,6 +14,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "cuanto-pesa-tu-intuicion",
+    title: "¿Cuánto pesa?",
+    subtitle: "Equilibra la balanza a ojo antes de que se acabe el tiempo",
+    emoji: "⚖️",
+    gradient: "from-amber-400 via-orange-500 to-rose-500",
+    duration: "60 segundos",
+  },
+  {
     slug: "mama-dice",
     title: "Mamá Dice",
     subtitle: "Obedece solo cuando lo dice mamá… ¡y rápido!",

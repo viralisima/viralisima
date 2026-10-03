@@ -63,6 +63,7 @@ export default function Header() {
 
   const juegosItems = [
     { href: "/juegos", label: "🎮 Ver todos" },
+    { href: "/juegos/cuanto-pesa-tu-intuicion", label: "⚖️ ¿Cuánto pesa?" },
     { href: "/juegos/mama-dice", label: "🧑‍🍳 Mamá Dice" },
     { href: "/juegos/parte-la-pizza", label: "🍕 Parte la Pizza" },
     { href: "/juegos/cuanto-dura-un-segundo", label: "⏱️ ¿Cuánto dura un segundo?" },
