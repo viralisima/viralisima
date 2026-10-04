@@ -1,6 +1,6 @@
 import JuegoSnake from "@/components/JuegoSnake";
 import TextoSeo from "@/components/TextoSeo";
-import { TEXTOS } from "@/data/textos-seo";
+import { textoCon } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Snake · La serpiente clásica",
@@ -19,7 +19,7 @@ export default function Page() {
   return (
     <>
       <JuegoSnake />
-      <TextoSeo texto={TEXTOS["juegos/snake"]} />
+      <TextoSeo texto={textoCon("juegos/snake")} />
     </>
   );
 }

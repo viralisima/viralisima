@@ -1,6 +1,6 @@
 import EdadMental from "@/components/EdadMental";
 import TextoSeo from "@/components/TextoSeo";
-import { TEXTOS } from "@/data/textos-seo";
+import { textoCon } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Calculadora de Edad Mental",
@@ -19,7 +19,7 @@ export default function Page() {
   return (
     <>
       <EdadMental />
-      <TextoSeo texto={TEXTOS["edad-mental"]} />
+      <TextoSeo texto={textoCon("edad-mental")} />
     </>
   );
 }

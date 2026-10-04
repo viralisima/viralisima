@@ -1,6 +1,6 @@
 import MemeGenerator from "@/components/MemeGenerator";
 import TextoSeo from "@/components/TextoSeo";
-import { TEXTOS } from "@/data/textos-seo";
+import { textoCon } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Generador de Memes",
@@ -19,7 +19,7 @@ export default function MemesPage() {
   return (
     <>
       <MemeGenerator />
-      <TextoSeo texto={TEXTOS["memes"]} />
+      <TextoSeo texto={textoCon("memes")} />
     </>
   );
 }

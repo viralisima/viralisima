@@ -1,6 +1,6 @@
 import JuegoGloboValiente from "@/components/JuegoGloboValiente";
 import TextoSeo from "@/components/TextoSeo";
-import { TEXTOS } from "@/data/textos-seo";
+import { textoCon } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Globo Valiente",
@@ -18,7 +18,7 @@ export default function Page() {
   return (
     <>
       <JuegoGloboValiente />
-      <TextoSeo texto={TEXTOS["juegos/globo-valiente"]} />
+      <TextoSeo texto={textoCon("juegos/globo-valiente")} />
     </>
   );
 }

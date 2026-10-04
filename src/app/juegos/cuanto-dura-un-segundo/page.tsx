@@ -1,6 +1,6 @@
 import JuegoCuantoDuraUnSegundo from "@/components/JuegoCuantoDuraUnSegundo";
 import TextoSeo from "@/components/TextoSeo";
-import { TEXTOS } from "@/data/textos-seo";
+import { textoCon } from "@/data/textos-seo";
 
 export const metadata = {
   title: "¿Cuánto dura un segundo?",
@@ -18,7 +18,7 @@ export default function Page() {
   return (
     <>
       <JuegoCuantoDuraUnSegundo />
-      <TextoSeo texto={TEXTOS["juegos/cuanto-dura-un-segundo"]} />
+      <TextoSeo texto={textoCon("juegos/cuanto-dura-un-segundo")} />
     </>
   );
 }

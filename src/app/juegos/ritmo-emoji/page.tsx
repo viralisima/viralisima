@@ -1,6 +1,6 @@
 import JuegoRitmoEmoji from "@/components/JuegoRitmoEmoji";
 import TextoSeo from "@/components/TextoSeo";
-import { TEXTOS } from "@/data/textos-seo";
+import { textoCon } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Ritmo Emoji",
@@ -18,7 +18,7 @@ export default function Page() {
   return (
     <>
       <JuegoRitmoEmoji />
-      <TextoSeo texto={TEXTOS["juegos/ritmo-emoji"]} />
+      <TextoSeo texto={textoCon("juegos/ritmo-emoji")} />
     </>
   );
 }

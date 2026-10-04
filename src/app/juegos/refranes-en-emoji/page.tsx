@@ -1,6 +1,6 @@
 import JuegoRefranesEnEmoji from "@/components/JuegoRefranesEnEmoji";
 import TextoSeo from "@/components/TextoSeo";
-import { TEXTOS } from "@/data/textos-seo";
+import { textoCon } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Refranes en Emoji",
@@ -18,7 +18,7 @@ export default function Page() {
   return (
     <>
       <JuegoRefranesEnEmoji />
-      <TextoSeo texto={TEXTOS["juegos/refranes-en-emoji"]} />
+      <TextoSeo texto={textoCon("juegos/refranes-en-emoji")} />
     </>
   );
 }

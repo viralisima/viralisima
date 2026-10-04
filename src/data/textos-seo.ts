@@ -1,10 +1,11 @@
 // Texto visible para buscadores en juegos, quizzes y herramientas.
 // Estas páginas se pintan en el navegador y el HTML llegaba casi vacío (93 % con menos de 300 palabras).
 // Cada entrada: intro «qué es y cómo funciona» + preguntas frecuentes (también van como FAQPage).
-import type { Quiz } from "@/data/quizzes";
+import { QUIZZES, type Quiz } from "@/data/quizzes";
 
 export type Pregunta = { q: string; a: string };
-export type TextoSeo = { titulo: string; intro: string[]; faq: Pregunta[] };
+export type Relacionado = { href: string; titulo: string; desc: string };
+export type TextoSeo = { titulo: string; intro: string[]; faq: Pregunta[]; relacionados?: Relacionado[] };
 
 // Preguntas comunes a todos los juegos con ranking
 const REGISTRO: Pregunta = {
@@ -15,7 +16,11 @@ const MOVIL: Pregunta = {
   q: "¿Funciona en el celular?",
   a: "Sí. Está pensado para jugar con el dedo en el móvil y también con ratón o teclado en la computadora. No hay que instalar nada.",
 };
-const juego = (titulo: string, intro: string[], faq: Pregunta[]): TextoSeo => ({ titulo, intro, faq: [...faq, REGISTRO, MOVIL] });
+const RANKING: Pregunta = {
+  q: "¿Cómo funciona el ranking?",
+  a: "Al terminar la partida puedes guardar tu marca con un apodo. El ranking muestra las mejores puntuaciones de todos los jugadores y sólo guarda el apodo y la puntuación.",
+};
+const juego = (titulo: string, intro: string[], faq: Pregunta[]): TextoSeo => ({ titulo, intro, faq: [...faq, RANKING, REGISTRO, MOVIL] });
 
 // Las herramientas calculan todo en el navegador: no envían nada a ningún servidor
 const PRIVACIDAD: Pregunta = {
@@ -354,11 +359,38 @@ export const TEXTOS: Record<string, TextoSeo> = {
   },
 };
 
+// «También te puede gustar»: 4 páginas del mismo grupo (juegos, herramientas o quizzes), en orden
+// circular a partir de la actual para que cada página enlace a vecinas distintas.
+const primeraFrase = (s: string) => (s.match(/^.*?[.!?](\s|$)/)?.[0] ?? s).trim();
+function vecinos<T>(todos: T[], i: number, n = 4): T[] {
+  const out: T[] = [];
+  for (let k = 1; k <= n && k < todos.length; k++) out.push(todos[(i + k) % todos.length]);
+  return out;
+}
+export function relacionados(clave: string): Relacionado[] {
+  const claves = Object.keys(TEXTOS);
+  const grupo = claves.filter((c) => c.startsWith("juegos/") === clave.startsWith("juegos/"));
+  const i = grupo.indexOf(clave);
+  if (i < 0) return [];
+  return vecinos(grupo, i).map((c) => ({ href: `/${c}`, titulo: TEXTOS[c].titulo, desc: primeraFrase(TEXTOS[c].intro[0]) }));
+}
+export function textoCon(clave: string): TextoSeo | undefined {
+  const t = TEXTOS[clave];
+  return t && { ...t, relacionados: relacionados(clave) };
+}
+
 // Quizzes: el texto se arma con los datos de cada quiz (preguntas y resultados reales)
 const sinEmoji = (s: string) => s.replace(/[\p{Extended_Pictographic}\u{1F1E6}-\u{1F1FF}️]/gu, "").trim();
 const lista = (xs: string[]) => (xs.length > 1 ? `${xs.slice(0, -1).join(", ")} y ${xs[xs.length - 1]}` : xs[0] ?? "");
 
+const relQuiz = (quiz: Quiz): Relacionado[] =>
+  vecinos(QUIZZES, QUIZZES.findIndex((q) => q.slug === quiz.slug)).map((q) => ({ href: `/quiz/${q.slug}`, titulo: q.title, desc: q.subtitle }));
+
 export function textoQuiz(quiz: Quiz): TextoSeo {
+  return { ...textoQuizBase(quiz), relacionados: relQuiz(quiz) };
+}
+
+function textoQuizBase(quiz: Quiz): TextoSeo {
   const n = quiz.questions.length;
   const resultados = quiz.results.map((r) => sinEmoji(r.title));
   if (quiz.type === "trivia") {

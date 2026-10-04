@@ -1,6 +1,6 @@
 import JuegoPong from "@/components/JuegoPong";
 import TextoSeo from "@/components/TextoSeo";
-import { TEXTOS } from "@/data/textos-seo";
+import { textoCon } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Pong · El clásico contra la máquina",
@@ -19,7 +19,7 @@ export default function Page() {
   return (
     <>
       <JuegoPong />
-      <TextoSeo texto={TEXTOS["juegos/pong"]} />
+      <TextoSeo texto={textoCon("juegos/pong")} />
     </>
   );
 }

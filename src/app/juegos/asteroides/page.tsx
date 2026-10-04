@@ -1,6 +1,6 @@
 import JuegoAsteroides from "@/components/JuegoAsteroides";
 import TextoSeo from "@/components/TextoSeo";
-import { TEXTOS } from "@/data/textos-seo";
+import { textoCon } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Asteroides · Arcade clásico",
@@ -19,7 +19,7 @@ export default function Page() {
   return (
     <>
       <JuegoAsteroides />
-      <TextoSeo texto={TEXTOS["juegos/asteroides"]} />
+      <TextoSeo texto={textoCon("juegos/asteroides")} />
     </>
   );
 }

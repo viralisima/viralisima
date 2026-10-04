@@ -1,6 +1,6 @@
 import DiasVividos from "@/components/DiasVividos";
 import TextoSeo from "@/components/TextoSeo";
-import { TEXTOS } from "@/data/textos-seo";
+import { textoCon } from "@/data/textos-seo";
 
 export const metadata = {
   title: "¿Cuántos días has vivido? Calculadora",
@@ -19,7 +19,7 @@ export default function Page() {
   return (
     <>
       <DiasVividos />
-      <TextoSeo texto={TEXTOS["dias-vividos"]} />
+      <TextoSeo texto={textoCon("dias-vividos")} />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import JuegoPalabrasEncadenadas from "@/components/JuegoPalabrasEncadenadas";
 import TextoSeo from "@/components/TextoSeo";
-import { TEXTOS } from "@/data/textos-seo";
+import { textoCon } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Palabras Encadenadas",
@@ -19,7 +19,7 @@ export default function Page() {
   return (
     <>
       <JuegoPalabrasEncadenadas />
-      <TextoSeo texto={TEXTOS["juegos/palabras-encadenadas"]} />
+      <TextoSeo texto={textoCon("juegos/palabras-encadenadas")} />
     </>
   );
 }

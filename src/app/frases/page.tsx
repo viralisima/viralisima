@@ -1,6 +1,6 @@
 import FrasesGenerator from "@/components/FrasesGenerator";
 import TextoSeo from "@/components/TextoSeo";
-import { TEXTOS } from "@/data/textos-seo";
+import { textoCon } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Generador de frases virales para redes",
@@ -19,7 +19,7 @@ export default function FrasesPage() {
   return (
     <>
       <FrasesGenerator />
-      <TextoSeo texto={TEXTOS["frases"]} />
+      <TextoSeo texto={textoCon("frases")} />
     </>
   );
 }

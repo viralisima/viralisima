@@ -1,5 +1,6 @@
 // Bloque de texto para buscadores, renderizado en servidor debajo del juego, quiz o herramienta.
 // Fondo neutro y texto oscuro: el velo de globals.css se aplica a text-white + bg-gradient, aquí no.
+import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import type { TextoSeo as Texto } from "@/data/textos-seo";
 
@@ -23,6 +24,21 @@ export default function TextoSeo({ texto }: { texto?: Texto }) {
             </details>
           ))}
         </div>
+        {texto.relacionados && texto.relacionados.length > 0 && (
+          <>
+            <h2 className="text-xl font-black text-slate-900 mt-8 mb-3">También te puede gustar</h2>
+            <ul className="grid sm:grid-cols-2 gap-3">
+              {texto.relacionados.map((r) => (
+                <li key={r.href}>
+                  <Link href={r.href} className="block h-full rounded-xl border border-slate-200 bg-white p-4 hover:border-slate-400">
+                    <span className="block font-bold text-slate-900">{r.titulo}</span>
+                    <span className="block text-sm text-slate-600 mt-1">{r.desc}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
       </div>
       <JsonLd
         data={{

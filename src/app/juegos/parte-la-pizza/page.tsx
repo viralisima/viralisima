@@ -1,6 +1,6 @@
 import JuegoParteLaPizza from "@/components/JuegoParteLaPizza";
 import TextoSeo from "@/components/TextoSeo";
-import { TEXTOS } from "@/data/textos-seo";
+import { textoCon } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Parte la Pizza",
@@ -18,7 +18,7 @@ export default function Page() {
   return (
     <>
       <JuegoParteLaPizza />
-      <TextoSeo texto={TEXTOS["juegos/parte-la-pizza"]} />
+      <TextoSeo texto={textoCon("juegos/parte-la-pizza")} />
     </>
   );
 }

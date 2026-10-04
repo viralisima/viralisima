@@ -1,6 +1,6 @@
 import JuegoMamaDice from "@/components/JuegoMamaDice";
 import TextoSeo from "@/components/TextoSeo";
-import { TEXTOS } from "@/data/textos-seo";
+import { textoCon } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Mamá Dice",
@@ -18,7 +18,7 @@ export default function Page() {
   return (
     <>
       <JuegoMamaDice />
-      <TextoSeo texto={TEXTOS["juegos/mama-dice"]} />
+      <TextoSeo texto={textoCon("juegos/mama-dice")} />
     </>
   );
 }

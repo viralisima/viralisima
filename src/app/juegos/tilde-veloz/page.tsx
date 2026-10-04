@@ -1,6 +1,6 @@
 import JuegoTildeVeloz from "@/components/JuegoTildeVeloz";
 import TextoSeo from "@/components/TextoSeo";
-import { TEXTOS } from "@/data/textos-seo";
+import { textoCon } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Tilde Veloz",
@@ -18,7 +18,7 @@ export default function Page() {
   return (
     <>
       <JuegoTildeVeloz />
-      <TextoSeo texto={TEXTOS["juegos/tilde-veloz"]} />
+      <TextoSeo texto={textoCon("juegos/tilde-veloz")} />
     </>
   );
 }

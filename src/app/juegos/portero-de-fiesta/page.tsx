@@ -1,6 +1,6 @@
 import JuegoPorteroDeFiesta from "@/components/JuegoPorteroDeFiesta";
 import TextoSeo from "@/components/TextoSeo";
-import { TEXTOS } from "@/data/textos-seo";
+import { textoCon } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Portero de Fiesta",
@@ -18,7 +18,7 @@ export default function Page() {
   return (
     <>
       <JuegoPorteroDeFiesta />
-      <TextoSeo texto={TEXTOS["juegos/portero-de-fiesta"]} />
+      <TextoSeo texto={textoCon("juegos/portero-de-fiesta")} />
     </>
   );
 }

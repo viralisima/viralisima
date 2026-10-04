@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SIGNS } from "@/data/horoscopo";
 import TextoSeo from "@/components/TextoSeo";
-import { TEXTOS } from "@/data/textos-seo";
+import { textoCon } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Horóscopo de hoy en español",
@@ -55,7 +55,7 @@ export default function Horoscopo() {
           ))}
         </div>
       </div>
-      <TextoSeo texto={TEXTOS.horoscopo} />
+      <TextoSeo texto={textoCon("horoscopo")} />
     </main>
   );
 }

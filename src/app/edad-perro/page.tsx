@@ -1,6 +1,6 @@
 import EdadPerro from "@/components/EdadPerro";
 import TextoSeo from "@/components/TextoSeo";
-import { TEXTOS } from "@/data/textos-seo";
+import { textoCon } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Calculadora de la Edad Real de tu Perro (años humanos)",
@@ -19,7 +19,7 @@ export default function Page() {
   return (
     <>
       <EdadPerro />
-      <TextoSeo texto={TEXTOS["edad-perro"]} />
+      <TextoSeo texto={textoCon("edad-perro")} />
     </>
   );
 }

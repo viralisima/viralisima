@@ -1,6 +1,6 @@
 import Compatibilidad from "@/components/Compatibilidad";
 import TextoSeo from "@/components/TextoSeo";
-import { TEXTOS } from "@/data/textos-seo";
+import { textoCon } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Calculadora de Compatibilidad de Pareja",
@@ -19,7 +19,7 @@ export default function Page() {
   return (
     <>
       <Compatibilidad />
-      <TextoSeo texto={TEXTOS["compatibilidad"]} />
+      <TextoSeo texto={textoCon("compatibilidad")} />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import JuegoBolsilloExacto from "@/components/JuegoBolsilloExacto";
 import TextoSeo from "@/components/TextoSeo";
-import { TEXTOS } from "@/data/textos-seo";
+import { textoCon } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Bolsillo Exacto",
@@ -18,7 +18,7 @@ export default function Page() {
   return (
     <>
       <JuegoBolsilloExacto />
-      <TextoSeo texto={TEXTOS["juegos/bolsillo-exacto"]} />
+      <TextoSeo texto={textoCon("juegos/bolsillo-exacto")} />
     </>
   );
 }
