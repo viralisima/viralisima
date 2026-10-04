@@ -228,7 +228,7 @@ export default function Juegos() {
     <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-5xl mx-auto px-4 pt-10 pb-16">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-sm text-slate-500 hover:text-slate-900">
+          <Link href="/" className="inline-flex items-center min-h-11 text-sm text-slate-500 hover:text-slate-900">
             ← Viralísima
           </Link>
           <Link href="/perfil" className="text-sm font-semibold text-fuchsia-600 hover:text-fuchsia-800">
@@ -256,7 +256,7 @@ export default function Juegos() {
               <div className={`bg-gradient-to-br ${g.gradient} aspect-[3/4] p-6 flex flex-col justify-between text-white`}>
                 <div className="text-7xl">{g.emoji}</div>
                 <div>
-                  <div className="text-xs font-bold uppercase tracking-widest opacity-80 mb-2">
+                  <div className="text-xs font-bold uppercase tracking-widest mb-2">
                     🎮 Juego · {g.duration}
                   </div>
                   <h2 className="text-2xl font-black leading-tight mb-2">{g.title}</h2>

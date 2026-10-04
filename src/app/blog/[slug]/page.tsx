@@ -84,12 +84,12 @@ export default async function BlogPostPage({
         className={`bg-gradient-to-br ${post.coverGradient} text-white`}
       >
         <div className="max-w-3xl mx-auto px-4 pt-10 pb-12">
-          <Link href="/blog" className="text-sm opacity-80 hover:opacity-100">
+          <Link href="/blog" className="inline-flex items-center min-h-11 text-sm hover:underline">
             ← Blog Viralísima
           </Link>
           <div className="text-center mt-8">
             <div className="text-7xl mb-4">{post.emoji}</div>
-            <div className="text-xs font-bold uppercase tracking-widest opacity-80 mb-2">
+            <div className="text-xs font-bold uppercase tracking-widest mb-2">
               {post.category} · {new Date(post.date).toLocaleDateString("es-ES", {
                 day: "numeric",
                 month: "long",

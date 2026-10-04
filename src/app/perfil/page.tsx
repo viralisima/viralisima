@@ -12,7 +12,7 @@ export default function Page() {
   return (
     <main className="min-h-[calc(100vh-3.5rem)] bg-black text-white">
       <div className="max-w-md mx-auto px-4 pt-10 pb-16">
-        <Link href="/juegos" className="text-sm opacity-70 hover:opacity-100">← Juegos</Link>
+        <Link href="/juegos" className="inline-flex items-center min-h-11 text-sm hover:underline">← Juegos</Link>
         <div className="text-center my-8">
           <div className="text-5xl mb-2">🏆</div>
           <h1 className="text-3xl md:text-4xl font-black">Guarda tus récords</h1>

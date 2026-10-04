@@ -62,7 +62,7 @@ export default function Compatibilidad() {
     return (
       <div className={`min-h-screen bg-gradient-to-br ${info.bg} text-white`}>
         <div className="max-w-2xl mx-auto px-4 pt-10 pb-16">
-          <Link href="/" className="text-sm opacity-80 hover:opacity-100">
+          <Link href="/" className="inline-flex items-center min-h-11 text-sm hover:underline">
             ← Viralísima
           </Link>
           <div className="text-center mt-10">
@@ -103,7 +103,7 @@ export default function Compatibilidad() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-xl mx-auto px-4 pt-8 pb-16">
-        <Link href="/" className="text-sm text-slate-500 hover:text-slate-900">
+        <Link href="/" className="inline-flex items-center min-h-11 text-sm text-slate-500 hover:text-slate-900">
           ← Viralísima
         </Link>
         <div className="text-center my-8">

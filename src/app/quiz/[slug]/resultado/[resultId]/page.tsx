@@ -59,12 +59,12 @@ export default async function ResultPage({
   return (
     <div className={`min-h-screen bg-gradient-to-br ${result.bgGradient} text-white`}>
       <div className="max-w-2xl mx-auto px-4 pt-10 pb-16">
-        <Link href="/" className="text-sm opacity-80 hover:opacity-100">
+        <Link href="/" className="inline-flex items-center min-h-11 text-sm hover:underline">
           ← Viralísima
         </Link>
 
         <div className="text-center mt-8">
-          <div className="text-xs font-bold uppercase tracking-widest opacity-80 mb-3">
+          <div className="text-xs font-bold uppercase tracking-widest mb-3">
             Resultado del test · {quiz.title}
           </div>
           <div className="text-9xl mb-4">{result.emoji}</div>

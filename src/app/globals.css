@@ -1,9 +1,12 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* La web sólo tiene tema claro: todos los fondos están escritos en claro, así que
+   un modo oscuro que sólo cambia el color del texto deja botones y el menú invisibles */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  color-scheme: light;
 }
 
 @theme inline {
@@ -13,15 +16,49 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Foco de teclado bien visible (el del navegador es una línea de 1 px) */
+:focus-visible {
+  outline: 3px solid #c026d3;
+  outline-offset: 2px;
+}
+
+/* Velo oscuro bajo el texto blanco de los degradados. Sin él, el blanco sobre
+   amarillo, cian o naranja no llega a 4,5:1 (amarillo-400 da 1,5:1). Va detrás de
+   los hijos (isolation + z-index -1), así que no tapa texto ni botones */
+.text-white[class*="bg-gradient-to-"] {
+  isolation: isolate;
+}
+.text-white[class*="bg-gradient-to-"]:not(.absolute, .fixed, .sticky) {
+  position: relative;
+}
+.text-white[class*="bg-gradient-to-"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: rgb(0 0 0 / 0.2);
+}
+
+/* Degradados con algún tono claro: velo más fuerte abajo, donde va el texto */
+.text-white:is(
+    [class*="from-yellow-"], [class*="via-yellow-"], [class*="to-yellow-"],
+    [class*="from-amber-"], [class*="via-amber-"], [class*="to-amber-"],
+    [class*="from-lime-"], [class*="via-lime-"], [class*="to-lime-"],
+    [class*="from-cyan-"], [class*="via-cyan-"], [class*="to-cyan-"],
+    [class*="from-sky-"], [class*="via-sky-"], [class*="to-sky-"],
+    [class*="from-emerald-"], [class*="via-emerald-"], [class*="to-emerald-"],
+    [class*="from-teal-"], [class*="via-teal-"], [class*="to-teal-"],
+    [class*="from-green-"], [class*="via-green-"], [class*="to-green-"],
+    [class*="from-orange-"], [class*="via-orange-"], [class*="to-orange-"],
+    [class*="-100"], [class*="-200"], [class*="-300"], [class*="-400"]
+  )[class*="bg-gradient-to-"]::after {
+  background: linear-gradient(to top, rgb(0 0 0 / 0.55), rgb(0 0 0 / 0.5) 60%, rgb(0 0 0 / 0.2));
 }

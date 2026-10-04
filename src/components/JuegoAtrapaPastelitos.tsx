@@ -350,7 +350,7 @@ export default function JuegoAtrapaPastelitos() {
       <div className="max-w-2xl mx-auto px-4 pt-3 pb-6">
         {state !== "playing" && (
           <>
-            <Link href="/juegos" className="text-sm text-slate-500 hover:text-slate-900">
+            <Link href="/juegos" className="inline-flex items-center min-h-11 text-sm text-slate-500 hover:text-slate-900">
               ← Juegos
             </Link>
             <header className="text-center my-4">

@@ -154,7 +154,7 @@ export default function Home() {
       <section id="juegos" className="px-4 pb-10 max-w-6xl mx-auto scroll-mt-20">
         <div className="flex items-baseline justify-between mb-4">
           <h2 className="text-2xl font-black text-slate-800">🎮 Mini-juegos</h2>
-          <Link href="/juegos" className="text-sm font-semibold text-fuchsia-600 hover:underline">
+          <Link href="/juegos" className="inline-flex items-center min-h-11 text-sm font-semibold text-fuchsia-600 hover:underline">
             Ver todos →
           </Link>
         </div>
@@ -168,7 +168,7 @@ export default function Home() {
               <div className={`bg-gradient-to-br ${g.gradient} aspect-[16/9] p-6 text-white flex flex-col justify-between`}>
                 <div className="text-5xl">{g.emoji}</div>
                 <div>
-                  <div className="text-xs font-semibold uppercase tracking-wider opacity-80 mb-1">🎮 Juego</div>
+                  <div className="text-xs font-semibold uppercase tracking-wider mb-1">🎮 Juego</div>
                   <h3 className="text-xl font-black leading-tight">{g.title}</h3>
                   <p className="text-white/90 text-sm mt-1">{g.sub}</p>
                 </div>
@@ -180,25 +180,26 @@ export default function Home() {
 
       <section id="herramientas" className="px-4 pb-10 max-w-6xl mx-auto scroll-mt-20">
         <h2 className="text-2xl font-black text-slate-800 mb-4">🛠️ Herramientas virales</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {/* En móvil, dos columnas compactas: a una columna la portada medía 16 pantallas */}
+        <div className="grid grid-cols-2 gap-3 md:gap-5">
           {TOOLS.map((t) => (
             <Link
               key={t.slug}
               href={t.href}
-              className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+              className="group relative overflow-hidden rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 motion-safe:hover:-translate-y-1"
             >
               <div
-                className={`bg-gradient-to-br ${t.coverGradient} aspect-[16/9] p-6 flex flex-col justify-between text-white`}
+                className={`bg-gradient-to-br ${t.coverGradient} h-full min-h-36 md:min-h-0 md:aspect-[16/9] p-4 md:p-6 flex flex-col justify-between gap-3 text-white`}
               >
                 <div className="flex justify-between items-start">
-                  <div className="text-6xl">{t.emoji}</div>
-                  <div className="text-xs font-semibold uppercase tracking-wider opacity-80 bg-white/20 px-3 py-1 rounded-full">
+                  <div className="text-4xl md:text-6xl" aria-hidden="true">{t.emoji}</div>
+                  <div className="hidden md:block text-xs font-semibold uppercase tracking-wider bg-black/35 px-3 py-1 rounded-full">
                     {t.type} · {t.timeEstimate}
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-2xl md:text-3xl font-black leading-tight mb-1">{t.title}</h3>
-                  <p className="text-white/90 text-sm">{t.subtitle}</p>
+                  <h3 className="text-base md:text-3xl font-black leading-tight md:mb-1">{t.title}</h3>
+                  <p className="hidden md:block text-white/90 text-sm">{t.subtitle}</p>
                 </div>
               </div>
             </Link>
@@ -208,19 +209,19 @@ export default function Home() {
 
       <section id="quizzes" className="px-4 pb-24 max-w-6xl mx-auto scroll-mt-20">
         <h2 className="text-2xl font-black text-slate-800 mb-4">🎭 Quizzes virales</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
           {QUIZZES.map((q) => (
             <Link
               key={q.slug}
               href={`/quiz/${q.slug}`}
-              className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+              className="group relative overflow-hidden rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 motion-safe:hover:-translate-y-1"
             >
               <div
-                className={`bg-gradient-to-br ${q.coverGradient} aspect-[4/5] p-6 flex flex-col justify-between text-white`}
+                className={`bg-gradient-to-br ${q.coverGradient} h-full min-h-44 md:min-h-0 md:aspect-[4/5] p-4 md:p-6 flex flex-col justify-between gap-3 text-white`}
               >
-                <div className="text-7xl">{q.emoji}</div>
+                <div className="text-5xl md:text-7xl" aria-hidden="true">{q.emoji}</div>
                 <div>
-                  <div className="text-xs font-semibold uppercase tracking-wider opacity-80 mb-2">
+                  <div className="hidden md:block text-xs font-semibold uppercase tracking-wider mb-2">
                     {q.type === "trivia"
                       ? "🧠 Trivia"
                       : q.type === "personality"
@@ -228,9 +229,9 @@ export default function Home() {
                         : "⚙️ Generador"}{" "}
                     · {q.timeEstimate}
                   </div>
-                  <h2 className="text-2xl font-black leading-tight mb-2">{q.title}</h2>
-                  <p className="text-white/90 text-sm">{q.subtitle}</p>
-                  <div className="mt-4 inline-flex items-center gap-1 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-semibold group-hover:bg-white group-hover:text-slate-900 transition-colors">
+                  <h3 className="text-base md:text-2xl font-black leading-tight md:mb-2">{q.title}</h3>
+                  <p className="hidden md:block text-white/90 text-sm">{q.subtitle}</p>
+                  <div className="hidden md:inline-flex mt-4 items-center gap-1 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-semibold group-hover:bg-white group-hover:text-slate-900 transition-colors">
                     Empezar →
                   </div>
                 </div>
@@ -244,7 +245,7 @@ export default function Home() {
         <section className="px-4 pb-24 max-w-6xl mx-auto">
           <div className="flex items-baseline justify-between mb-4">
             <h2 className="text-2xl font-black text-slate-800">📝 Del blog</h2>
-            <Link href="/blog" className="text-sm font-semibold text-fuchsia-600 hover:underline">
+            <Link href="/blog" className="inline-flex items-center min-h-11 text-sm font-semibold text-fuchsia-600 hover:underline">
               Ver todos →
             </Link>
           </div>
@@ -258,7 +259,7 @@ export default function Home() {
                 <div className={`bg-gradient-to-br ${p.coverGradient} p-5 text-white aspect-[4/3] flex flex-col justify-between`}>
                   <div className="text-5xl">{p.emoji}</div>
                   <div>
-                    <div className="text-[10px] font-bold uppercase tracking-wider opacity-80 mb-1">{p.category}</div>
+                    <div className="text-xs font-bold uppercase tracking-wider mb-1">{p.category}</div>
                     <h3 className="text-lg font-black leading-tight">{p.title}</h3>
                   </div>
                 </div>
@@ -273,31 +274,31 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 text-sm">
             <div>
               <h4 className="font-bold mb-3">Viralísima</h4>
-              <ul className="space-y-2 text-white/70">
-                <li><Link href="/sobre-nosotros" className="hover:text-white">Sobre nosotros</Link></li>
-                <li><Link href="/contacto" className="hover:text-white">Contacto</Link></li>
+              <ul className="text-white/70">
+                <li><Link href="/sobre-nosotros" className="inline-block py-3 hover:text-white">Sobre nosotros</Link></li>
+                <li><Link href="/contacto" className="inline-block py-3 hover:text-white">Contacto</Link></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-3">Explora</h4>
-              <ul className="space-y-2 text-white/70">
-                <li><Link href="/#quizzes" className="hover:text-white">Quizzes</Link></li>
-                <li><Link href="/#herramientas" className="hover:text-white">Herramientas</Link></li>
-                <li><Link href="/horoscopo" className="hover:text-white">Horóscopo</Link></li>
-                <li><Link href="/blog" className="hover:text-white">Blog</Link></li>
+              <ul className="text-white/70">
+                <li><Link href="/#quizzes" className="inline-block py-3 hover:text-white">Quizzes</Link></li>
+                <li><Link href="/#herramientas" className="inline-block py-3 hover:text-white">Herramientas</Link></li>
+                <li><Link href="/horoscopo" className="inline-block py-3 hover:text-white">Horóscopo</Link></li>
+                <li><Link href="/blog" className="inline-block py-3 hover:text-white">Blog</Link></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-3">Legal</h4>
-              <ul className="space-y-2 text-white/70">
-                <li><Link href="/privacidad" className="hover:text-white">Privacidad</Link></li>
-                <li><Link href="/terminos" className="hover:text-white">Términos</Link></li>
+              <ul className="text-white/70">
+                <li><Link href="/privacidad" className="inline-block py-3 hover:text-white">Privacidad</Link></li>
+                <li><Link href="/terminos" className="inline-block py-3 hover:text-white">Términos</Link></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-3">Contacto</h4>
-              <ul className="space-y-2 text-white/70">
-                <li><a href="mailto:info@viralisima.com" className="hover:text-white">info@viralisima.com</a></li>
+              <ul className="text-white/70">
+                <li><a href="mailto:info@viralisima.com" className="inline-block py-3 hover:text-white">info@viralisima.com</a></li>
               </ul>
             </div>
           </div>

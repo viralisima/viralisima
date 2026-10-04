@@ -14,7 +14,7 @@ export default function BlogIndex() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-5xl mx-auto px-4 pt-10 pb-16">
-        <Link href="/" className="text-sm text-slate-500 hover:text-slate-900">
+        <Link href="/" className="inline-flex items-center min-h-11 text-sm text-slate-500 hover:text-slate-900">
           ← Viralísima
         </Link>
 
@@ -43,7 +43,7 @@ export default function BlogIndex() {
                 >
                   <div className="text-5xl">{p.emoji}</div>
                   <div>
-                    <div className="text-xs font-semibold uppercase tracking-wider opacity-80 mb-1">
+                    <div className="text-xs font-semibold uppercase tracking-wider mb-1">
                       {p.category} · {new Date(p.date).toLocaleDateString("es-ES", { day: "numeric", month: "short" })}
                     </div>
                     <h2 className="text-xl font-black leading-tight">{p.title}</h2>

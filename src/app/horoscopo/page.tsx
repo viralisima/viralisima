@@ -27,7 +27,7 @@ export default function Horoscopo() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-4xl mx-auto px-4 pt-8 pb-16">
-        <Link href="/" className="text-sm text-slate-500 hover:text-slate-900">
+        <Link href="/" className="inline-flex items-center min-h-11 text-sm text-slate-500 hover:text-slate-900">
           ← Viralísima
         </Link>
 
@@ -48,7 +48,7 @@ export default function Horoscopo() {
             >
               <div className="text-4xl mb-2">{s.emoji}</div>
               <div className="font-black text-lg">{s.name}</div>
-              <div className="text-xs opacity-80 mt-1">{s.dates}</div>
+              <div className="text-xs mt-1">{s.dates}</div>
             </Link>
           ))}
         </div>

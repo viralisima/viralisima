@@ -97,7 +97,7 @@ export default function NombreArtistaGenerator() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-3xl mx-auto px-4 pt-8 pb-16">
-        <Link href="/" className="text-sm text-slate-500 hover:text-slate-900">
+        <Link href="/" className="inline-flex items-center min-h-11 text-sm text-slate-500 hover:text-slate-900">
           ← Viralísima
         </Link>
 

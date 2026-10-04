@@ -87,7 +87,7 @@ export default function JuegoReflejos() {
       }`}
     >
       <div className="max-w-2xl mx-auto px-4 pt-6 pb-10">
-        <Link href="/juegos" className="text-sm opacity-80 hover:opacity-100">
+        <Link href="/juegos" className="inline-flex items-center min-h-11 text-sm hover:underline">
           ← Juegos
         </Link>
 

@@ -193,7 +193,7 @@ export default function JuegoPong() {
   return (
     <div className="min-h-[calc(100vh-3.5rem)] bg-black text-white">
       <div className="max-w-2xl mx-auto px-4 pt-6 pb-10">
-        <Link href="/juegos" className="text-sm opacity-70 hover:opacity-100">← Juegos</Link>
+        <Link href="/juegos" className="inline-flex items-center min-h-11 text-sm hover:underline">← Juegos</Link>
         <div className="text-center mt-4">
           <h1 className="text-3xl md:text-5xl font-black tracking-widest font-mono">PONG</h1>
           <p className="opacity-70 mt-1 text-sm">Contra la máquina · récord: <strong>{best}</strong></p>

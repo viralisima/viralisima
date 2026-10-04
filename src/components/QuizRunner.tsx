@@ -72,7 +72,7 @@ export default function QuizRunner({ quiz }: { quiz: Quiz }) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-2xl mx-auto px-4 pt-8 pb-16">
-        <Link href="/" className="text-sm text-slate-500 hover:text-slate-900">
+        <Link href="/" className="inline-flex items-center min-h-11 text-sm text-slate-500 hover:text-slate-900">
           ← Viralísima
         </Link>
 
@@ -129,7 +129,7 @@ function ResultCard({
   return (
     <div className={`min-h-screen bg-gradient-to-br ${result.bgGradient} text-white`}>
       <div className="max-w-2xl mx-auto px-4 pt-10 pb-16">
-        <Link href="/" className="text-sm opacity-80 hover:opacity-100">
+        <Link href="/" className="inline-flex items-center min-h-11 text-sm hover:underline">
           ← Viralísima
         </Link>
 

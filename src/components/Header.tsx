@@ -39,8 +39,20 @@ export default function Header() {
         setOpenDropdown(null);
       }
     };
+    // Escape cierra cualquier desplegable abierto, como en un menú nativo
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpenDropdown(null);
+        setMobileOpen(false);
+        setExpandedMobile(null);
+      }
+    };
     document.addEventListener("mousedown", onClick);
-    return () => document.removeEventListener("mousedown", onClick);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onClick);
+      document.removeEventListener("keydown", onKey);
+    };
   }, []);
 
   const quizItems = QUIZZES.map((q) => ({
@@ -103,7 +115,7 @@ export default function Header() {
       <nav className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
         <Link
           href="/"
-          className="text-xl font-black tracking-tight bg-gradient-to-r from-fuchsia-600 via-pink-500 to-orange-500 bg-clip-text text-transparent"
+          className="py-2.5 text-xl font-black tracking-tight bg-gradient-to-r from-fuchsia-600 via-pink-500 to-orange-500 bg-clip-text text-transparent"
           onClick={closeAll}
         >
           Viralísima
@@ -124,6 +136,8 @@ export default function Header() {
                 <>
                   <button
                     onClick={() => setOpenDropdown(openDropdown === s.label ? null : s.label)}
+                    aria-expanded={openDropdown === s.label}
+                    aria-haspopup="true"
                     className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors flex items-center gap-1 ${
                       openDropdown === s.label
                         ? "text-fuchsia-600 bg-fuchsia-50"
@@ -167,8 +181,9 @@ export default function Header() {
         {/* Mobile burger */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
-          aria-label="Abrir menú"
+          className="md:hidden p-2.5 -mr-2.5 rounded-lg text-slate-800 hover:bg-slate-100 transition-colors"
+          aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={mobileOpen}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
             {mobileOpen ? (
@@ -206,6 +221,7 @@ export default function Header() {
                     onClick={() =>
                       setExpandedMobile(expandedMobile === s.label ? null : s.label)
                     }
+                    aria-expanded={expandedMobile === s.label}
                     className="w-full flex items-center justify-between px-6 py-3 font-bold text-slate-800 hover:bg-slate-50"
                   >
                     {s.label}

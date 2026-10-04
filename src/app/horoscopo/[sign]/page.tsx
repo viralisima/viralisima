@@ -66,7 +66,7 @@ export default async function SignPage({
   return (
     <div className={`min-h-screen bg-gradient-to-br ${bg} text-white`}>
       <div className="max-w-2xl mx-auto px-4 pt-10 pb-16">
-        <Link href="/horoscopo" className="text-sm opacity-80 hover:opacity-100">
+        <Link href="/horoscopo" className="inline-flex items-center min-h-11 text-sm hover:underline">
           ← Todos los signos
         </Link>
 
@@ -78,14 +78,14 @@ export default async function SignPage({
 
         <div className="mt-10 space-y-6">
           <section className="bg-white/15 backdrop-blur-sm rounded-3xl p-6">
-            <h2 className="text-xs font-bold uppercase tracking-widest opacity-80 mb-2">
+            <h2 className="text-xs font-bold uppercase tracking-widest mb-2">
               Tu personalidad
             </h2>
             <p className="text-lg leading-relaxed">{s.personality}</p>
           </section>
 
           <section className="bg-white/15 backdrop-blur-sm rounded-3xl p-6">
-            <h2 className="text-xs font-bold uppercase tracking-widest opacity-80 mb-4">
+            <h2 className="text-xs font-bold uppercase tracking-widest mb-4">
               Tu semana
             </h2>
             <div className="space-y-4">
@@ -109,7 +109,7 @@ export default async function SignPage({
           </section>
 
           <section className="bg-white/15 backdrop-blur-sm rounded-3xl p-6">
-            <h2 className="text-xs font-bold uppercase tracking-widest opacity-80 mb-2">
+            <h2 className="text-xs font-bold uppercase tracking-widest mb-2">
               Compatibilidad
             </h2>
             <div className="flex flex-wrap gap-2">

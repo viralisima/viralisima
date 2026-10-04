@@ -10,7 +10,7 @@ export default function Page() {
   return (
     <main className="min-h-screen bg-white">
       <article className="max-w-3xl mx-auto px-4 py-12 prose prose-slate prose-lg">
-        <Link href="/" className="text-sm text-slate-500 hover:text-slate-900 no-underline">
+        <Link href="/" className="inline-flex items-center min-h-11 text-sm text-slate-500 hover:text-slate-900 no-underline">
           ← Viralísima
         </Link>
 
