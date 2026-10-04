@@ -1,4 +1,6 @@
 import JuegoNoDespiertesALaAbuela from "@/components/JuegoNoDespiertesALaAbuela";
+import TextoSeo from "@/components/TextoSeo";
+import { TEXTOS } from "@/data/textos-seo";
 
 export const metadata = {
   title: "No despiertes a la abuela",
@@ -13,5 +15,10 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <JuegoNoDespiertesALaAbuela />;
+  return (
+    <>
+      <JuegoNoDespiertesALaAbuela />
+      <TextoSeo texto={TEXTOS["juegos/no-despiertes-a-la-abuela"]} />
+    </>
+  );
 }

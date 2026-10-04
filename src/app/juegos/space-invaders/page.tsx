@@ -1,4 +1,6 @@
 import JuegoSpaceInvaders from "@/components/JuegoSpaceInvaders";
+import TextoSeo from "@/components/TextoSeo";
+import { TEXTOS } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Space Invaders · Arcade clásico",
@@ -14,5 +16,10 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <JuegoSpaceInvaders />;
+  return (
+    <>
+      <JuegoSpaceInvaders />
+      <TextoSeo texto={TEXTOS["juegos/space-invaders"]} />
+    </>
+  );
 }

@@ -1,4 +1,6 @@
 import JuegoBloques from "@/components/JuegoBloques";
+import TextoSeo from "@/components/TextoSeo";
+import { TEXTOS } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Bloques · Puzzle de piezas que caen",
@@ -14,5 +16,10 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <JuegoBloques />;
+  return (
+    <>
+      <JuegoBloques />
+      <TextoSeo texto={TEXTOS["juegos/bloques"]} />
+    </>
+  );
 }

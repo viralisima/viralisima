@@ -1,4 +1,6 @@
 import HistoriasGenerator from "@/components/HistoriasGenerator";
+import TextoSeo from "@/components/TextoSeo";
+import { TEXTOS } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Generador de Historias Cortas",
@@ -14,5 +16,10 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <HistoriasGenerator />;
+  return (
+    <>
+      <HistoriasGenerator />
+      <TextoSeo texto={TEXTOS["historias"]} />
+    </>
+  );
 }

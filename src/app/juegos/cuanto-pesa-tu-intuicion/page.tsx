@@ -1,4 +1,6 @@
 import JuegoCuantoPesaTuIntuicion from "@/components/JuegoCuantoPesaTuIntuicion";
+import TextoSeo from "@/components/TextoSeo";
+import { TEXTOS } from "@/data/textos-seo";
 
 export const metadata = {
   title: "¿Cuánto pesa?",
@@ -13,5 +15,10 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <JuegoCuantoPesaTuIntuicion />;
+  return (
+    <>
+      <JuegoCuantoPesaTuIntuicion />
+      <TextoSeo texto={TEXTOS["juegos/cuanto-pesa-tu-intuicion"]} />
+    </>
+  );
 }

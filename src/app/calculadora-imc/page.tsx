@@ -1,4 +1,6 @@
 import IMCCalc from "@/components/IMCCalc";
+import TextoSeo from "@/components/TextoSeo";
+import { TEXTOS } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Calculadora de IMC (Índice de Masa Corporal)",
@@ -14,5 +16,10 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <IMCCalc />;
+  return (
+    <>
+      <IMCCalc />
+      <TextoSeo texto={TEXTOS["calculadora-imc"]} />
+    </>
+  );
 }

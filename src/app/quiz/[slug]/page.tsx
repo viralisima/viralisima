@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import QuizRunner from "@/components/QuizRunner";
 import JsonLd, { SITE } from "@/components/JsonLd";
 import { QUIZZES, getQuiz } from "@/data/quizzes";
+import TextoSeo from "@/components/TextoSeo";
+import { textoQuiz } from "@/data/textos-seo";
 import type { Metadata } from "next";
 
 export async function generateStaticParams() {
@@ -60,6 +62,7 @@ export default async function QuizPage({
         }}
       />
       <QuizRunner quiz={quiz} />
+      <TextoSeo texto={textoQuiz(quiz)} />
     </>
   );
 }

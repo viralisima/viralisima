@@ -1,4 +1,6 @@
 import JuegoReflejos from "@/components/JuegoReflejos";
+import TextoSeo from "@/components/TextoSeo";
+import { TEXTOS } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Test de Reflejos",
@@ -13,5 +15,10 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <JuegoReflejos />;
+  return (
+    <>
+      <JuegoReflejos />
+      <TextoSeo texto={TEXTOS["juegos/reflejos"]} />
+    </>
+  );
 }

@@ -1,4 +1,6 @@
 import AuraGenerator from "@/components/AuraGenerator";
+import TextoSeo from "@/components/TextoSeo";
+import { TEXTOS } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Generador de Aura: ¿De qué color es tu energía?",
@@ -14,5 +16,10 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <AuraGenerator />;
+  return (
+    <>
+      <AuraGenerator />
+      <TextoSeo texto={TEXTOS["aura"]} />
+    </>
+  );
 }

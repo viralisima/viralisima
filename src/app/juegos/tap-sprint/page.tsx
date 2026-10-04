@@ -1,4 +1,6 @@
 import JuegoTapSprint from "@/components/JuegoTapSprint";
+import TextoSeo from "@/components/TextoSeo";
+import { TEXTOS } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Tap Sprint — ¿Cuántos clicks en 10 segundos?",
@@ -13,5 +15,10 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <JuegoTapSprint />;
+  return (
+    <>
+      <JuegoTapSprint />
+      <TextoSeo texto={TEXTOS["juegos/tap-sprint"]} />
+    </>
+  );
 }

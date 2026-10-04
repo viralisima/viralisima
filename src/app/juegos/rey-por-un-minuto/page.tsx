@@ -1,4 +1,6 @@
 import JuegoReyPorUnMinuto from "@/components/JuegoReyPorUnMinuto";
+import TextoSeo from "@/components/TextoSeo";
+import { TEXTOS } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Rey por un minuto",
@@ -13,5 +15,10 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <JuegoReyPorUnMinuto />;
+  return (
+    <>
+      <JuegoReyPorUnMinuto />
+      <TextoSeo texto={TEXTOS["juegos/rey-por-un-minuto"]} />
+    </>
+  );
 }

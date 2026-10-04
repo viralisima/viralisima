@@ -1,4 +1,6 @@
 import JuegoBreakout from "@/components/JuegoBreakout";
+import TextoSeo from "@/components/TextoSeo";
+import { TEXTOS } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Breakout · Rompe ladrillos",
@@ -14,5 +16,10 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <JuegoBreakout />;
+  return (
+    <>
+      <JuegoBreakout />
+      <TextoSeo texto={TEXTOS["juegos/breakout"]} />
+    </>
+  );
 }

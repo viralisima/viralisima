@@ -1,4 +1,6 @@
 import UsernameGenerator from "@/components/UsernameGenerator";
+import TextoSeo from "@/components/TextoSeo";
+import { TEXTOS } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Generador de Username para Instagram y TikTok",
@@ -14,5 +16,10 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <UsernameGenerator />;
+  return (
+    <>
+      <UsernameGenerator />
+      <TextoSeo texto={TEXTOS["generadores/username"]} />
+    </>
+  );
 }

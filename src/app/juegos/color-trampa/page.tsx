@@ -1,4 +1,6 @@
 import JuegoColorTrampa from "@/components/JuegoColorTrampa";
+import TextoSeo from "@/components/TextoSeo";
+import { TEXTOS } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Color Trampa · Test de Stroop",
@@ -14,5 +16,10 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <JuegoColorTrampa />;
+  return (
+    <>
+      <JuegoColorTrampa />
+      <TextoSeo texto={TEXTOS["juegos/color-trampa"]} />
+    </>
+  );
 }

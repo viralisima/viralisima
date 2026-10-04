@@ -1,4 +1,6 @@
 import JuegoMemoria from "@/components/JuegoMemoria";
+import TextoSeo from "@/components/TextoSeo";
+import { TEXTOS } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Juego de Memoria Simon",
@@ -13,5 +15,10 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <JuegoMemoria />;
+  return (
+    <>
+      <JuegoMemoria />
+      <TextoSeo texto={TEXTOS["juegos/memoria"]} />
+    </>
+  );
 }

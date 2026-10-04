@@ -1,4 +1,6 @@
 import NombreArtistaGenerator from "@/components/NombreArtistaGenerator";
+import TextoSeo from "@/components/TextoSeo";
+import { TEXTOS } from "@/data/textos-seo";
 
 export const metadata = {
   title: "Generador de Nombre de Artista/Banda/Rapero",
@@ -14,5 +16,10 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <NombreArtistaGenerator />;
+  return (
+    <>
+      <NombreArtistaGenerator />
+      <TextoSeo texto={TEXTOS["generadores/nombre-artista"]} />
+    </>
+  );
 }
