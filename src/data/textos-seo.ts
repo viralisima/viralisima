@@ -374,9 +374,16 @@ export function relacionados(clave: string): Relacionado[] {
   if (i < 0) return [];
   return vecinos(grupo, i).map((c) => ({ href: `/${c}`, titulo: TEXTOS[c].titulo, desc: primeraFrase(TEXTOS[c].intro[0]) }));
 }
+// Quizzes y herramientas no tienen ranking: se usan sin cuenta de ningún tipo
+const SIN_CUENTA: Pregunta = {
+  q: "¿Hay que registrarse o pagar?",
+  a: "No. Es gratis, funciona en el celular y en la computadora y no pide cuenta, correo ni ningún dato personal.",
+};
 export function textoCon(clave: string): TextoSeo | undefined {
   const t = TEXTOS[clave];
-  return t && { ...t, relacionados: relacionados(clave) };
+  if (!t) return undefined;
+  const faq = clave.startsWith("juegos/") ? t.faq : [...t.faq, SIN_CUENTA];
+  return { ...t, faq, relacionados: relacionados(clave) };
 }
 
 // Quizzes: el texto se arma con los datos de cada quiz (preguntas y resultados reales)
@@ -387,7 +394,8 @@ const relQuiz = (quiz: Quiz): Relacionado[] =>
   vecinos(QUIZZES, QUIZZES.findIndex((q) => q.slug === quiz.slug)).map((q) => ({ href: `/quiz/${q.slug}`, titulo: q.title, desc: q.subtitle }));
 
 export function textoQuiz(quiz: Quiz): TextoSeo {
-  return { ...textoQuizBase(quiz), relacionados: relQuiz(quiz) };
+  const base = textoQuizBase(quiz);
+  return { ...base, faq: [...base.faq, SIN_CUENTA], relacionados: relQuiz(quiz) };
 }
 
 function textoQuizBase(quiz: Quiz): TextoSeo {
