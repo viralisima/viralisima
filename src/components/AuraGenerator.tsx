@@ -183,7 +183,10 @@ export default function AuraGenerator() {
         <Link href="/" className="text-sm text-slate-500 hover:text-slate-900">
           ← Viralísima
         </Link>
-        <div className="mt-6 mb-8">
+        <h1 className="mt-4 text-center text-base md:text-lg font-bold text-slate-700">
+          ¿De qué color es tu aura?
+        </h1>
+        <div className="mt-4 mb-8">
           <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
             <div className="h-full bg-gradient-to-r from-fuchsia-500 to-orange-500 transition-all" style={{ width: `${progress * 100}%` }} />
           </div>

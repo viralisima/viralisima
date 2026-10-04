@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BLOG, getPost } from "@/data/blog";
 import ShareButtons from "@/components/ShareButtons";
+import JsonLd, { ORGANIZACION, SITE } from "@/components/JsonLd";
 
 export async function generateStaticParams() {
   return BLOG.map((p) => ({ slug: p.slug }));
@@ -51,6 +52,34 @@ export default async function BlogPostPage({
 
   return (
     <main className="min-h-screen bg-white">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "BlogPosting",
+              headline: post.title,
+              description: post.description,
+              datePublished: post.date,
+              inLanguage: "es",
+              url,
+              mainEntityOfPage: url,
+              image: `${SITE}/api/og?blog=${slug}`,
+              articleSection: post.category,
+              author: { "@id": ORGANIZACION["@id"] },
+              publisher: ORGANIZACION,
+            },
+            {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Inicio", item: SITE },
+                { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE}/blog` },
+                { "@type": "ListItem", position: 3, name: post.title, item: url },
+              ],
+            },
+          ],
+        }}
+      />
       <div
         className={`bg-gradient-to-br ${post.coverGradient} text-white`}
       >

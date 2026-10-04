@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
 import Header from "@/components/Header";
+import JsonLd, { ORGANIZACION, SITE } from "@/components/JsonLd";
 
 const ADSENSE_ID = "ca-pub-2858145565650267";
 const GA_ID = "G-L7MY2DFZLE";
@@ -48,6 +49,22 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@graph": [
+              ORGANIZACION,
+              {
+                "@type": "WebSite",
+                "@id": `${SITE}/#web`,
+                name: "Viralísima",
+                url: SITE,
+                inLanguage: "es",
+                publisher: { "@id": ORGANIZACION["@id"] },
+              },
+            ],
+          }}
+        />
         <Header />
         <div className="flex-1">{children}</div>
         <Analytics />

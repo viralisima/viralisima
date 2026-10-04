@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import QuizRunner from "@/components/QuizRunner";
+import JsonLd, { SITE } from "@/components/JsonLd";
 import { QUIZZES, getQuiz } from "@/data/quizzes";
 import type { Metadata } from "next";
 
@@ -45,5 +46,20 @@ export default async function QuizPage({
   const { slug } = await params;
   const quiz = getQuiz(slug);
   if (!quiz) notFound();
-  return <QuizRunner quiz={quiz} />;
+  const url = `${SITE}/quiz/${slug}`;
+  return (
+    <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Inicio", item: SITE },
+            { "@type": "ListItem", position: 2, name: quiz.title, item: url },
+          ],
+        }}
+      />
+      <QuizRunner quiz={quiz} />
+    </>
+  );
 }

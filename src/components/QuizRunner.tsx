@@ -76,7 +76,11 @@ export default function QuizRunner({ quiz }: { quiz: Quiz }) {
           ← Viralísima
         </Link>
 
-        <div className="mt-6 mb-8">
+        <h1 className="mt-4 text-center text-base md:text-lg font-bold text-slate-700">
+          {quiz.title}
+        </h1>
+
+        <div className="mt-4 mb-8">
           <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
             <div
               className={`h-full bg-gradient-to-r ${quiz.coverGradient} transition-all duration-500`}

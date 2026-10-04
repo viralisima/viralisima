@@ -22,7 +22,7 @@ export const BLOG: BlogPost[] = [
   },
 
   {
-    slug: `cosas-que-hacíamos-cuando-se-iba-la-luz`,
+    slug: `cosas-que-haciamos-cuando-se-iba-la-luz`,
     title: `14 cosas que todos hacíamos cuando se iba la luz`,
     description: `De buscar velas a oscuras a contar historias de miedo: 14 cosas que todos hacíamos cuando se iba la luz en casa. ¿Cuántas recuerdas tú? Pura nostalgia.`,
     date: "2026-09-26",
