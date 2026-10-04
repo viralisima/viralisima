@@ -1,0 +1,26 @@
+# Viralísima
+
+> Quizzes de personalidad y de cultura general, juegos de navegador, herramientas divertidas y horóscopo semanal en español, para todos los públicos.
+
+Todo funciona en el navegador, gratis y sin registro. El registro con apodo y PIN es opcional y sólo sirve para guardar puntuaciones en los rankings de los juegos. Las calculadoras (IMC, edad del perro) muestran la fórmula que usan y no sustituyen la consulta con un médico o un veterinario.
+
+## Secciones
+
+- [Portada con todos los quizzes y herramientas](https://www.viralisima.com/)
+- [Juegos con ranking](https://www.viralisima.com/juegos)
+- [Horóscopo semanal](https://www.viralisima.com/horoscopo)
+- [Blog](https://www.viralisima.com/blog)
+
+## Herramientas
+
+- [Generador de memes](https://www.viralisima.com/memes)
+- [Frases para compartir](https://www.viralisima.com/frases)
+- [Calculadora de IMC](https://www.viralisima.com/calculadora-imc)
+- [Edad de tu perro en años humanos](https://www.viralisima.com/edad-perro)
+- [Test de edad mental](https://www.viralisima.com/edad-mental)
+- [Color de tu aura](https://www.viralisima.com/aura)
+
+## Sobre el sitio
+
+- [Contacto](https://www.viralisima.com/contacto)
+- [Privacidad](https://www.viralisima.com/privacidad)
