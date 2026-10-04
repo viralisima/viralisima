@@ -399,6 +399,9 @@ function textoQuizBase(quiz: Quiz): TextoSeo {
       intro: [
         `${quiz.subtitle}. Este quiz tiene ${n} preguntas con varias opciones y una sola respuesta correcta en cada una. Se responde en unos ${quiz.timeEstimate}.`,
         `Al terminar ves cuántas acertaste y en qué nivel quedas. Los niveles posibles son ${lista(resultados)}. Las preguntas no cambian, así que puedes repetirlo para mejorar o mandárselo a alguien para ver quién sabe más.`,
+        ...(quiz.questions[0]
+          ? [`Para que te hagas una idea, la primera pregunta es «${sinEmoji(quiz.questions[0].text)}», con estas opciones: ${lista(quiz.questions[0].options.map((o) => sinEmoji(o.text)))}.`]
+          : []),
       ],
       faq: [
         { q: "¿Cuántas preguntas tiene?", a: `${n} preguntas.` },
@@ -413,6 +416,7 @@ function textoQuizBase(quiz: Quiz): TextoSeo {
     intro: [
       `${quiz.subtitle}. Este test tiene ${n} preguntas y se responde en unos ${quiz.timeEstimate}. Cada respuesta suma puntos a uno de los ${resultados.length} resultados posibles y al final te mostramos el que más puntos reunió.`,
       `Los resultados son ${lista(resultados)}. Cada uno viene con una descripción y una imagen para compartir. Es un test para entretenerse y comparar con tus amigos, sin base científica.`,
+      `Qué significa cada resultado: ${quiz.results.map((r) => `${sinEmoji(r.title)}: ${primeraFrase(r.description)}`).join(" ")}`,
     ],
     faq: [
       { q: "¿Cómo se calcula el resultado?", a: "Cada opción suma puntos a uno o varios resultados. Gana el que acumula más puntos al terminar." },
