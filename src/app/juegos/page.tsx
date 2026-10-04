@@ -14,6 +14,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "no-despiertes-a-la-abuela",
+    title: "No despiertes a la abuela",
+    subtitle: "La abuela duerme la siesta. Que nadie haga ruido.",
+    emoji: "😴",
+    gradient: "from-indigo-500 via-purple-500 to-pink-500",
+    duration: "30-90 segundos",
+  },
+  {
     slug: "cuanto-pesa-tu-intuicion",
     title: "¿Cuánto pesa?",
     subtitle: "Equilibra la balanza a ojo antes de que se acabe el tiempo",
