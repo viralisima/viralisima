@@ -14,6 +14,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "tortilla-al-vuelo",
+    title: "Tortilla al Vuelo",
+    subtitle: "Dale la vuelta sin que acabe en el suelo",
+    emoji: "🍳",
+    gradient: "from-yellow-400 via-amber-500 to-orange-600",
+    duration: "45 segundos",
+  },
+  {
     slug: "no-despiertes-a-la-abuela",
     title: "No despiertes a la abuela",
     subtitle: "La abuela duerme la siesta. Que nadie haga ruido.",

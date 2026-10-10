@@ -75,6 +75,7 @@ export default function Header() {
 
   const juegosItems = [
     { href: "/juegos", label: "🎮 Ver todos" },
+    { href: "/juegos/tortilla-al-vuelo", label: "🍳 Tortilla al Vuelo" },
     { href: "/juegos/no-despiertes-a-la-abuela", label: "😴 No despiertes a la abuela" },
     { href: "/juegos/cuanto-pesa-tu-intuicion", label: "⚖️ ¿Cuánto pesa?" },
     { href: "/juegos/mama-dice", label: "🧑‍🍳 Mamá Dice" },
