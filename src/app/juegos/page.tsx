@@ -14,6 +14,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "no-toques-el-suelo",
+    title: "El suelo es lava",
+    subtitle: "Salta de mueble en mueble antes de que la lava te alcance",
+    emoji: "🌋",
+    gradient: "from-orange-500 via-red-500 to-yellow-500",
+    duration: "30-90 segundos",
+  },
+  {
     slug: "tortilla-al-vuelo",
     title: "Tortilla al Vuelo",
     subtitle: "Dale la vuelta sin que acabe en el suelo",
