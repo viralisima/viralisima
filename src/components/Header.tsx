@@ -75,6 +75,7 @@ export default function Header() {
 
   const juegosItems = [
     { href: "/juegos", label: "🎮 Ver todos" },
+    { href: "/juegos/no-parpadees-con-el-gato", label: "🐈 No le quites el ojo al gato" },
     { href: "/juegos/no-toques-el-suelo", label: "🌋 El suelo es lava" },
     { href: "/juegos/tortilla-al-vuelo", label: "🍳 Tortilla al Vuelo" },
     { href: "/juegos/no-despiertes-a-la-abuela", label: "😴 No despiertes a la abuela" },

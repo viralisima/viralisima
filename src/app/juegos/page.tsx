@@ -14,6 +14,14 @@ export const metadata = {
 
 const GAMES = [
   {
+    slug: "no-parpadees-con-el-gato",
+    title: "No le quites el ojo al gato",
+    subtitle: "El gato tira cosas de la mesa cuando no lo miras. Pílalo.",
+    emoji: "🐈",
+    gradient: "from-amber-400 via-orange-500 to-rose-500",
+    duration: "60 segundos",
+  },
+  {
     slug: "no-toques-el-suelo",
     title: "El suelo es lava",
     subtitle: "Salta de mueble en mueble antes de que la lava te alcance",
