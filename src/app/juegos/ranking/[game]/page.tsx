@@ -17,6 +17,8 @@ export async function generateMetadata({
     title: `Ranking de ${g.label}`,
     description: `Top 100 jugadores de ${g.label}. ¿Entras en el ranking?`,
     alternates: { canonical: `https://www.viralisima.com/juegos/ranking/${game}` },
+    // Casi todos dicen «Aún no hay nadie en el ranking»: fuera del índice (2026-10-16)
+    robots: { index: false, follow: true },
   };
 }
 

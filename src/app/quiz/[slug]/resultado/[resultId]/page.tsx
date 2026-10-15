@@ -27,6 +27,8 @@ export async function generateMetadata({
     title: `Me salió: ${result.title} — ${quiz.title}`,
     description: result.description,
     alternates: { canonical: url },
+    // Páginas para compartir (~72 palabras): fuera del índice, que no cuenten como contenido fino (2026-10-16)
+    robots: { index: false, follow: true },
     openGraph: {
       title: `${result.emoji} Me salió: ${result.title}`,
       description: `${result.description} — ¿Y a ti?`,

@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import JsonLd, { ORGANIZACION, SITE } from "@/components/JsonLd";
 
 const ADSENSE_ID = "ca-pub-2858145565650267";
@@ -72,6 +73,7 @@ export default function RootLayout({
         />
         <Header />
         <div className="flex-1">{children}</div>
+        <Footer />
         <Analytics />
         <SpeedInsights />
         <Script

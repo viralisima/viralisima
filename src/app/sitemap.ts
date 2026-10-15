@@ -4,74 +4,26 @@ import { SIGNS } from "@/data/horoscopo";
 import { BLOG } from "@/data/blog";
 import { GAMES as JUEGOS } from "@/lib/leaderboard";
 
+// 2026-10-16: fuera las páginas de resultado de quiz y los rankings (noindex, contenido fino) y fuera el
+// lastmod falso (antes todas llevaban la hora del build). Sólo llevan fecha el blog (la del post) y el
+// horóscopo, que cambia cada día de verdad.
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://www.viralisima.com";
-  const now = new Date();
+  const hoy = new Date();
 
-  const quizEntries = QUIZZES.map((q) => ({
-    url: `${base}/quiz/${q.slug}`,
-    lastModified: now,
-    changeFrequency: "weekly" as const,
-    priority: 0.8,
-  }));
-
-  const resultEntries = QUIZZES.flatMap((q) =>
-    q.results.map((r) => ({
-      url: `${base}/quiz/${q.slug}/resultado/${r.id}`,
-      lastModified: now,
-      changeFrequency: "monthly" as const,
-      priority: 0.5,
-    }))
-  );
+  const fijas: [string, number][] = [
+    ["", 1], ["/edad-perro", 0.9], ["/dias-vividos", 0.9], ["/calculadora-imc", 0.9], ["/compatibilidad", 0.9],
+    ["/edad-mental", 0.9], ["/aura", 0.9], ["/generadores/nombre-artista", 0.9], ["/generadores/username", 0.9],
+    ["/memes", 0.8], ["/frases", 0.8], ["/historias", 0.8], ["/juegos", 0.9], ["/blog", 0.8],
+    ["/sobre-nosotros", 0.3], ["/contacto", 0.3], ["/privacidad", 0.2], ["/terminos", 0.2],
+  ];
 
   return [
-    { url: base, lastModified: now, changeFrequency: "daily", priority: 1 },
-    { url: `${base}/memes`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${base}/frases`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${base}/generadores/nombre-artista`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${base}/historias`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${base}/edad-mental`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${base}/aura`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${base}/generadores/username`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${base}/compatibilidad`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${base}/dias-vividos`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${base}/edad-perro`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${base}/calculadora-imc`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${base}/juegos`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${base}/horoscopo`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
-    { url: `${base}/blog`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
-    { url: `${base}/sobre-nosotros`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
-    { url: `${base}/contacto`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
-    { url: `${base}/privacidad`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
-    { url: `${base}/terminos`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
-    ...BLOG.map((p) => ({
-      url: `${base}/blog/${p.slug}`,
-      lastModified: new Date(p.date),
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
-    })),
-    ...SIGNS.map((s) => ({
-      url: `${base}/horoscopo/${s.id}`,
-      lastModified: now,
-      changeFrequency: "daily" as const,
-      priority: 0.8,
-    })),
-    ...quizEntries,
-    ...resultEntries,
-    // Juegos + sus rankings, derivados del leaderboard (entran todos, presentes y futuros)
-    ...Object.keys(JUEGOS).flatMap((slug) => [
-      {
-        url: `${base}/juegos/${slug}`,
-        lastModified: now,
-        changeFrequency: "weekly" as const,
-        priority: 0.8,
-      },
-      {
-        url: `${base}/juegos/ranking/${slug}`,
-        lastModified: now,
-        changeFrequency: "weekly" as const,
-        priority: 0.5,
-      },
-    ]),
+    ...fijas.map(([ruta, priority]) => ({ url: `${base}${ruta}`, priority })),
+    { url: `${base}/horoscopo`, lastModified: hoy, changeFrequency: "daily" as const, priority: 0.8 },
+    ...SIGNS.map((s) => ({ url: `${base}/horoscopo/${s.id}`, lastModified: hoy, changeFrequency: "daily" as const, priority: 0.7 })),
+    ...BLOG.map((p) => ({ url: `${base}/blog/${p.slug}`, lastModified: new Date(p.date), priority: 0.7 })),
+    ...QUIZZES.map((q) => ({ url: `${base}/quiz/${q.slug}`, priority: 0.8 })),
+    ...Object.keys(JUEGOS).map((slug) => ({ url: `${base}/juegos/${slug}`, priority: 0.7 })),
   ];
 }
