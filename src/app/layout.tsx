@@ -32,7 +32,12 @@ export const metadata: Metadata = {
     siteName: "Viralísima",
     locale: "es_ES",
     type: "website",
+    // Imagen por defecto al compartir: sin ella WhatsApp y Facebook enseñan el enlace pelado (2026-10-15)
+    images: [{ url: "/api/og", width: 1200, height: 630, alt: "Viralísima" }],
   },
+  twitter: { card: "summary_large_image" },
+  // Foto grande en Discover y en los resultados de Google
+  robots: { index: true, follow: true, googleBot: { "max-image-preview": "large" } },
   verification: {
     google: "fHIn0dZ8fDrZNNW34_CxtqNLLweR5HFfLuQLH4EtQvE",
   },
